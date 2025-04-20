@@ -198,35 +198,34 @@
 
     <section id="contact" class="bg-white p-8 rounded-lg shadow-lg">
       <h2 class="text-3xl font-bold mb-6 text-center">Request a Consultation</h2>
-      <form class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <form action="https://formspree.io/f/xwplgylw" method="POST" class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label for="name" class="block text-gray-700 mb-2">Name*</label>
-          <input type="text" id="name" placeholder="Your name" class="w-full border p-3 rounded focus:ring-2 focus:ring-green-500 focus:border-transparent" required>
+          <input type="text" id="name" name="name" placeholder="Your name" class="w-full border p-3 rounded focus:ring-2 focus:ring-green-500 focus:border-transparent" required>
         </div>
         <div>
           <label for="email" class="block text-gray-700 mb-2">Email*</label>
-          <input type="email" id="email" placeholder="Your email" class="w-full border p-3 rounded focus:ring-2 focus:ring-green-500 focus:border-transparent" required>
+          <input type="email" id="email" name="email" placeholder="Your email" class="w-full border p-3 rounded focus:ring-2 focus:ring-green-500 focus:border-transparent" required>
         </div>
         <div>
           <label for="company" class="block text-gray-700 mb-2">Company</label>
-          <input type="text" id="company" placeholder="Your company" class="w-full border p-3 rounded focus:ring-2 focus:ring-green-500 focus:border-transparent">
+          <input type="text" id="company" name="company" placeholder="Your company" class="w-full border p-3 rounded focus:ring-2 focus:ring-green-500 focus:border-transparent">
         </div>
         <div>
           <label for="phone" class="block text-gray-700 mb-2">Phone</label>
-          <input type="tel" id="phone" placeholder="Your phone number" class="w-full border p-3 rounded focus:ring-2 focus:ring-green-500 focus:border-transparent">
+          <input type="tel" id="phone" name="phone" placeholder="Your phone number" class="w-full border p-3 rounded focus:ring-2 focus:ring-green-500 focus:border-transparent">
         </div>
         <div class="md:col-span-2">
           <label for="details" class="block text-gray-700 mb-2">Project Details*</label>
-          <textarea id="details" placeholder="Tell us about your project needs" class="w-full border p-3 rounded focus:ring-2 focus:ring-green-500 focus:border-transparent" rows="5" required></textarea>
+          <textarea id="details" name="details" placeholder="Tell us about your project needs" class="w-full border p-3 rounded focus:ring-2 focus:ring-green-500 focus:border-transparent" rows="5" required></textarea>
         </div>
         <div class="md:col-span-2 flex items-center">
-          <input type="checkbox" id="privacy" class="mr-2" required>
+          <input type="checkbox" id="privacy" name="privacy" class="mr-2" required>
           <label for="privacy" class="text-sm text-gray-600">I agree to the <a href="#" class="text-green-600 hover:underline">privacy policy</a> and terms of service</label>
         </div>
         <button type="submit" class="bg-green-600 text-white py-3 px-6 rounded hover:bg-green-700 transition font-medium md:col-span-2">Submit Request</button>
       </form>
     </section>
-  </main>
 
   <footer class="bg-gray-800 text-white py-8 mt-12">
     <div class="container mx-auto px-4">
