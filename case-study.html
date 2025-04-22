@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Environmental consulting services in Mexico specializing in impact assessments, permits, and compliance">
+  <meta name="description" content="Project details for Forward Consultants Network's environmental consulting work">
   <!-- OpenGraph Meta Tags -->
-  <meta property="og:title" content="Environmental Consulting Services | Forward Consultants Network">
-  <meta property="og:description" content="Expert environmental consulting services in Mexico for impact assessments, permits, and regulatory compliance">
+  <meta property="og:title" content="Project Details | Forward Consultants Network">
+  <meta property="og:description" content="Detailed case study of our environmental consulting project in Mexico">
   <meta property="og:type" content="website">
-  <title>PDF Viewer | Forward Consultants Network</title>
+  <title>Project Details | Forward Consultants Network</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌱</text></svg>">
@@ -17,23 +17,21 @@
     .hero-gradient {
       background: linear-gradient(135deg, rgba(20, 184, 166, 0.9) 0%, rgba(15, 23, 42, 0.9) 100%);
     }
-    .pdf-controls {
+    .project-header {
       background-color: #1B2B40;
-    }
-    .pdf-btn {
-      background-color: #41BF78;
       color: white;
     }
-    .pdf-btn:hover {
-      background-color: #03A63C;
+    .accent-bg {
+      background-color: #A3B4BF;
     }
-    .pdf-container {
-      height: calc(100vh - 200px);
+    .accent-text {
+      color: #03A63C;
     }
-    @media (max-width: 640px) {
-      .pdf-container {
-        height: calc(100vh - 160px);
-      }
+    .secondary-accent {
+      background-color: #8BD9B4;
+    }
+    .highlight {
+      background-color: #41BF78;
     }
   </style>
 </head>
@@ -43,77 +41,190 @@
     <div class="container mx-auto px-4">
       <div class="flex flex-col md:flex-row justify-between items-center">
         <div class="mb-4 md:mb-0 text-center md:text-left">
-          <h1 class="text-2xl md:text-3xl font-bold"></h1>
-          <img src="20250420_222819000_iOS.jpg" 
-               alt="Forward Consultants Network"
-               class="h-12 md:h-16 w-auto">
+          <a href="index.html">
+            <img src="20250420_222819000_iOS.jpg" 
+                 alt="Forward Consultants Network"
+                 class="h-12 md:h-16 w-auto">
+          </a>
         </div>
 
         <nav class="flex flex-wrap justify-center gap-3 md:gap-6" aria-label="Main navigation">
-          <a href="#" class="hover:text-[#14B8A6] font-medium text-sm md:text-base">Home</a>
-          <a href="#services" class="hover:text-[#14B8A6] font-medium text-sm md:text-base">Services</a>
-          <a href="#industries" class="hover:text-[#14B8A6] font-medium text-sm md:text-base">Industries</a>
-          <a href="#contact" class="hover:text-[#14B8A6] font-medium text-sm md:text-base">Contact</a>
-          <a href="index-es.html" class="hover:underline font-medium">Español</a>
+          <a href="index.html" class="hover:text-[#14B8A6] font-medium text-sm md:text-base">Home</a>
+          <a href="index.html#services" class="hover:text-[#14B8A6] font-medium text-sm md:text-base">Services</a>
+          <a href="index.html#industries" class="hover:text-[#14B8A6] font-medium text-sm md:text-base">Industries</a>
+          <a href="index.html#contact" class="hover:text-[#14B8A6] font-medium text-sm md:text-base">Contact</a>
+          <a href="proyecto-es.html" class="hover:underline font-medium">Español</a>
         </nav>
       </div>
     </div>
   </header>
 
-  <!-- PDF Viewer Section -->
-  <section class="container mx-auto px-4 py-8">
-    <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-      <!-- PDF Controls -->
-      <div class="pdf-controls flex flex-wrap items-center justify-between p-4 text-white">
-        <h2 class="text-xl font-bold">LGEEPA Document</h2>
-        <div class="flex items-center space-x-2 mt-2 sm:mt-0">
-          <span id="page-num" class="text-[#A3B4BF]">Page: 1</span>
-          <span id="page-count" class="text-[#A3B4BF]">of 1</span>
+  <!-- Project Header -->
+  <section class="project-header py-12">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center">
+        <span class="inline-block px-3 py-1 mb-4 text-xs font-semibold secondary-accent text-[#1B2B40] rounded-full">CASE STUDY</span>
+        <h1 class="text-3xl md:text-5xl font-bold mb-6">Sustainable Industrial Park Development in Yucatán</h1>
+        <p class="text-xl text-[#A3B4BF] max-w-2xl mx-auto">Comprehensive environmental impact assessment and permitting for a 250-hectare industrial development</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Meta -->
+  <section class="bg-white py-8 shadow-sm">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-4 text-center">
+        <div class="p-4">
+          <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Client</h3>
+          <p class="font-medium">Yucatán Industrial Development Group</p>
         </div>
-      </div>
-      
-      <!-- PDF Navigation Buttons -->
-      <div class="pdf-controls flex flex-wrap items-center justify-center gap-2 p-2">
-        <button id="prev" class="pdf-btn px-4 py-2 rounded-md font-medium">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline mr-1" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
-          </svg>
-          Previous
-        </button>
-        <button id="next" class="pdf-btn px-4 py-2 rounded-md font-medium">
-          Next
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline ml-1" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-          </svg>
-        </button>
-        <button id="zoom-in" class="pdf-btn px-4 py-2 rounded-md font-medium">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline mr-1" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd" />
-          </svg>
-          Zoom In
-        </button>
-        <button id="zoom-out" class="pdf-btn px-4 py-2 rounded-md font-medium">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline mr-1" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M5 10a1 1 0 011-1h8a1 1 0 110 2H6a1 1 0 01-1-1z" clip-rule="evenodd" />
-          </svg>
-          Zoom Out
-        </button>
-        <button id="download" class="pdf-btn px-4 py-2 rounded-md font-medium">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline mr-1" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
-          </svg>
-          Download
-        </button>
-      </div>
-      
-      <!-- PDF Container -->
-      <div class="p-4">
-        <div class="pdf-container w-full border border-gray-300 rounded-md overflow-auto">
-          <iframe id="pdf-viewer" src="https://fwdco.net/LGEEPA.pdf#toolbar=0&navpanes=0" frameborder="0" class="w-full h-full"></iframe>
+        <div class="p-4">
+          <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Location</h3>
+          <p class="font-medium">Mérida, Yucatán</p>
+        </div>
+        <div class="p-4">
+          <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Duration</h3>
+          <p class="font-medium">18 months</p>
+        </div>
+        <div class="p-4">
+          <h3 class="text-xs font-semibold text-gray-500 uppercase tracking-wider">Services</h3>
+          <p class="font-medium">EIA, Permitting, Compliance</p>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Project Content -->
+  <main class="container mx-auto px-4 py-12">
+    <div class="max-w-5xl mx-auto">
+      <!-- Project Gallery -->
+      <section class="mb-16">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="col-span-2">
+            <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1200&q=80" 
+                 alt="Aerial view of project site" 
+                 class="w-full h-96 object-cover rounded-lg shadow-lg">
+          </div>
+          <div>
+            <img src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
+                 alt="Environmental assessment team" 
+                 class="w-full h-64 object-cover rounded-lg shadow-lg">
+          </div>
+          <div>
+            <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" 
+                 alt="Field measurements" 
+                 class="w-full h-64 object-cover rounded-lg shadow-lg">
+          </div>
+        </div>
+      </section>
+
+      <!-- Project Overview -->
+      <section class="mb-16">
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="md:col-span-2">
+            <h2 class="text-3xl font-bold mb-6 accent-text">Project Overview</h2>
+            <p class="text-lg mb-4">Forward Consultants Network was engaged by Yucatán Industrial Development Group to conduct a comprehensive environmental impact assessment and secure all necessary permits for a new 250-hectare sustainable industrial park on the outskirts of Mérida.</p>
+            <p class="mb-4">The project involved detailed studies of local ecosystems, hydrological systems, and archaeological resources, along with extensive community engagement to ensure sustainable development that meets both regulatory requirements and community expectations.</p>
+            <p>The industrial park is designed to accommodate light manufacturing, logistics, and technology companies with minimal environmental impact, featuring green spaces, water recycling systems, and renewable energy infrastructure.</p>
+          </div>
+          <div class="bg-[#F8FAFC] p-6 rounded-lg shadow-sm h-fit">
+            <h3 class="text-xl font-bold mb-4 accent-text">Key Project Data</h3>
+            <ul class="space-y-3">
+              <li class="pb-3 border-b border-gray-200">
+                <span class="block font-semibold">Site Area</span>
+                <span>250 hectares</span>
+              </li>
+              <li class="pb-3 border-b border-gray-200">
+                <span class="block font-semibold">Protected Species</span>
+                <span>3 identified and protected</span>
+              </li>
+              <li class="pb-3 border-b border-gray-200">
+                <span class="block font-semibold">Water Management</span>
+                <span>100% rainwater capture system</span>
+              </li>
+              <li class="pb-3 border-b border-gray-200">
+                <span class="block font-semibold">Permits Obtained</span>
+                <span>12 from SEMARNAT and local agencies</span>
+              </li>
+              <li class="pb-3">
+                <span class="block font-semibold">Community Meetings</span>
+                <span>28 conducted</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Challenges & Solutions -->
+      <section class="mb-16">
+        <h2 class="text-3xl font-bold mb-8 accent-text">Challenges & Solutions</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+          <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 highlight border-[#03A63C]">
+            <h3 class="text-xl font-bold mb-3">Sensitive Ecosystem Protection</h3>
+            <p>The site contained portions of a rare tropical dry forest ecosystem. Our team conducted extensive flora and fauna inventories, identifying three protected species that required special mitigation measures.</p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 highlight border-[#03A63C]">
+            <h3 class="text-xl font-bold mb-3">Community Concerns</h3>
+            <p>Local residents were concerned about water usage and traffic impacts. We organized community workshops and adjusted project plans to include a rainwater capture system and improved access roads.</p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 highlight border-[#03A63C]">
+            <h3 class="text-xl font-bold mb-3">Archaeological Findings</h3>
+            <p>Initial surveys revealed pre-Columbian artifacts. We worked with INAH to document and preserve findings while adjusting site plans to avoid sensitive areas.</p>
+          </div>
+          <div class="bg-white p-6 rounded-lg shadow-sm border-l-4 highlight border-[#03A63C]">
+            <h3 class="text-xl font-bold mb-3">Permitting Complexity</h3>
+            <p>The project required coordination between federal, state, and municipal agencies. Our established relationships and expertise streamlined the approval process.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Results -->
+      <section class="mb-16">
+        <div class="secondary-accent rounded-lg p-8">
+          <h2 class="text-3xl font-bold mb-6 text-[#1B2B40]">Project Results</h2>
+          <div class="grid md:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+              <div class="text-4xl font-bold mb-2 accent-text">100%</div>
+              <p>of required permits obtained within projected timeline</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+              <div class="text-4xl font-bold mb-2 accent-text">28</div>
+              <p>community stakeholders engaged in the process</p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-sm">
+              <div class="text-4xl font-bold mb-2 accent-text">0</div>
+              <p>legal challenges to project approvals</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonial -->
+      <section class="mb-16 max-w-3xl mx-auto">
+        <blockquote class="p-8 bg-white rounded-lg shadow-sm">
+          <div class="text-2xl italic mb-6">
+            "Forward Consultants Network demonstrated exceptional expertise in navigating Mexico's complex environmental regulations. Their thorough assessment and community engagement process helped us avoid costly delays and build strong local support for the project."
+          </div>
+          <div class="flex items-center">
+            <div class="bg-gray-200 w-12 h-12 rounded-full"></div>
+            <div class="ml-4">
+              <div class="font-bold">Carlos Mendez</div>
+              <div class="text-gray-600">Project Director, Yucatán Industrial Development Group</div>
+            </div>
+          </div>
+        </blockquote>
+      </section>
+
+      <!-- CTA -->
+      <section class="text-center py-12">
+        <h2 class="text-3xl font-bold mb-4 accent-text">Ready to start your project?</h2>
+        <p class="text-xl mb-8 max-w-2xl mx-auto">Our team of environmental experts is ready to help you navigate Mexico's regulatory landscape and achieve sustainable development goals.</p>
+        <a href="#contact" class="inline-block highlight text-white font-bold py-3 px-8 rounded-lg hover:bg-[#03A63C] transition duration-300">
+          Contact Our Team
+        </a>
+      </section>
+    </div>
+  </main>
 
   <footer class="bg-gray-800 text-white py-8 mt-12">
     <div class="container mx-auto px-4">
@@ -157,71 +268,5 @@
       </div>
     </div>
   </footer>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const pdfViewer = document.getElementById('pdf-viewer');
-      const pageNum = document.getElementById('page-num');
-      const pageCount = document.getElementById('page-count');
-      const prevBtn = document.getElementById('prev');
-      const nextBtn = document.getElementById('next');
-      const zoomInBtn = document.getElementById('zoom-in');
-      const zoomOutBtn = document.getElementById('zoom-out');
-      const downloadBtn = document.getElementById('download');
-      
-      let currentPage = 1;
-      let totalPages = 1;
-      let scale = 1.0;
-      const scaleStep = 0.25;
-      
-      // For mobile devices, adjust the initial scale
-      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        scale = 0.75;
-        updatePdfViewer();
-      }
-      
-      // PDF.js would be better for page control, but for simplicity we're using native PDF viewer
-      // This is a basic implementation that would work better with PDF.js
-      
-      // Update the PDF viewer URL with current page and scale
-      function updatePdfViewer() {
-        pdfViewer.src = `https://fwdco.net/LGEEPA.pdf#page=${currentPage}&zoom=${scale * 100}`;
-        pageNum.textContent = `Page: ${currentPage}`;
-      }
-      
-      // Button event listeners
-      prevBtn.addEventListener('click', function() {
-        if (currentPage > 1) {
-          currentPage--;
-          updatePdfViewer();
-        }
-      });
-      
-      nextBtn.addEventListener('click', function() {
-        // In a real implementation, we would know the total pages
-        currentPage++;
-        updatePdfViewer();
-      });
-      
-      zoomInBtn.addEventListener('click', function() {
-        scale += scaleStep;
-        updatePdfViewer();
-      });
-      
-      zoomOutBtn.addEventListener('click', function() {
-        if (scale > scaleStep) {
-          scale -= scaleStep;
-          updatePdfViewer();
-        }
-      });
-      
-      downloadBtn.addEventListener('click', function() {
-        window.open('https://fwdco.net/LGEEPA.pdf', '_blank');
-      });
-      
-      // Initialize
-      updatePdfViewer();
-    });
-  </script>
 </body>
 </html>
