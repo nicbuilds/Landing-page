@@ -3,51 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LGEEPA - Visualización</title>
+    <title>Visualizador de PDF - LGEEPA</title>
     <style>
         :root {
             --color-primary: #1B2B40;
             --color-secondary: #A3B4BF;
+            --color-accent1: #8BD9B4;
+            --color-accent2: #41BF78;
+            --color-accent3: #03A63C;
         }
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: var(--color-secondary);
+            background-color: #f5f5f5;
+            color: #333;
         }
         
         .header {
             background-color: var(--color-primary);
             color: white;
-            padding: 0.8rem;
+            padding: 1rem 2rem;
             text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .content {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .document-viewer-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
         
         .document-viewer {
             width: 100%;
-            height: 100vh;
+            height: 80vh;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            background-color: white;
+        }
+        
+        .toolbar {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 0.75rem 1rem;
+            background-color: var(--color-accent2);
+            border-radius: 6px;
+            flex-wrap: wrap;
+        }
+        
+        .toolbar button {
+            background-color: var(--color-primary);
+            color: white;
             border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            min-width: 100px;
+        }
+        
+        .toolbar button:hover {
+            background-color: #0f1a2a;
+        }
+        
+        .toolbar .right-buttons button {
+            background-color: var(--color-accent3);
+        }
+        
+        .toolbar .right-buttons button:hover {
+            background-color: #028a33;
         }
         
         .footer {
             text-align: center;
-            padding: 0.5rem;
+            padding: 1rem;
             background-color: var(--color-primary);
             color: white;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
+            margin-top: 2rem;
+        }
+        
+        .document-title {
+            text-align: center;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            background-color: var(--color-secondary);
+            border-radius: 4px;
+        }
+        
+        @media (max-width: 768px) {
+            .toolbar {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .document-viewer {
+                height: 70vh;
+            }
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>Ley General del Equilibrio Ecológico y la Protección al Ambiente</h1>
+        <div class="logo">Visualizador de PDF</div>
     </div>
     
-    <iframe class="document-viewer" src="https://fwdco.net/LGEEPA.pdf"></iframe>
+    <div class="content">
+        <div class="document-viewer-container">
+            <h2 class="document-title">Ley General del Equilibrio Ecológico y la Protección al Ambiente</h2>
+            
+            <div class="toolbar">
+                <button onclick="zoomIn()">Zoom +</button>
+                <button onclick="zoomOut()">Zoom -</button>
+                <button onclick="downloadPDF()">Descargar</button>
+                <button onclick="printPDF()">Imprimir</button>
+                <button onclick="fitToWidth()">Ajustar a ancho</button>
+            </div>
+            
+            <iframe id="pdf-viewer" class="document-viewer" src="https://fwdco.net/LGEEPA.pdf"></iframe>
+        </div>
+    </div>
     
     <div class="footer">
-        Documento proporcionado por https://fwdco.net/LGEEPA.pdf
+        © 2023 Visualizador de PDF - Todos los derechos reservados
     </div>
+
+    <script>
+        const pdfViewer = document.getElementById('pdf-viewer');
+        let zoomLevel = 1;
+        
+        function zoomIn() {
+            zoomLevel += 0.1;
+            updateZoom();
+        }
+        
+        function zoomOut() {
+            if (zoomLevel > 0.5) {
+                zoomLevel -= 0.1;
+                updateZoom();
+            }
+        }
+        
+        function updateZoom() {
+            pdfViewer.style.transform = `scale(${zoomLevel})`;
+            pdfViewer.style.transformOrigin = 'top left';
+            pdfViewer.style.width = `${100/zoomLevel}%`;
+            pdfViewer.style.height = `${80/zoomLevel}vh`;
+        }
+        
+        function fitToWidth() {
+            zoomLevel = 1;
+            updateZoom();
+        }
+        
+        function downloadPDF() {
+            window.open('https://fwdco.net/LGEEPA.pdf', '_blank');
+        }
+        
+        function printPDF() {
+            const iframe = document.getElementById('pdf-viewer');
+            iframe.contentWindow.print();
+        }
+    </script>
 </body>
 </html>
