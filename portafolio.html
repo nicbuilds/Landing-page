@@ -1,846 +1,251 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Portafolio Profesional</title>
-    <style>
-        :root {
-            --dark-blue: #1B2B40;
-            --light-gray: #A3B4BF;
-            --mint-green: #8BD9B4;
-            --medium-green: #41BF78;
-            --vibrant-green: #03A63C;
-        }
-        
-        /* Estilos para el protector de contraseña */
-        .password-protector {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: var(--dark-blue);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            z-index: 1000;
-        }
-        
-        .password-form {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            text-align: center;
-            max-width: 400px;
-            width: 90%;
-        }
-        
-        .password-form h2 {
-            color: var(--dark-blue);
-            margin-top: 0;
-        }
-        
-        .password-input {
-            width: 100%;
-            padding: 12px;
-            margin: 1rem 0;
-            border: 2px solid var(--light-gray);
-            border-radius: 4px;
-            font-size: 1rem;
-            box-sizing: border-box;
-        }
-        
-        .password-submit {
-            background-color: var(--vibrant-green);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            font-size: 1rem;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        .password-submit:hover {
-            background-color: var(--medium-green);
-        }
-        
-        .error-message {
-            color: #e74c3c;
-            margin-top: 1rem;
-            display: none;
-        }
-        
-        /* Ocultar contenido principal inicialmente */
-        .main-content {
-            display: none;
-        }
-        
-        /* Estilos existentes para el portafolio */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: var(--light-gray);
-            color: var(--dark-blue);
-        }
-        
-        /* Header con navegación */
-        header {
-            background-color: var(--dark-blue);
-            color: white;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-        }
-        
-        .logo h1 {
-            margin: 0;
-            font-size: 1.8rem;
-        }
-        
-        .logo .subtitle {
-            color: var(--mint-green);
-            font-weight: 300;
-            margin-left: 1rem;
-            font-size: 1rem;
-        }
-        
-        nav {
-            display: flex;
-            align-items: center;
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-        
-        nav ul li {
-            margin-left: 1.5rem;
-        }
-        
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-            display: flex;
-            align-items: center;
-        }
-        
-        nav ul li a:hover {
-            color: var(--mint-green);
-        }
-        
-        .language-selector {
-            background-color: var(--vibrant-green);
-            padding: 0.5rem 1rem;
-            border-radius: 4px;
-            margin-left: 1.5rem;
-            margin-right: 0;
-        }
-        
-        .language-selector a {
-            color: white !important;
-        }
-        
-        .language-selector:hover {
-            background-color: var(--medium-green);
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-        
-        .carousel {
-            position: relative;
-            width: 100%;
-            height: 600px;
-            overflow: hidden;
-            border-radius: 8px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-            margin-top: 1rem;
-        }
-        
-        .slide {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-        }
-        
-        .slide.active {
-            opacity: 1;
-        }
-        
-        .slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .slide-content {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: linear-gradient(to top, rgba(27, 43, 64, 0.9), transparent);
-            padding: 2rem;
-            color: white;
-        }
-        
-        .slide-title {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            color: var(--mint-green);
-        }
-        
-        .slide-description {
-            font-size: 1.1rem;
-            max-width: 800px;
-        }
-        
-        .carousel-nav {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            z-index: 10;
-        }
-        
-        .carousel-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background-color: rgba(255,255,255,0.5);
-            margin: 0 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        .carousel-dot.active {
-            background-color: white;
-        }
-        
-        .prev, .next {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(255,255,255,0.3);
-            color: white;
-            border: none;
-            padding: 15px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            border-radius: 50%;
-            z-index: 10;
-            transition: background-color 0.3s;
-        }
-        
-        .prev:hover, .next:hover {
-            background-color: rgba(255,255,255,0.7);
-        }
-        
-        .prev {
-            left: 20px;
-        }
-        
-        .next {
-            right: 20px;
-        }
-        
-        /* Sección de proyectos */
-        .projects-section {
-            margin-top: 5rem;
-            padding-top: 2rem;
-        }
-        
-        .projects-section h2 {
-            color: var(--vibrant-green);
-            text-align: center;
-            margin-bottom: 2rem;
-            font-size: 2rem;
-        }
-        
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem;
-        }
-        
-        .project-card {
-            background-color: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-        
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-        }
-        
-        .project-img {
-            height: 200px;
-            overflow: hidden;
-        }
-        
-        .project-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s;
-        }
-        
-        .project-card:hover .project-img img {
-            transform: scale(1.1);
-        }
-        
-        .project-content {
-            padding: 1.5rem;
-        }
-        
-        .project-title {
-            margin: 0;
-            color: var(--vibrant-green);
-            font-size: 1.2rem;
-        }
-        
-        .project-category {
-            display: inline-block;
-            margin: 0.5rem 0;
-            padding: 0.25rem 0.5rem;
-            background-color: var(--light-gray);
-            color: var(--dark-blue);
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-weight: 500;
-        }
-        
-        .project-description {
-            color: var(--dark-blue);
-            font-size: 0.9rem;
-            margin: 0.5rem 0;
-        }
-        
-        .project-link {
-            display: inline-block;
-            margin-top: 1rem;
-            padding: 0.5rem 1rem;
-            background-color: var(--medium-green);
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-            font-size: 0.9rem;
-        }
-        
-        .project-link:hover {
-            background-color: var(--vibrant-green);
-        }
-        
-        /* Sección Contact */
-        .contact-section {
-            margin-top: 5rem;
-            padding-top: 2rem;
-        }
-        
-        .contact-section h2 {
-            color: var(--vibrant-green);
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        
-        .contact-form {
-            background-color: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--dark-blue);
-            font-weight: 500;
-        }
-        
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 2px solid var(--light-gray);
-            border-radius: 4px;
-            font-family: inherit;
-        }
-        
-        .form-group textarea {
-            min-height: 150px;
-        }
-        
-        .submit-btn {
-            background-color: var(--vibrant-green);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            font-size: 1rem;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            display: block;
-            margin: 0 auto;
-        }
-        
-        .submit-btn:hover {
-            background-color: var(--medium-green);
-        }
-        
-        footer {
-            background-color: var(--dark-blue);
-            color: var(--light-gray);
-            text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
-        }
-        
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 1rem;
-        }
-        
-        .footer-links a {
-            color: var(--mint-green);
-            margin: 0 15px;
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: color 0.3s;
-        }
-        
-        .footer-links a:hover {
-            color: white;
-        }
-        
-        .copyright {
-            margin-top: 1.5rem;
-            font-size: 0.9rem;
-        }
-        
-        /* Estilos para móviles */
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                padding: 1rem;
-                align-items: flex-start;
-            }
-            
-            nav {
-                width: 100%;
-                margin-top: 1rem;
-                justify-content: space-between;
-            }
-            
-            nav ul {
-                flex-wrap: wrap;
-            }
-            
-            nav ul li {
-                margin: 0.5rem;
-            }
-            
-            .language-selector {
-                margin-left: auto;
-            }
-            
-            .carousel {
-                height: 400px;
-            }
-            
-            .slide-title {
-                font-size: 1.5rem;
-            }
-            
-            .slide-description {
-                font-size: 1rem;
-            }
-            
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Environmental consulting services in Mexico specializing in impact assessments, permits, and compliance">
+  <!-- OpenGraph Meta Tags -->
+  <meta property="og:title" content="Environmental Consulting Services | Forward Consultants Network">
+  <meta property="og:description" content="Expert environmental consulting services in Mexico for impact assessments, permits, and regulatory compliance">
+  <meta property="og:type" content="website">
+  <title>Environmental Consulting Services | Forward Consultants Network</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌱</text></svg>">
+ 
+  <style>
+  .hero-gradient {
+    background: linear-gradient(135deg, rgba(20, 184, 166, 0.9) 0%, rgba(15, 23, 42, 0.9) 100%);
+  }
+  .project-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+  .project-image {
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+  }
+  .details-btn {
+    background-color: #1B2B40;
+    color: white;
+    transition: all 0.3s ease;
+  }
+  .details-btn:hover {
+    background-color: #03A63C;
+    transform: translateY(-2px);
+  }
+</style>
+  
 </head>
-<body>
-    <!-- Protector de contraseña -->
-    <div class="password-protector" id="passwordProtector">
-        <div class="password-form">
-            <h2>Solicite acceso al (999)739-4656</h2>
-            <p>Por favor, introduce la contraseña para ver el contenido:</p>
-            <input type="password" class="password-input" id="passwordInput" placeholder="Contraseña">
-            <button class="password-submit" id="passwordSubmit">Acceder</button>
-            <p class="error-message" id="errorMessage">Contraseña incorrecta. Inténtalo de nuevo.</p>
+<body class="bg-gray-50 text-gray-800 font-sans">
+  <!-- Header -->
+<header class="bg-white text-[#0F172A] py-4 shadow-md sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-4 md:mb-0 text-center md:text-left">
+          <h1 class="text-2xl md:text-3xl font-bold"></h1>
+          <img src="20250420_222819000_iOS.jpg" 
+               alt="Forward Consultants Network"
+               class="h-12 md:h-16 w-auto">
         </div>
+
+        <nav class="flex flex-wrap justify-center gap-3 md:gap-6" aria-label="Main navigation">
+          <a href="#" class="hover:text-[#14B8A6] font-medium text-sm md:text-base">Home</a>
+          <a href="#services" class="hover:text-[#14B8A6] font-medium text-sm md:text-base">Services</a>
+          <a href="#industries" class="hover:text-[#14B8A6] font-medium text-sm md:text-base">Industries</a>
+          <a href="#contact" class="hover:text-[#14B8A6] font-medium text-sm md:text-base">Contact</a>
+          <a href="index-es.html" class="hover:underline font-medium">Español</a>        </nav>
+      </div>
     </div>
-    
-    <!-- Contenido principal (oculto inicialmente) -->
-    <div class="main-content" id="mainContent">
-        <header>
-            <div class="logo">
-                <h1>Forward Consultants Network</h1>
-                <span class="subtitle"></span>
-            </div>
-            
-            <nav>
-                <ul>
-                    <li> <a href="https://fwdco.net/index-es.html#" class="hover:text-[#14B8A6] font-medium text-sm md:text-base">Inicio</a> </li>
-                    <li><a href="#projects">Proyectos</a></li>
-                    <li> <a href="https://fwdco.net/index-es.html#contact" class="hover:text-[#14B8A6] font-medium text-sm md:text-base">Contacto</a>  </li>
-                </ul>
-                
-                <div class="language-selector">
-                    <a href="#espanol">Español</a>
-                </div>
-            </nav>
-        </header>
-        
-        <div class="container">
-            <!-- Sección Home con Carrusel -->
-            <section id="home">
-                <div class="carousel">
-                    <!-- Diapositiva 1 -->
-                    <div class="slide active">
-                        <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Diseño web">
-                        <div class="slide-content">
-                            <h2 class="slide-title">Portafolio Profesional</h2>
-                            <p class="slide-description">Explora mis proyectos y descubre cómo puedo ayudarte a crear experiencias digitales excepcionales.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Diapositiva 2 -->
-                    <div class="slide">
-                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Experiencia de usuario">
-                        <div class="slide-content">
-                            <h2 class="slide-title">Diseño Centrado en el Usuario</h2>
-                            <p class="slide-description">Creación de interfaces intuitivas y atractivas que mejoran la experiencia del usuario.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Diapositiva 3 -->
-                    <div class="slide">
-                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Desarrollo frontend">
-                        <div class="slide-content">
-                            <h2 class="slide-title">Desarrollo Frontend</h2>
-                            <p class="slide-description">Implementación de diseños con las últimas tecnologías web.</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Controles del carrusel -->
-                    <button class="prev">&#10094;</button>
-                    <button class="next">&#10095;</button>
-                    
-                    <!-- Navegación por puntos -->
-                    <div class="carousel-nav">
-                        <div class="carousel-dot active"></div>
-                        <div class="carousel-dot"></div>
-                        <div class="carousel-dot"></div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Sección de 10 Proyectos -->
-            <section id="projects" class="projects-section">
-                <h2>Proyectos Destacados</h2>
-                
-                <div class="projects-grid">
-                    <!-- Proyecto 1 -->
-                    <div class="project-card">
-                        <div class="project-img">
-                            <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="E-commerce">
-                        </div>
-                        <div class="project-content">
-                            <h3 class="project-title">Tienda Online Moda</h3>
-                            <p class="project-description">Diseño y desarrollo de tienda online con sistema de recomendaciones personalizadas.</p>
-                            <a href="https://fwdco.net/LGEEPAviewer.html" class="project-link" target="_blank">Ver Detalles</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Proyecto 2 -->
-                    <div class="project-card">
-                        <div class="project-img">
-                            <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="App Salud">
-                        </div>
-                        <div class="project-content">
-                            <h3 class="project-title">App de Bienestar</h3>
-                            <p class="project-description">Aplicación móvil para seguimiento de hábitos saludables y rutinas de ejercicio.</p>
-                            <a href="https://fwdco.net/portafolio-proyecto001" class="project-link" target="_blank">Ver Detalles</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Proyecto 3 -->
-                    <div class="project-card">
-                        <div class="project-img">
-                            <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Dashboard">
-                        </div>
-                        <div class="project-content">
-                            <h3 class="project-title">Sistema de Analytics</h3>
-                            <p class="project-description">Plataforma de visualización de datos con gráficos interactivos y reportes.</p>
-                            <a href="https://fwdco.net/portafolio-proyecto001" class="project-link" target="_blank">Ver Detalles</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Proyecto 4 -->
-                    <div class="project-card">
-                        <div class="project-img">
-                            <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Rediseño Web">
-                        </div>
-                        <div class="project-content">
-                            <h3 class="project-title">Rediseño Corporativo</h3>
-                            <p class="project-description">Modernización de sitio web corporativo con enfoque en experiencia de usuario.</p>
-                            <a href="https://fwdco.net/portafolio-proyecto001" class="project-link" target="_blank">Ver Detalles</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Proyecto 5 -->
-                    <div class="project-card">
-                        <div class="project-img">
-                            <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Portal Educativo">
-                        </div>
-                        <div class="project-content">
-                            <h3 class="project-title">Portal Educativo</h3>
-                            <p class="project-description">Plataforma de aprendizaje en línea con sistema de cursos interactivos.</p>
-                            <a href="https://fwdco.net/portafolio-proyecto001" class="project-link" target="_blank">Ver Detalles</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Proyecto 6 -->
-                    <div class="project-card">
-                        <div class="project-img">
-                            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="App Finanzas">
-                        </div>
-                        <div class="project-content">
-                            <h3 class="project-title">Gestor Financiero</h3>
-                            <p class="project-description">Aplicación para gestión de finanzas personales con análisis de gastos.</p>
-                            <a href="https://fwdco.net/portafolio-proyecto001" class="project-link" target="_blank">Ver Detalles</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Proyecto 7 -->
-                    <div class="project-card">
-                        <div class="project-img">
-                            <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Sistema CRM">
-                        </div>
-                        <div class="project-content">
-                            <h3 class="project-title">Sistema CRM</h3>
-                            <p class="project-description">Plataforma de gestión de relaciones con clientes para pequeñas empresas.</p>
-                            <a href="https://fwdco.net/portafolio-proyecto001" class="project-link" target="_blank">Ver Detalles</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Proyecto 8 -->
-                    <div class="project-card">
-                        <div class="project-img">
-                            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Portafolio Artístico">
-                        </div>
-                        <div class="project-content">
-                            <h3 class="project-title">Portafolio Artístico</h3>
-                            <p class="project-description">Sitio web interactivo para mostrar el trabajo de un artista visual.</p>
-                            <a href="https://fwdco.net/portafolio-proyecto001" class="project-link" target="_blank">Ver Detalles</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Proyecto 9 -->
-                    <div class="project-card">
-                        <div class="project-img">
-                            <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="App Médica">
-                        </div>
-                        <div class="project-content">
-                            <h3 class="project-title">App de Salud</h3>
-                            <p class="project-description">Solución móvil para seguimiento de tratamientos médicos.</p>
-                            <a href="https://fwdco.net/portafolio-proyecto001" class="project-link" target="_blank">Ver Detalles</a>
-                        </div>
-                    </div>
-                    
-                    <!-- Proyecto 10 -->
-                    <div class="project-card">
-                        <div class="project-img">
-                            <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Plataforma Eventos">
-                        </div>
-                        <div class="project-content">
-                            <h3 class="project-title">Plataforma de Eventos</h3>
-                            <p class="project-description">Sistema integral para organización y venta de entradas para eventos.</p>
-                            <a href="https://fwdco.net/portafolio-proyecto001" class="project-link" target="_blank">Ver Detalles</a>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            
+  </header>
+
+  <!-- Portfolio Section -->
+  <section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="text-center mb-12">
+        <h2 class="text-3xl md:text-4xl font-bold text-[#0F172A] mb-4">Our Portfolio</h2>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto">Explore our recent environmental consulting projects across Mexico, showcasing our expertise in sustainable development and regulatory compliance.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Project 1 -->
+        <div class="project-card bg-gray-50 rounded-lg overflow-hidden border border-gray-200">
+          <img src="https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+               alt="Industrial Park" 
+               class="project-image">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-[#0F172A] mb-2">Industrial Park EIA</h3>
+            <p class="text-gray-600 mb-4">Environmental Impact Assessment for a 200-hectare industrial development in Querétaro, ensuring compliance with SEMARNAT regulations.</p>
+            <span class="inline-block bg-[#14B8A6]/10 text-[#14B8A6] px-3 py-1 rounded-full text-sm mb-4">Impact Assessment</span>
+            <button class="details-btn w-full py-2 px-4 rounded-md font-medium">See Details</button>
+          </div>
         </div>
-        
-        <footer>
-            <div class="footer-links">
-                <a href="mailto:contact@fwdco.net">Email</a>
-                <a href="https://linkedin.com" target="_blank">LinkedIn</a>               
-            </div>
-            
-            <p class="copyright">&copy; 2021 Forward Consultants Network. Todos los derechos reservados.</p>
-        </footer>
+
+        <!-- Project 2 -->
+        <div class="project-card bg-gray-50 rounded-lg overflow-hidden border border-gray-200">
+          <img src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+               alt="Coastal Development" 
+               class="project-image">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-[#0F172A] mb-2">Coastal Development</h3>
+            <p class="text-gray-600 mb-4">Permit acquisition and environmental compliance for a luxury resort in Quintana Roo, including coral reef protection measures.</p>
+            <span class="inline-block bg-[#0F172A]/10 text-[#0F172A] px-3 py-1 rounded-full text-sm mb-4">Permit Management</span>
+            <button class="details-btn w-full py-2 px-4 rounded-md font-medium">See Details</button>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card bg-gray-50 rounded-lg overflow-hidden border border-gray-200">
+          <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+               alt="Solar Farm" 
+               class="project-image">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-[#0F172A] mb-2">Solar Farm Compliance</h3>
+            <p class="text-gray-600 mb-4">Ongoing environmental compliance monitoring for a 150MW solar energy project in Sonora, including wildlife protection programs.</p>
+            <span class="inline-block bg-[#14B8A6]/10 text-[#14B8A6] px-3 py-1 rounded-full text-sm mb-4">Compliance Monitoring</span>
+            <button class="details-btn w-full py-2 px-4 rounded-md font-medium">See Details</button>
+          </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-card bg-gray-50 rounded-lg overflow-hidden border border-gray-200">
+          <img src="https://images.unsplash.com/photo-1581093196277-1e316dc37a05?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+               alt="Oil Spill Remediation" 
+               class="project-image">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-[#0F172A] mb-2">Oil Spill Remediation</h3>
+            <p class="text-gray-600 mb-4">Emergency response and remediation plan for a pipeline incident in Veracruz, coordinating with PROFEPA and local communities.</p>
+            <span class="inline-block bg-[#0F172A]/10 text-[#0F172A] px-3 py-1 rounded-full text-sm mb-4">Emergency Response</span>
+            <button class="details-btn w-full py-2 px-4 rounded-md font-medium">See Details</button>
+          </div>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="project-card bg-gray-50 rounded-lg overflow-hidden border border-gray-200">
+          <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+               alt="Urban Development" 
+               class="project-image">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-[#0F172A] mb-2">Urban Expansion Study</h3>
+            <p class="text-gray-600 mb-4">Comprehensive environmental study for Monterrey's metropolitan expansion, addressing water resources and air quality impacts.</p>
+            <span class="inline-block bg-[#14B8A6]/10 text-[#14B8A6] px-3 py-1 rounded-full text-sm mb-4">Impact Assessment</span>
+            <button class="details-btn w-full py-2 px-4 rounded-md font-medium">See Details</button>
+          </div>
+        </div>
+
+        <!-- Project 6 -->
+        <div class="project-card bg-gray-50 rounded-lg overflow-hidden border border-gray-200">
+          <img src="https://images.unsplash.com/photo-1444464666168-49d633b86797?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+               alt="Biodiversity Conservation" 
+               class="project-image">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-[#0F172A] mb-2">Biodiversity Offset</h3>
+            <p class="text-gray-600 mb-4">Design and implementation of a biodiversity offset program for a mining operation in Chihuahua, protecting endangered species.</p>
+            <span class="inline-block bg-[#0F172A]/10 text-[#0F172A] px-3 py-1 rounded-full text-sm mb-4">Conservation</span>
+            <button class="details-btn w-full py-2 px-4 rounded-md font-medium">See Details</button>
+          </div>
+        </div>
+
+        <!-- Project 7 -->
+        <div class="project-card bg-gray-50 rounded-lg overflow-hidden border border-gray-200">
+          <img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+               alt="LEED Certified Building" 
+               class="project-image">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-[#0F172A] mb-2">LEED Certification</h3>
+            <p class="text-gray-600 mb-4">Environmental consulting for a 30-story corporate tower in Mexico City achieving LEED Platinum certification.</p>
+            <span class="inline-block bg-[#14B8A6]/10 text-[#14B8A6] px-3 py-1 rounded-full text-sm mb-4">Sustainable Design</span>
+            <button class="details-btn w-full py-2 px-4 rounded-md font-medium">See Details</button>
+          </div>
+        </div>
+
+        <!-- Project 8 -->
+        <div class="project-card bg-gray-50 rounded-lg overflow-hidden border border-gray-200">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+               alt="Agroindustrial Facility" 
+               class="project-image">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-[#0F172A] mb-2">Agroindustrial Waste</h3>
+            <p class="text-gray-600 mb-4">Waste management system design for a large-scale avocado processing plant in Michoacán, reducing environmental impact.</p>
+            <span class="inline-block bg-[#0F172A]/10 text-[#0F172A] px-3 py-1 rounded-full text-sm mb-4">Waste Management</span>
+            <button class="details-btn w-full py-2 px-4 rounded-md font-medium">See Details</button>
+          </div>
+        </div>
+
+        <!-- Project 9 -->
+        <div class="project-card bg-gray-50 rounded-lg overflow-hidden border border-gray-200">
+          <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+               alt="Railway Infrastructure" 
+               class="project-image">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-[#0F172A] mb-2">Maya Train Section</h3>
+            <p class="text-gray-600 mb-4">Environmental permitting and community engagement for a 50km segment of the Tren Maya project in Yucatán.</p>
+            <span class="inline-block bg-[#14B8A6]/10 text-[#14B8A6] px-3 py-1 rounded-full text-sm mb-4">Infrastructure</span>
+            <button class="details-btn w-full py-2 px-4 rounded-md font-medium">See Details</button>
+          </div>
+        </div>
+
+        <!-- Project 10 -->
+        <div class="project-card bg-gray-50 rounded-lg overflow-hidden border border-gray-200">
+          <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+               alt="Textile Factory" 
+               class="project-image">
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-[#0F172A] mb-2">Textile Factory Audit</h3>
+            <p class="text-gray-600 mb-4">Comprehensive environmental audit for a textile manufacturing facility in Puebla, identifying compliance gaps and improvement opportunities.</p>
+            <span class="inline-block bg-[#0F172A]/10 text-[#0F172A] px-3 py-1 rounded-full text-sm mb-4">Compliance Audit</span>
+            <button class="details-btn w-full py-2 px-4 rounded-md font-medium">See Details</button>
+          </div>
+        </div>
+      </div>
     </div>
-    
-    <script>
-        // Protección por contraseña
-        document.addEventListener('DOMContentLoaded', function() {
-            const passwordProtector = document.getElementById('passwordProtector');
-            const mainContent = document.getElementById('mainContent');
-            const passwordInput = document.getElementById('passwordInput');
-            const passwordSubmit = document.getElementById('passwordSubmit');
-            const errorMessage = document.getElementById('errorMessage');
-            
-            // Contraseña correcta (puedes cambiarla)
-            const CORRECT_PASSWORD = "portfolio123";
-            
-            // Verificar si ya se ingresó la contraseña correctamente
-            if(sessionStorage.getItem('portfolioAccessGranted') === 'true') {
-                passwordProtector.style.display = 'none';
-                mainContent.style.display = 'block';
-                initializePortfolio();
-                return;
-            }
-            
-            // Manejar el envío del formulario de contraseña
-            passwordSubmit.addEventListener('click', checkPassword);
-            passwordInput.addEventListener('keypress', function(e) {
-                if(e.key === 'Enter') {
-                    checkPassword();
-                }
-            });
-            
-            function checkPassword() {
-                if(passwordInput.value === CORRECT_PASSWORD) {
-                    // Contraseña correcta
-                    passwordProtector.style.display = 'none';
-                    mainContent.style.display = 'block';
-                    sessionStorage.setItem('portfolioAccessGranted', 'true');
-                    initializePortfolio();
-                } else {
-                    // Contraseña incorrecta
-                    errorMessage.style.display = 'block';
-                    passwordInput.value = '';
-                    passwordInput.focus();
-                }
-            }
-        });
-        
-        // Función para inicializar el portafolio
-        function initializePortfolio() {
-            // Carrusel de imágenes
-            const slides = document.querySelectorAll('.slide');
-            const dots = document.querySelectorAll('.carousel-dot');
-            const prevBtn = document.querySelector('.prev');
-            const nextBtn = document.querySelector('.next');
-            let currentSlide = 0;
-            let slideInterval;
-            
-            function showSlide(n) {
-                slides.forEach(slide => slide.classList.remove('active'));
-                dots.forEach(dot => dot.classList.remove('active'));
-                
-                currentSlide = (n + slides.length) % slides.length;
-                slides[currentSlide].classList.add('active');
-                dots[currentSlide].classList.add('active');
-            }
-            
-            function nextSlide() {
-                showSlide(currentSlide + 1);
-            }
-            
-            function prevSlide() {
-                showSlide(currentSlide - 1);
-            }
-            
-            function startCarousel() {
-                slideInterval = setInterval(nextSlide, 5000);
-            }
-            
-            function stopCarousel() {
-                clearInterval(slideInterval);
-            }
-            
-            nextBtn.addEventListener('click', () => {
-                nextSlide();
-                stopCarousel();
-                startCarousel();
-            });
-            
-            prevBtn.addEventListener('click', () => {
-                prevSlide();
-                stopCarousel();
-                startCarousel();
-            });
-            
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    showSlide(index);
-                    stopCarousel();
-                    startCarousel();
-                });
-            });
-            
-            document.querySelector('.carousel').addEventListener('mouseenter', stopCarousel);
-            document.querySelector('.carousel').addEventListener('mouseleave', startCarousel);
-            
-            startCarousel();
-            
-            // Smooth scrolling para navegación
-            document.querySelectorAll('nav a').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    if(this.getAttribute('href').startsWith('#')) {
-                        e.preventDefault();
-                        
-                        const targetId = this.getAttribute('href');
-                        const targetElement = document.querySelector(targetId);
-                        
-                        if(targetElement) {
-                            window.scrollTo({
-                                top: targetElement.offsetTop - 80,
-                                behavior: 'smooth'
-                            });
-                            
-                            // Actualizar URL sin recargar la página
-                            history.pushState(null, null, targetId);
-                        }
-                    }
-                });
-            });
-        }
-    </script>
+  </section>
+
+  <footer class="bg-gray-800 text-white py-8 mt-12">
+    <div class="container mx-auto px-4">
+      <div class="grid md:grid-cols-4 gap-8 mb-8">
+        <div>
+          <h3 class="text-lg font-bold mb-4">Forward Consultants Network</h3>
+          <p class="text-gray-300">Experts in environmental compliance and sustainable development solutions across Mexico.</p>
+        </div>
+        <div>
+          <h4 class="text-lg font-bold mb-4">Services</h4>
+          <ul class="space-y-2">
+            <li><a href="#services" class="text-gray-300 hover:text-white">Impact Assessments</a></li>
+            <li><a href="#services" class="text-gray-300 hover:text-white">Permit Management</a></li>
+            <li><a href="#services" class="text-gray-300 hover:text-white">Compliance Monitoring</a></li>
+            <li><a href="#services" class="text-gray-300 hover:text-white">Emergency Response</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-lg font-bold mb-4">Contact</h4>
+          <address class="not-italic text-gray-300">
+            <p>19 108b Chuburna</p>
+            <p>Merida, Yucatan, MX 97205</p>
+            <p class="mt-2">contact@fwdco.net</p>
+            <p>+52 999 739 4656</p>
+          </address>
+        </div>
+        <div>
+          <h4 class="text-lg font-bold mb-4">Certifications</h4>
+          <div class="flex flex-wrap gap-4">
+            <div class="bg-gray-700 p-2 rounded w-20 h-20 flex items-center justify-center">SEMARNAT</div>
+            <div class="bg-gray-700 p-2 rounded w-20 h-20 flex items-center justify-center">PROFEPA</div>
+          </div>
+        </div>
+      </div>
+      <div class="border-t border-gray-700 pt-6 text-center text-gray-400 text-sm">
+        <p>&copy; 2025 Forward Consultants Network. All rights reserved.</p>
+        <div class="mt-2 space-x-4">
+          <a href="#" class="hover:text-white">Privacy Policy</a>
+          <a href="#" class="hover:text-white">Terms of Service</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
