@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#1B2B40">
     <title>LGEEPA - Visualización</title>
     <style>
         :root {
@@ -17,13 +18,14 @@
             padding: 0;
             box-sizing: border-box;
             -webkit-overflow-scrolling: touch;
+            -webkit-tap-highlight-color: transparent;
         }
         
         html, body {
             height: 100%;
             width: 100%;
             overflow: hidden;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
             background-color: var(--color-secondary);
         }
         
@@ -56,12 +58,14 @@
             top: 60px;
             bottom: 30px;
             width: 100%;
+            overflow: hidden;
         }
         
         .document-viewer {
             width: 100%;
             height: 100%;
             border: none;
+            background-color: white;
         }
         
         .footer {
@@ -79,20 +83,28 @@
             justify-content: center;
         }
         
-        /* Safari specific adjustments */
-        @supports (-webkit-touch-callout: none) {
-            .document-container {
-                top: constant(safe-area-inset-top);
-                top: env(safe-area-inset-top);
-                height: calc(100% - constant(safe-area-inset-top) - constant(safe-area-inset-bottom) - 90px);
-                height: calc(100% - env(safe-area-inset-top) - env(safe-area-inset-bottom) - 90px);
+        /* Ajustes para dispositivos con notch */
+        @supports (padding-top: env(safe-area-inset-top)) {
+            .header {
+                padding-top: env(safe-area-inset-top);
+                height: calc(60px + env(safe-area-inset-top));
             }
             
-            .header {
-                padding-top: constant(safe-area-inset-top);
-                padding-top: env(safe-area-inset-top);
-                height: calc(60px + constant(safe-area-inset-top));
-                height: calc(60px + env(safe-area-inset-top));
+            .document-container {
+                top: calc(60px + env(safe-area-inset-top));
+                height: calc(100% - 90px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
+            }
+            
+            .footer {
+                padding-bottom: env(safe-area-inset-bottom);
+                height: calc(30px + env(safe-area-inset-bottom));
+            }
+        }
+        
+        /* Ajustes específicos para Chrome en Android */
+        @media screen and (-webkit-min-device-pixel-ratio:0) {
+            .document-viewer {
+                transform: translateZ(0);
             }
         }
     </style>
@@ -103,7 +115,7 @@
     </div>
     
     <div class="document-container">
-        <iframe class="document-viewer" src="https://fwdco.net/LGEEPA.pdf#view=fitH"></iframe>
+        <iframe class="document-viewer" src="https://fwdco.net/LGEEPA.pdf#view=fitH&toolbar=0&navpanes=0"></iframe>
     </div>
     
     <div class="footer">
@@ -111,28 +123,44 @@
     </div>
 
     <script>
-        // Detectar iPhone y ajustar parámetros
-        function isIOS() {
-            return /iPad|iPhone|iPod/.test(navigator.userAgent) || 
-                  (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+        // Detectar móvil y ajustar parámetros
+        function isMobile() {
+            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
         }
         
-        if (isIOS()) {
-            // Ajustes específicos para iOS
-            document.querySelector('.document-viewer').style.webkitOverflowScrolling = 'touch';
-            
-            // Prevenir el zoom con doble toque
-            document.addEventListener('dblclick', function(e) {
-                e.preventDefault();
+        // Ajustes para todos los dispositivos móviles
+        if (isMobile()) {
+            // Prevenir acciones por defecto que podrían interferir
+            document.addEventListener('touchmove', function(e) {
+                if (e.scale !== 1) e.preventDefault();
             }, { passive: false });
             
-            // Ajustar después de la carga
-            window.addEventListener('load', function() {
-                setTimeout(function() {
-                    document.querySelector('.document-container').style.height = 
-                        'calc(100% - ' + document.querySelector('.header').offsetHeight + 'px - ' + 
-                        document.querySelector('.footer').offsetHeight + 'px)';
-                }, 300);
+            // Mejorar el rendimiento en Android
+            document.querySelector('.document-viewer').style.transform = 'translateZ(0)';
+            
+            // Ajustar altura dinámicamente
+            function adjustHeight() {
+                const header = document.querySelector('.header');
+                const footer = document.querySelector('.footer');
+                const container = document.querySelector('.document-container');
+                
+                container.style.height = 
+                    `calc(100% - ${header.offsetHeight}px - ${footer.offsetHeight}px)`;
+            }
+            
+            // Ajustar al cargar y al cambiar orientación
+            window.addEventListener('load', adjustHeight);
+            window.addEventListener('resize', adjustHeight);
+            window.addEventListener('orientationchange', function() {
+                setTimeout(adjustHeight, 300);
+            });
+            
+            // Forzar recarga en cambio de orientación (solución para algunos Android)
+            window.addEventListener('orientationchange', function() {
+                const viewer = document.querySelector('.document-viewer');
+                const src = viewer.src;
+                viewer.src = '';
+                setTimeout(() => { viewer.src = src; }, 100);
             });
         }
     </script>
