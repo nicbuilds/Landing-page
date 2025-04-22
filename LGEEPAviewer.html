@@ -2,166 +2,182 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="theme-color" content="#1B2B40">
-    <title>LGEEPA - Visualización</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizador de PDF - LGEEPA</title>
     <style>
         :root {
             --color-primary: #1B2B40;
             --color-secondary: #A3B4BF;
+            --color-accent1: #8BD9B4;
+            --color-accent2: #41BF78;
+            --color-accent3: #03A63C;
         }
         
-        * {
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
-            -webkit-overflow-scrolling: touch;
-            -webkit-tap-highlight-color: transparent;
-        }
-        
-        html, body {
-            height: 100%;
-            width: 100%;
-            overflow: hidden;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            background-color: var(--color-secondary);
+            background-color: #f5f5f5;
+            color: #333;
         }
         
         .header {
             background-color: var(--color-primary);
             color: white;
-            padding: 12px 15px;
+            padding: 1rem 2rem;
             text-align: center;
-            position: fixed;
-            top: 0;
-            width: 100%;
-            z-index: 100;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
         }
         
-        .header h1 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
         }
         
-        .document-container {
-            position: fixed;
-            top: 60px;
-            bottom: 30px;
-            width: 100%;
-            overflow: hidden;
+        .content {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .document-viewer-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
         }
         
         .document-viewer {
             width: 100%;
-            height: 100%;
-            border: none;
+            height: 80vh;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
             background-color: white;
         }
         
-        .footer {
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            text-align: center;
-            padding: 8px;
+        .toolbar {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 0.75rem 1rem;
+            background-color: var(--color-accent2);
+            border-radius: 6px;
+            flex-wrap: wrap;
+        }
+        
+        .toolbar button {
             background-color: var(--color-primary);
             color: white;
-            font-size: 0.7rem;
-            height: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            min-width: 100px;
         }
         
-        /* Ajustes para dispositivos con notch */
-        @supports (padding-top: env(safe-area-inset-top)) {
-            .header {
-                padding-top: env(safe-area-inset-top);
-                height: calc(60px + env(safe-area-inset-top));
-            }
-            
-            .document-container {
-                top: calc(60px + env(safe-area-inset-top));
-                height: calc(100% - 90px - env(safe-area-inset-top) - env(safe-area-inset-bottom));
-            }
-            
-            .footer {
-                padding-bottom: env(safe-area-inset-bottom);
-                height: calc(30px + env(safe-area-inset-bottom));
-            }
+        .toolbar button:hover {
+            background-color: #0f1a2a;
         }
         
-        /* Ajustes específicos para Chrome en Android */
-        @media screen and (-webkit-min-device-pixel-ratio:0) {
+        .toolbar .right-buttons button {
+            background-color: var(--color-accent3);
+        }
+        
+        .toolbar .right-buttons button:hover {
+            background-color: #028a33;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: var(--color-primary);
+            color: white;
+            font-size: 0.9rem;
+            margin-top: 2rem;
+        }
+        
+        .document-title {
+            text-align: center;
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            background-color: var(--color-secondary);
+            border-radius: 4px;
+        }
+        
+        @media (max-width: 768px) {
+            .toolbar {
+                flex-direction: column;
+                align-items: center;
+            }
+            
             .document-viewer {
-                transform: translateZ(0);
+                height: 70vh;
             }
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>Ley General del Equilibrio Ecológico</h1>
+        <div class="logo">Visualizador de PDF</div>
     </div>
     
-    <div class="document-container">
-        <iframe class="document-viewer" src="https://fwdco.net/LGEEPA.pdf#view=fitH&toolbar=0&navpanes=0"></iframe>
+    <div class="content">
+        <div class="document-viewer-container">
+            <h2 class="document-title">Ley General del Equilibrio Ecológico y la Protección al Ambiente</h2>
+            
+            <div class="toolbar">
+                <button onclick="zoomIn()">Zoom +</button>
+                <button onclick="zoomOut()">Zoom -</button>
+                <button onclick="downloadPDF()">Descargar</button>
+                <button onclick="printPDF()">Imprimir</button>
+                <button onclick="fitToWidth()">Ajustar a ancho</button>
+            </div>
+            
+            <iframe id="pdf-viewer" class="document-viewer" src="https://fwdco.net/LGEEPA.pdf"></iframe>
+        </div>
     </div>
     
     <div class="footer">
-        Documento proporcionado por fwdco.net
+        © 2023 Visualizador de PDF - Todos los derechos reservados
     </div>
 
     <script>
-        // Detectar móvil y ajustar parámetros
-        function isMobile() {
-            return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        const pdfViewer = document.getElementById('pdf-viewer');
+        let zoomLevel = 1;
+        
+        function zoomIn() {
+            zoomLevel += 0.1;
+            updateZoom();
         }
         
-        // Ajustes para todos los dispositivos móviles
-        if (isMobile()) {
-            // Prevenir acciones por defecto que podrían interferir
-            document.addEventListener('touchmove', function(e) {
-                if (e.scale !== 1) e.preventDefault();
-            }, { passive: false });
-            
-            // Mejorar el rendimiento en Android
-            document.querySelector('.document-viewer').style.transform = 'translateZ(0)';
-            
-            // Ajustar altura dinámicamente
-            function adjustHeight() {
-                const header = document.querySelector('.header');
-                const footer = document.querySelector('.footer');
-                const container = document.querySelector('.document-container');
-                
-                container.style.height = 
-                    `calc(100% - ${header.offsetHeight}px - ${footer.offsetHeight}px)`;
+        function zoomOut() {
+            if (zoomLevel > 0.5) {
+                zoomLevel -= 0.1;
+                updateZoom();
             }
-            
-            // Ajustar al cargar y al cambiar orientación
-            window.addEventListener('load', adjustHeight);
-            window.addEventListener('resize', adjustHeight);
-            window.addEventListener('orientationchange', function() {
-                setTimeout(adjustHeight, 300);
-            });
-            
-            // Forzar recarga en cambio de orientación (solución para algunos Android)
-            window.addEventListener('orientationchange', function() {
-                const viewer = document.querySelector('.document-viewer');
-                const src = viewer.src;
-                viewer.src = '';
-                setTimeout(() => { viewer.src = src; }, 100);
-            });
+        }
+        
+        function updateZoom() {
+            pdfViewer.style.transform = `scale(${zoomLevel})`;
+            pdfViewer.style.transformOrigin = 'top left';
+            pdfViewer.style.width = `${100/zoomLevel}%`;
+            pdfViewer.style.height = `${80/zoomLevel}vh`;
+        }
+        
+        function fitToWidth() {
+            zoomLevel = 1;
+            updateZoom();
+        }
+        
+        function downloadPDF() {
+            window.open('https://fwdco.net/LGEEPA.pdf', '_blank');
+        }
+        
+        function printPDF() {
+            const iframe = document.getElementById('pdf-viewer');
+            iframe.contentWindow.print();
         }
     </script>
 </body>
