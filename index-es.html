@@ -43,15 +43,23 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero-gradient text-white py-16 md:py-24">
-    <div class="container mx-auto px-4">
+    <!-- Hero Section -->
+  <section class="hero-gradient text-white py-16 md:py-24 relative overflow-hidden">
+    <!-- Background Image - Left aligned on desktop, centered on mobile -->
+    <div class="absolute inset-0 md:inset-y-0 md:left-0 z-0 w-full md:w-[120%]">
+      <img src="LOGO-04.png" alt="Team of environmental consultants reviewing documents" 
+           class="h-full w-full object-cover md:object-left object-center">
+      <div class="absolute inset-0 bg-gradient-to-r from-[#0F172A]/70 via-[#0F172A]/40 to-[#0F172A]/0"></div>
+    </div>
+    
+    <!-- Centered Content -->
+    <div class="container mx-auto px-4 relative z-10">
       <div class="max-w-4xl mx-auto text-center">
-        <h1 class="text-3xl md:text-5xl font-bold mb-6">Expertos en Cumplimiento Ambiental en México</h1>
+     <h1 class="text-3xl md:text-5xl font-bold mb-6">Expertos en Cumplimiento Ambiental en México</h1>
         <p class="text-xl mb-8">Navegando las regulaciones ambientales de México con precisión y experiencia desde 2017</p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="#contact" class="inline-block bg-white text-green-700 px-8 py-4 rounded-lg hover:bg-gray-100 transition font-bold shadow-lg">Obtener Consulta Gratuita</a>
-          <a href="#services" class="inline-block border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-green-600 transition font-bold">Nuestros Servicios</a>
+          <a href="#contact" class="inline-block bg-white text-green-700 px-8 py-4 rounded-lg hover:bg-gray-100 transition font-bold shadow-lg">Get a Free Consultation</a>
+          <a href="#services" class="inline-block border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-green-600 transition font-bold">Our Services</a>
         </div>
       </div>
     </div>
