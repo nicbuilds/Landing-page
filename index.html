@@ -42,8 +42,16 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="hero-gradient text-white py-16 md:py-24">
-    <div class="container mx-auto px-4">
+  <section class="hero-gradient text-white py-16 md:py-24 relative overflow-hidden">
+    <!-- Background Image - Left aligned on desktop, centered on mobile -->
+    <div class="absolute inset-0 md:inset-y-0 md:left-0 z-0 w-full md:w-[120%]">
+      <img src="LOGO-04.png" alt="Team of environmental consultants reviewing documents" 
+           class="h-full w-full object-cover md:object-left object-center">
+      <div class="absolute inset-0 bg-gradient-to-r from-[#0F172A]/70 via-[#0F172A]/40 to-[#0F172A]/0"></div>
+    </div>
+    
+    <!-- Centered Content -->
+    <div class="container mx-auto px-4 relative z-10">
       <div class="max-w-4xl mx-auto text-center">
         <h1 class="text-3xl md:text-5xl font-bold mb-6">Environmental Compliance Experts in Mexico</h1>
         <p class="text-xl mb-8">Navigating Mexico's environmental regulations with precision and expertise since 2017</p>
