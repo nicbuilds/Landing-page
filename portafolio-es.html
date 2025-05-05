@@ -1,15 +1,17 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Servicios de consultoría ambiental en México especializados en evaluaciones de impacto, permisos y cumplimiento normativo">
-  <!-- Metaetiquetas OpenGraph -->
-  <meta property="og:title" content="Servicios de Consultoría Ambiental | Forward Consultants Network">
-  <meta property="og:description" content="Servicios expertos en consultoría ambiental en México para evaluaciones de impacto, permisos y cumplimiento regulatorio">
+  <meta name="description" content="Environmental consulting services in Mexico specializing in impact assessments, permits, and compliance">
+  <!-- OpenGraph Meta Tags -->
+  <meta property="og:title" content="Environmental Consulting Services | Forward Consultants Network">
+  <meta property="og:description" content="Expert environmental consulting services in Mexico for impact assessments, permits, and regulatory compliance">
   <meta property="og:type" content="website">
-  <title>Servicios de Consultoría Ambiental | Forward Consultants Network</title>
+  <title>Environmental Consulting Services | Forward Consultants Network</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Flag Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/css/flag-icons.min.css">
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌱</text></svg>">
  
@@ -42,23 +44,43 @@
   
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
-  <!-- Encabezado -->
-<header class="bg-white text-[#0F172A] py-4 shadow-md sticky top-0 z-50">
+  <!-- Header -->
+  <header class="bg-white text-[#0F172A] py-4 shadow-md sticky top-0 z-50">
     <div class="container mx-auto px-4">
-      <div class="flex flex-col md:flex-row justify-between items-center">
-        <div class="mb-4 md:mb-0 text-center md:text-left">
-          <h1 class="text-2xl md:text-3xl font-bold"></h1>
+      <!-- Mobile Version - Centered Logo and Menu -->
+      <div class="md:hidden flex flex-col items-center">
+        <div class="mb-3">
           <img src="IMG_5174.jpg" 
-             alt="Forward Consultants Network"
-                class="h-12 md:h-16 w-auto"> 
+               alt="Forward Consultants Network"
+               class="h-12 w-auto mx-auto">
         </div>
+        <nav class="flex flex-wrap justify-center gap-3" aria-label="Main navigation">
+          <a href="https://fwdco.net/#" class="hover:text-[#14B8A6] font-medium text-sm">Home</a>
+          <a href="https://fwdco.net/#services" class="hover:text-[#14B8A6] font-medium text-sm">Services</a>
+          <a href="https://fwdco.net/#industries" class="hover:text-[#14B8A6] font-medium text-sm">Industries</a>
+          <a href="https://fwdco.net/#contact" class="hover:text-[#14B8A6] font-medium text-sm">Contact</a>
+          <a href="https://fwdco.net/portafolio-es" class="hover:text-[#14B8A6] font-medium text-sm">
+            <span class="fi fi-mx" aria-label="Español"></span>
+          </a>
+        </nav>
+      </div>
 
-        <nav class="flex flex-wrap justify-center gap-3 md:gap-6" aria-label="Navegación principal">
-          <a href="https://fwdco.net/index-es.html#" class="hover:text-[#14B8A6] font-medium text-sm md:text-base">Inicio</a>
-          <a href="https://fwdco.net/index-es.html#services" class="hover:text-[#14B8A6] font-medium text-sm md:text-base">Servicios</a>
-          <a href="https://fwdco.net/index-es.html#industries" class="hover:text-[#14B8A6] font-medium text-sm md:text-base">Industrias</a>
-          <a href="https://fwdco.net/index-es.html#contact" class="hover:text-[#14B8A6] font-medium text-sm md:text-base">Contacto</a>
-          <a href="https://fwdco.net/portafolio" class="hover:underline font-medium">English</a>        </nav>
+      <!-- Desktop Version - Left Logo, Right Menu -->
+      <div class="hidden md:flex justify-between items-center">
+        <div>
+          <img src="IMG_5174.jpg" 
+               alt="Forward Consultants Network"
+               class="h-16 w-auto">
+        </div>
+        <nav class="flex items-center gap-6" aria-label="Main navigation">
+          <a href="https://fwdco.net/#" class="hover:text-[#14B8A6] font-medium">Home</a>
+          <a href="https://fwdco.net/#services" class="hover:text-[#14B8A6] font-medium">Services</a>
+          <a href="https://fwdco.net/#industries" class="hover:text-[#14B8A6] font-medium">Industries</a>
+          <a href="https://fwdco.net/#contact" class="hover:text-[#14B8A6] font-medium">Contact</a>
+          <a href="https://fwdco.net/portafolio-es" class="hover:text-[#14B8A6] font-medium">
+            <span class="fi fi-mx" aria-label="Español"></span>
+          </a>
+        </nav>
       </div>
     </div>
   </header>
