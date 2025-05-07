@@ -1,5 +1,5 @@
 async function askBedrockAgent(question) {
-    const apiUrl = 'YOUR_API_GATEWAY_URL/prod/ask';
+    const apiUrl = 'https://awolqq45a2.execute-api.us-west-2.amazonaws.com/prod/ask';
     
     try {
         const response = await fetch(apiUrl, {
