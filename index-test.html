@@ -82,6 +82,45 @@
   
 </head>
 <!-- Add this just before the closing </body> tag -->
+  <!-- Chat Box UI -->
+<div style="max-width: 500px; margin: 0 auto;">
+  <h2>Ask Me Anything</h2>
+  <input id="userInput" type="text" placeholder="Type your question..." style="width: 80%;">
+  <button onclick="sendMessage()">Send</button>
+  <div id="messages" style="margin-top: 20px;"></div>
+</div>
+
+<script>
+const API_URL = "https://8o4zg2xt94.execute-api.us-west-2.amazonaws.com/"; // Replace this
+
+async function sendMessage() {
+  const inputEl = document.getElementById("userInput");
+  const userMessage = inputEl.value;
+  if (!userMessage) return;
+
+  // Show user message
+  const messages = document.getElementById("messages");
+  messages.innerHTML += `<p><strong>You:</strong> ${userMessage}</p>`;
+  inputEl.value = "";
+
+  // Call your Bedrock-connected API
+  try {
+    const res = await fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ input: userMessage }),
+    });
+
+    const data = await res.json();
+    const reply = data.reply || "[No reply received]";
+    messages.innerHTML += `<p><strong>Bot:</strong> ${reply}</p>`;
+  } catch (error) {
+    messages.innerHTML += `<p><strong>Bot:</strong> Error connecting to API</p>`;
+    console.error("Error:", error);
+  }
+}
+</script>
+
 <div class="fixed bottom-6 right-6 z-50">
   <button id="chatButton" class="bg-green-600 hover:bg-green-700 text-white rounded-full p-4 shadow-lg transition transform hover:scale-110">
     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
