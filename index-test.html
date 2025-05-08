@@ -33,7 +33,7 @@
       responseDiv.textContent = "Thinking...";
 
       try {
-        const res = await fetch("https://3k1556lax8.execute-api.us-west-2.amazonaws.com/prod", {
+        const res = await fetch("https://3k1556lax8.execute-api.us-west-2.amazonaws.com/prod/invoke", {
           method: "POST",
           headers: {
             "Content-Type": "application/json"
