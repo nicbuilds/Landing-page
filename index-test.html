@@ -514,115 +514,58 @@
 
 
   <script>
-    // Toggle chat visibility
-    const chatToggle = document.getElementById('chat-toggle');
-    const chatContainer = document.getElementById('chat-container');
-    const closeChat = document.getElementById('close-chat');
+   // Update the existing JavaScript section with these improvements:
+
+// Replace the existing sendToBedrock function with this enhanced version
+async function sendToBedrock(message) {
+  try {
+    // Add user message to chat
+    addMessage(message, 'user');
     
-    chatToggle.addEventListener('click', () => {
-      chatContainer.classList.toggle('hidden');
-    });
+    // Show typing indicator
+    const typingIndicator = addTypingIndicator();
     
-    closeChat.addEventListener('click', () => {
-      chatContainer.classList.add('hidden');
-    });
-
-    // Chat functionality
-    const chatInput = document.getElementById('chat-input');
-    const sendMessage = document.getElementById('send-message');
-    const chatMessages = document.getElementById('chat-messages');
-    
-    // Replace with your actual API Gateway endpoint
-    const BEDROCK_API_URL = "https://awolqq45a2.execute-api.us-west-2.amazonaws.com/prod/ask";
-    // Optional: Add your API key if you configured one
-
-
-    async function sendToBedrock(message) {
-      try {
-        // Add user message to chat
-        addMessage(message, 'user');
-        
-        // Show typing indicator
-        const typingIndicator = addTypingIndicator();
-        
-        const response = await fetch(BEDROCK_API_URL, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            query: message,
-            sessionId: "web-chat-session" // Optional session tracking
-          }),
-        });
-
-        if (!response.ok) {
-          throw new Error(`API request failed: ${response.status}`);
+    const response = await fetch(BEDROCK_API_URL, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        // Add any required headers here (like API keys if needed)
+      },
+      body: JSON.stringify({
+        query: message,
+        sessionId: "web-chat-session-" + Date.now(), // Better session tracking
+        metadata: {
+          source: "forward-consultants-website",
+          page: window.location.pathname
         }
-
-        const data = await response.json();
-        
-        // Remove typing indicator
-        chatMessages.removeChild(typingIndicator);
-        
-        // Add AI response to chat
-        addMessage(data.response, 'ai');
-        
-      } catch (error) {
-        console.error("Error calling Bedrock:", error);
-        addMessage("Sorry, I'm having trouble connecting. Please try again later.", 'ai');
-      }
-    }
-
-    function addMessage(text, sender) {
-      const messageDiv = document.createElement('div');
-      messageDiv.classList.add('chat-message', 'rounded-lg', 'p-3', 'text-sm');
-      
-      if (sender === 'user') {
-        messageDiv.classList.add('bg-blue-100', 'ml-auto');
-      } else {
-        messageDiv.classList.add('bg-green-100', 'mr-auto');
-      }
-      
-      messageDiv.innerHTML = `<p>${text}</p>`;
-      chatMessages.appendChild(messageDiv);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    function addTypingIndicator() {
-      const typingDiv = document.createElement('div');
-      typingDiv.classList.add('chat-message', 'bg-gray-100', 'rounded-lg', 'p-3', 'text-sm', 'mr-auto');
-      typingDiv.id = 'typing-indicator';
-      typingDiv.innerHTML = `
-        <div class="flex space-x-1">
-          <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-          <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
-          <div class="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style="animation-delay: 0.4s"></div>
-        </div>
-      `;
-      chatMessages.appendChild(typingDiv);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-      return typingDiv;
-    }
-
-    // Event listeners
-    sendMessage.addEventListener('click', () => {
-      const message = chatInput.value.trim();
-      if (message) {
-        sendToBedrock(message);
-        chatInput.value = '';
-      }
+      }),
     });
 
-    chatInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        const message = chatInput.value.trim();
-        if (message) {
-          sendToBedrock(message);
-          chatInput.value = '';
-        }
-      }
-    });
+    if (!response.ok) {
+      throw new Error(`API request failed with status ${response.status}`);
+    }
+
+    const data = await response.json();
+    
+    // Remove typing indicator
+    chatMessages.removeChild(typingIndicator);
+    
+    // Add AI response to chat
+    if (data.response) {
+      addMessage(data.response, 'ai');
+    } else {
+      addMessage("I received an empty response. Please try rephrasing your question.", 'ai');
+    }
+    
+  } catch (error) {
+    console.error("Error calling Bedrock:", error);
+    // Remove typing indicator if it exists
+    const typingIndicator = document.getElementById('typing-indicator');
+    if (typingIndicator) chatMessages.removeChild(typingIndicator);
+    
+    addMessage("Sorry, I'm having trouble connecting to the environmental consulting knowledge base. Please try again later or contact us directly.", 'ai');
+  }
+}
   </script>
 </body>
 </html>
