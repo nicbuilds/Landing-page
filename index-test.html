@@ -2,95 +2,52 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chat UI with Bedrock</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Chat with Bedrock Agent</title>
+  <style>
+    body { font-family: sans-serif; max-width: 600px; margin: auto; padding: 1em; }
+    input, button { padding: 0.5em; font-size: 1em; }
+    #response { margin-top: 1em; background: #f0f0f0; padding: 1em; border-radius: 8px; }
+  </style>
 </head>
-<body class="bg-gray-100 font-inter">
-  <!-- Chat button -->
-  <button id="chat-toggle" class="fixed bottom-6 right-6 bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition duration-300 z-50">
-    Chat
-  </button>
+<body>
 
-  <!-- Chat container -->
-  <div id="chat-container" class="fixed bottom-6 right-6 w-96 max-w-full bg-white rounded-2xl shadow-2xl flex flex-col overflow-hidden hidden z-50">
-    <!-- Header -->
-    <div class="bg-blue-600 text-white px-4 py-3 flex justify-between items-center">
-      <span class="font-semibold">Asistente Virtual</span>
-      <button id="chat-close" class="text-white hover:text-gray-200 text-xl">&times;</button>
-    </div>
+  <h1>Talk to Bedrock Agent</h1>
+  <form id="chatForm">
+    <input type="text" id="userInput" placeholder="Ask something..." required />
+    <button type="submit">Send</button>
+  </form>
 
-    <!-- Messages -->
-    <div id="chat-messages" class="p-4 h-64 overflow-y-auto space-y-4">
-      <div class="bg-gray-200 p-2 rounded-lg w-fit max-w-xs">¡Hola! ¿En qué puedo ayudarte?</div>
-    </div>
+  <div id="response"></div>
 
-    <!-- Input -->
-    <div class="flex border-t border-gray-300">
-      <input type="text" id="chat-input" placeholder="Escribe un mensaje..." class="flex-grow p-3 border-none focus:outline-none" />
-      <button id="send-button" class="bg-blue-600 text-white px-4 hover:bg-blue-700 transition">Enviar</button>
-    </div>
-  </div>
-
-  <!-- JavaScript -->
   <script>
-    const chatToggle = document.getElementById('chat-toggle');
-    const chatContainer = document.getElementById('chat-container');
-    const chatClose = document.getElementById('chat-close');
-    const chatMessages = document.getElementById('chat-messages');
-    const chatInput = document.getElementById('chat-input');
-    const sendButton = document.getElementById('send-button');
+    const form = document.getElementById('chatForm');
+    const input = document.getElementById('userInput');
+    const responseDiv = document.getElementById('response');
 
-    const API_URL = "https://dxnaewmiog.execute-api.us-west-2.amazonaws.com/test";
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
 
-    chatToggle.addEventListener('click', () => {
-      chatContainer.classList.remove('hidden');
-      chatToggle.classList.add('hidden');
-    });
+      const query = input.value.trim();
+      if (!query) return;
 
-    chatClose.addEventListener('click', () => {
-      chatContainer.classList.add('hidden');
-      chatToggle.classList.remove('hidden');
-    });
-
-    sendButton.addEventListener('click', sendMessage);
-    chatInput.addEventListener('keypress', function (e) {
-      if (e.key === 'Enter') {
-        sendMessage();
-      }
-    });
-
-    function appendMessage(text, from = 'bot') {
-      const div = document.createElement('div');
-      div.className = `p-2 rounded-lg max-w-xs ${from === 'user' ? 'bg-blue-100 ml-auto' : 'bg-gray-200'}`;
-      div.textContent = text;
-      chatMessages.appendChild(div);
-      chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    async function sendMessage() {
-      const text = chatInput.value.trim();
-      if (!text) return;
-      appendMessage(text, 'user');
-      chatInput.value = '';
+      responseDiv.textContent = "Thinking...";
 
       try {
-        const res = await fetch(API_URL, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            query: text,
-            sessionId: 'web-chat-session'
-          })
+        const res = await fetch("https://dxnaewmiog.execute-api.us-west-2.amazonaws.com/test", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({ query })
         });
+
         const data = await res.json();
-        appendMessage(data.response || 'Sin respuesta.');
-      } catch (err) {
-        console.error(err);
-        appendMessage('Error al conectar con el asistente.');
+        responseDiv.textContent = data.response || "No response from agent.";
+      } catch (error) {
+        responseDiv.textContent = "Error: " + error.message;
       }
-    }
+    });
   </script>
+
 </body>
 </html>
