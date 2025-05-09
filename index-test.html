@@ -68,14 +68,18 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="hero-gradient text-white py-16 md:py-24 relative overflow-hidden">
-    <!-- Darkened Marine Aerial Background -->
-    <div class="absolute inset-0 z-0">
+<section class="hero-gradient text-white py-16 md:py-24 relative overflow-hidden">
+  <!-- Video Background - Replacing the static image -->
+  <div class="absolute inset-0 z-0">
+    <video autoplay muted loop playsinline class="h-full w-full object-cover brightness-50">
+      <source src="https://assets.mixkit.co/videos/preview/mixkit-waves-coming-to-the-beach-5016-large.mp4" type="video/mp4">
+      <!-- Fallback image in case video doesn't load -->
       <img src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
            alt="Aerial view of ocean" 
-           class="h-full w-full object-cover brightness-50">
-      <div class="absolute inset-0 bg-gradient-to-r from-[#0F172A]/90 via-[#0F172A]/70 to-[#0F172A]/30"></div>
-    </div>
+           class="h-full w-full object-cover">
+    </video>
+    <div class="absolute inset-0 bg-gradient-to-r from-[#0F172A]/90 via-[#0F172A]/70 to-[#0F172A]/30"></div>
+  </div>
     
     <!-- Foreground Image - Left aligned on desktop, centered on mobile -->
     <div class="absolute inset-0 md:inset-y-0 md:left-0 z-1 w-full md:w-[120%] pointer-events-none">
