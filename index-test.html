@@ -63,39 +63,89 @@
     </div>
   </header>
 
-  <!-- Hero Section -->
+<!-- Hero Section -->
 <section class="hero-gradient text-white py-16 md:py-24 relative overflow-hidden">
-  <!-- Video Background - Replacing the static image -->
+  <!-- Video Background -->
   <div class="absolute inset-0 z-0">
+    <!-- Video with multiple sources and fallback -->
     <video autoplay muted loop playsinline class="h-full w-full object-cover brightness-50">
+      <!-- WebM format (better compression) -->
+      <source src="https://assets.mixkit.co/videos/preview/mixkit-waves-coming-to-the-beach-5016-large.webm" type="video/webm">
+      <!-- MP4 format (fallback) -->
       <source src="https://assets.mixkit.co/videos/preview/mixkit-waves-coming-to-the-beach-5016-large.mp4" type="video/mp4">
-      <!-- Fallback image in case video doesn't load -->
+      <!-- Fallback image -->
       <img src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
            alt="Aerial view of ocean" 
            class="h-full w-full object-cover">
     </video>
     <div class="absolute inset-0 bg-gradient-to-r from-[#0F172A]/90 via-[#0F172A]/70 to-[#0F172A]/30"></div>
   </div>
-    
-    <!-- Foreground Image - Left aligned on desktop, centered on mobile -->
-    <div class="absolute inset-0 md:inset-y-0 md:left-0 z-1 w-full md:w-[120%] pointer-events-none">
-      <img src="LOGO-04.png" alt="Team of environmental consultants reviewing documents" 
-           class="h-full w-full object-cover md:object-left object-center">
-      <div class="absolute inset-0 bg-gradient-to-r from-[#0F172A]/70 via-[#0F172A]/40 to-[#0F172A]/0"></div>
-    </div>
-    
-    <!-- Centered Content -->
-    <div class="container mx-auto px-4 relative z-10">
-      <div class="max-w-4xl mx-auto text-center">
-        <h1 class="text-3xl md:text-5xl font-bold mb-6">Environmental Compliance Experts in Mexico</h1>
-        <p class="text-xl mb-8">Navigating Mexico's environmental regulations with precision and expertise since 2017</p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="#contact" class="inline-block bg-white text-green-700 px-8 py-4 rounded-lg hover:bg-gray-100 transition font-bold shadow-lg">Get a Free Consultation</a>
-          <a href="#services" class="inline-block border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-green-600 transition font-bold">Our Services</a>
-        </div>
+  
+  <!-- Rest of your hero section content remains the same -->
+  <div class="absolute inset-0 md:inset-y-0 md:left-0 z-1 w-full md:w-[120%] pointer-events-none">
+    <img src="LOGO-04.png" alt="Team of environmental consultants reviewing documents" 
+         class="h-full w-full object-cover md:object-left object-center">
+    <div class="absolute inset-0 bg-gradient-to-r from-[#0F172A]/70 via-[#0F172A]/40 to-[#0F172A]/0"></div>
+  </div>
+  
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="max-w-4xl mx-auto text-center">
+      <h1 class="text-3xl md:text-5xl font-bold mb-6">Environmental Compliance Experts in Mexico</h1>
+      <p class="text-xl mb-8">Navigating Mexico's environmental regulations with precision and expertise since 2017</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#contact" class="inline-block bg-white text-green-700 px-8 py-4 rounded-lg hover:bg-gray-100 transition font-bold shadow-lg">Get a Free Consultation</a>
+        <a href="#services" class="inline-block border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-green-600 transition font-bold">Our Services</a>
       </div>
     </div>
+  </div>
 </section>
+
+<style>
+  /* Add this to ensure video covers the space properly */
+  video {
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+</style>
+
+<script>
+  // Add this script to handle video loading and fallback
+  document.addEventListener('DOMContentLoaded', function() {
+    const video = document.querySelector('video');
+    
+    // Check if video can play
+    if(video) {
+      video.addEventListener('error', function() {
+        // If video fails, show the fallback image
+        const fallbackImg = video.querySelector('img');
+        if(fallbackImg) {
+          fallbackImg.style.display = 'block';
+          video.style.display = 'none';
+        }
+      });
+      
+      // For mobile devices, sometimes autoplay is blocked
+      video.play().catch(error => {
+        // If autoplay fails, mute and try again
+        video.muted = true;
+        video.play().catch(e => {
+          console.log('Video playback failed:', e);
+          const fallbackImg = video.querySelector('img');
+          if(fallbackImg) {
+            fallbackImg.style.display = 'block';
+            video.style.display = 'none';
+          }
+        });
+      });
+    }
+  });
+</script>
 
   <!-- Trust Indicators -->
   <section class="bg-white py-8 shadow-sm">
