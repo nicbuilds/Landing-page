@@ -439,20 +439,21 @@
       </div>
     </div>
   </footer>
-
+    
+<html lang="en">
 <head>
-
   <meta charset="UTF-8">
   <title>Chat with Bedrock Agent</title>
   <style>
-    /* Chat button styles */
+    body { font-family: sans-serif; }
+
     .chat-button {
       position: fixed;
       bottom: 30px;
       right: 30px;
       width: 60px;
       height: 60px;
-      background-color: #059669; /* Green color matching your theme */
+      background-color: #059669;
       color: white;
       border-radius: 50%;
       display: flex;
@@ -463,17 +464,12 @@
       z-index: 1000;
       transition: all 0.3s ease;
     }
-    
+
     .chat-button:hover {
-      background-color: #047857; /* Darker green on hover */
+      background-color: #047857;
       transform: scale(1.05);
     }
-    
-    .chat-button i {
-      font-size: 24px;
-    }
-    
-    /* Chat modal styles */
+
     .chat-modal {
       position: fixed;
       bottom: 100px;
@@ -489,11 +485,11 @@
       overflow: hidden;
       border: 1px solid #e5e7eb;
     }
-    
+
     .chat-modal.active {
       display: flex;
     }
-    
+
     .chat-header {
       background-color: #059669;
       color: white;
@@ -503,19 +499,19 @@
       justify-content: space-between;
       align-items: center;
     }
-    
+
     .chat-close {
       cursor: pointer;
       font-size: 20px;
     }
-    
+
     .chat-body {
       flex: 1;
       padding: 15px;
       overflow-y: auto;
       background-color: #f9fafb;
     }
-    
+
     .chat-message {
       margin-bottom: 12px;
       max-width: 80%;
@@ -524,14 +520,14 @@
       line-height: 1.4;
       font-size: 14px;
     }
-    
+
     .user-message {
       background-color: #d1fae5;
       color: #065f46;
       margin-left: auto;
       border-bottom-right-radius: 4px;
     }
-    
+
     .agent-message {
       background-color: white;
       color: #1f2937;
@@ -539,13 +535,13 @@
       border-bottom-left-radius: 4px;
       border: 1px solid #e5e7eb;
     }
-    
+
     .chat-input-area {
       padding: 12px;
       border-top: 1px solid #e5e7eb;
       background-color: white;
     }
-    
+
     .chat-input {
       width: 100%;
       padding: 10px 14px;
@@ -555,7 +551,7 @@
       font-family: sans-serif;
       margin-bottom: 8px;
     }
-    
+
     .chat-submit {
       background-color: #059669;
       color: white;
@@ -566,11 +562,11 @@
       font-weight: 500;
       width: 100%;
     }
-    
+
     .chat-submit:hover {
       background-color: #047857;
     }
-    
+
     .typing-indicator {
       display: none;
       padding: 10px 14px;
@@ -580,7 +576,7 @@
       margin-bottom: 12px;
       width: fit-content;
     }
-    
+
     .typing-indicator span {
       height: 8px;
       width: 8px;
@@ -590,31 +586,23 @@
       margin: 0 2px;
       animation: typing 1s infinite ease-in-out;
     }
-    
-    .typing-indicator span:nth-child(2) {
-      animation-delay: 0.2s;
-    }
-    
-    .typing-indicator span:nth-child(3) {
-      animation-delay: 0.4s;
-    }
-    
+
+    .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+    .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+
     @keyframes typing {
       0%, 100% { transform: translateY(0); }
       50% { transform: translateY(-5px); }
     }
   </style>
-  <!-- Font Awesome for chat icon -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
 
-  <!-- Chat button -->
   <div class="chat-button" id="chatButton">
     <i class="fas fa-comment-dots"></i>
   </div>
-  
-  <!-- Chat modal -->
+
   <div class="chat-modal" id="chatModal">
     <div class="chat-header">
       <span>Environmental Compliance Assistant</span>
@@ -630,45 +618,75 @@
       <button class="chat-submit" id="chatSubmit">Send</button>
     </div>
     <div class="typing-indicator" id="typingIndicator">
-      <span></span>
-      <span></span>
-      <span></span>
+      <span></span><span></span><span></span>
     </div>
   </div>
 
-<script>
-  let sessionId = null; // Holds session between messages
+  <script>
+    const chatButton = document.getElementById('chatButton');
+    const chatModal = document.getElementById('chatModal');
+    const chatClose = document.getElementById('chatClose');
+    const chatBody = document.getElementById('chatBody');
+    const userInput = document.getElementById('userInput');
+    const chatSubmit = document.getElementById('chatSubmit');
+    const typingIndicator = document.getElementById('typingIndicator');
 
-  async function sendMessage() {
-    const query = userInput.value.trim();
-    if (!query) return;
-
-    addMessage(query, 'user');
-    userInput.value = '';
-    typingIndicator.style.display = 'block';
-    chatBody.scrollTop = chatBody.scrollHeight;
-
-    try {
-      const res = await fetch("https://k0jmry5lx4.execute-api.us-east-1.amazonaws.com/prod/invoke", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ input: query, sessionId })  // send sessionId
-      });
-
-      const data = await res.json();
-      sessionId = data.sessionId || sessionId; // update sessionId
-      addMessage(data.response || "I couldn't get a response. Please try again.", 'agent');
-    } catch (error) {
-      addMessage("Sorry, there was an error processing your request. Please try again later.", 'agent');
-      console.error("Error:", error);
-    } finally {
-      typingIndicator.style.display = 'none';
+    // Generate and persist sessionId
+    let sessionId = localStorage.getItem("bedrockSessionId");
+    if (!sessionId) {
+      sessionId = crypto.randomUUID();
+      localStorage.setItem("bedrockSessionId", sessionId);
     }
-  }
-</script>
 
-  
+    chatButton.addEventListener('click', () => {
+      chatModal.classList.toggle('active');
+    });
+
+    chatClose.addEventListener('click', () => {
+      chatModal.classList.remove('active');
+    });
+
+    chatSubmit.addEventListener('click', sendMessage);
+    userInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+      }
+    });
+
+    async function sendMessage() {
+      const query = userInput.value.trim();
+      if (!query) return;
+
+      addMessage(query, 'user');
+      userInput.value = '';
+      typingIndicator.style.display = 'block';
+      chatBody.scrollTop = chatBody.scrollHeight;
+
+      try {
+        const res = await fetch("https://k0jmry5lx4.execute-api.us-east-1.amazonaws.com/prod/invoke", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ input: query, sessionId: sessionId })
+        });
+
+        const data = await res.json();
+        addMessage(data.response || "I couldn't get a response. Please try again.", 'agent');
+      } catch (error) {
+        console.error("Error:", error);
+        addMessage("Sorry, there was an error processing your request.", 'agent');
+      } finally {
+        typingIndicator.style.display = 'none';
+      }
+    }
+
+    function addMessage(text, sender) {
+      const messageDiv = document.createElement('div');
+      messageDiv.classList.add('chat-message', sender === 'user' ? 'user-message' : 'agent-message');
+      messageDiv.textContent = text;
+      chatBody.appendChild(messageDiv);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
+  </script>
 </body>
 </html>
