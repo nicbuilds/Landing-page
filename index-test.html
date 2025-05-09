@@ -441,15 +441,6 @@
   </footer>
 
 <head>
-  <!-- Add inside your <head> -->
-<script>
-  // Generate and persist sessionId in localStorage
-  let sessionId = localStorage.getItem("bedrockSessionId");
-  if (!sessionId) {
-    sessionId = crypto.randomUUID();
-    localStorage.setItem("bedrockSessionId", sessionId);
-  }
-</script>
 
   <meta charset="UTF-8">
   <title>Chat with Bedrock Agent</title>
@@ -645,40 +636,13 @@
     </div>
   </div>
 
-//<!-- Add inside your <body> or wherever your script section is -->
 <script>
-  // DOM elements
-  const chatButton = document.getElementById('chatButton');
-  const chatModal = document.getElementById('chatModal');
-  const chatClose = document.getElementById('chatClose');
-  const chatBody = document.getElementById('chatBody');
-  const userInput = document.getElementById('userInput');
-  const chatSubmit = document.getElementById('chatSubmit');
-  const typingIndicator = document.getElementById('typingIndicator');
-
-  // Toggle chat modal
-  chatButton.addEventListener('click', () => {
-    chatModal.classList.toggle('active');
-  });
-
-  chatClose.addEventListener('click', () => {
-    chatModal.classList.remove('active');
-  });
-
-  // Handle form submission
-  chatSubmit.addEventListener('click', sendMessage);
-  userInput.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      sendMessage();
-    }
-  });
+  let sessionId = null; // Holds session between messages
 
   async function sendMessage() {
     const query = userInput.value.trim();
     if (!query) return;
 
-    // Add user message
     addMessage(query, 'user');
     userInput.value = '';
     typingIndicator.style.display = 'block';
@@ -690,13 +654,11 @@
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({
-          input: query,
-          sessionId: sessionId
-        })
+        body: JSON.stringify({ input: query, sessionId })  // send sessionId
       });
 
       const data = await res.json();
+      sessionId = data.sessionId || sessionId; // update sessionId
       addMessage(data.response || "I couldn't get a response. Please try again.", 'agent');
     } catch (error) {
       addMessage("Sorry, there was an error processing your request. Please try again later.", 'agent');
@@ -705,16 +667,8 @@
       typingIndicator.style.display = 'none';
     }
   }
-
-  function addMessage(text, sender) {
-    const messageDiv = document.createElement('div');
-    messageDiv.classList.add('chat-message');
-    messageDiv.classList.add(sender === 'user' ? 'user-message' : 'agent-message');
-    messageDiv.textContent = text;
-    chatBody.appendChild(messageDiv);
-    chatBody.scrollTop = chatBody.scrollHeight;
-  }
 </script>
+
   
 </body>
 </html>
