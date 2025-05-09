@@ -635,79 +635,38 @@
     </div>
   </div>
 
-  <script>
-    // DOM elements
-    const chatButton = document.getElementById('chatButton');
-    const chatModal = document.getElementById('chatModal');
-    const chatClose = document.getElementById('chatClose');
-    const chatBody = document.getElementById('chatBody');
-    const userInput = document.getElementById('userInput');
-    const chatSubmit = document.getElementById('chatSubmit');
-    const typingIndicator = document.getElementById('typingIndicator');
-    
-    // Toggle chat modal
-    chatButton.addEventListener('click', () => {
-      chatModal.classList.toggle('active');
-    });
-    
-    chatClose.addEventListener('click', () => {
-      chatModal.classList.remove('active');
-    });
-    
-    // Handle form submission
-    chatSubmit.addEventListener('click', sendMessage);
-    userInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter' && !e.shiftKey) {
-        e.preventDefault();
-        sendMessage();
-      }
-    });
-    
-    async function sendMessage() {
-      const query = userInput.value.trim();
-      if (!query) return;
-      
-      // Add user message to chat
-      addMessage(query, 'user');
-      userInput.value = '';
-      
-      // Show typing indicator
-      typingIndicator.style.display = 'block';
-      chatBody.scrollTop = chatBody.scrollHeight;
-      
-      try {
-        const res = await fetch("https://k0jmry5lx4.execute-api.us-east-1.amazonaws.com/prod/invoke", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({ input: query })
-        });
-        
-        const data = await res.json();
-        addMessage(data.response || "I couldn't get a response. Please try again.", 'agent');
-      } catch (error) {
-        addMessage("Sorry, there was an error processing your request. Please try again later.", 'agent');
-        console.error("Error:", error);
-      } finally {
-        typingIndicator.style.display = 'none';
-      }
-    }
-    
-    function addMessage(text, sender) {
-      const messageDiv = document.createElement('div');
-      messageDiv.classList.add('chat-message');
-      messageDiv.classList.add(sender === 'user' ? 'user-message' : 'agent-message');
-      messageDiv.textContent = text;
-      chatBody.appendChild(messageDiv);
-      
-      // Remove typing indicator if it's showing
+ <script>
+  let sessionId = null; // Holds session between messages
+
+  async function sendMessage() {
+    const query = userInput.value.trim();
+    if (!query) return;
+
+    addMessage(query, 'user');
+    userInput.value = '';
+    typingIndicator.style.display = 'block';
+    chatBody.scrollTop = chatBody.scrollHeight;
+
+    try {
+      const res = await fetch("https://k0jmry5lx4.execute-api.us-east-1.amazonaws.com/prod/invoke", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ input: query, sessionId })  // send sessionId
+      });
+
+      const data = await res.json();
+      sessionId = data.sessionId || sessionId; // update sessionId
+      addMessage(data.response || "I couldn't get a response. Please try again.", 'agent');
+    } catch (error) {
+      addMessage("Sorry, there was an error processing your request. Please try again later.", 'agent');
+      console.error("Error:", error);
+    } finally {
       typingIndicator.style.display = 'none';
-      
-      // Scroll to bottom
-      chatBody.scrollTop = chatBody.scrollHeight;
     }
-  </script>
+  }
+</script>
   
 </body>
 </html>
