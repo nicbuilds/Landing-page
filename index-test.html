@@ -622,7 +622,8 @@
     </div>
   </div>
 
-  <script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
     const chatButton = document.getElementById('chatButton');
     const chatModal = document.getElementById('chatModal');
     const chatClose = document.getElementById('chatClose');
@@ -687,6 +688,8 @@
       chatBody.appendChild(messageDiv);
       chatBody.scrollTop = chatBody.scrollHeight;
     }
-  </script>
+  });
+</script>
+
 </body>
 </html>
