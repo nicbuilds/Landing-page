@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +14,43 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/css/flag-icons.min.css">
   <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌍</text></svg>"> 
-
+  <style>
+    .hero-gradient {
+      background: linear-gradient(135deg, rgba(20, 184, 166, 0.9) 0%, rgba(15, 23, 42, 0.9) 100%);
+      min-height: 80vh;
+      position: relative;
+    }
+    .video-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .video-container video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+    }
+    .fallback-image {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+  </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans">
   <!-- Header -->
@@ -63,109 +98,42 @@
     </div>
   </header>
 
-<!-- Hero Section -->
-<section class="hero-gradient text-white py-16 md:py-24 relative overflow-hidden">
-  <!-- Video Background with multiple fallbacks -->
-  <div class="absolute inset-0 z-0 bg-gray-900">
-    <!-- Video Container -->
-    <div class="video-container h-full w-full">
-      <!-- WebM (best compression) -->
-      <video autoplay muted loop playsinline class="absolute h-full w-full object-cover brightness-50">
+  <!-- Hero Section with Fixed Video Background -->
+  <section class="hero-gradient text-white py-16 md:py-24 relative overflow-hidden">
+    <!-- Video Background with Multiple Fallbacks -->
+    <div class="video-container">
+      <video id="background-video" autoplay muted loop playsinline class="brightness-50">
         <source src="https://assets.mixkit.co/videos/preview/mixkit-waves-coming-to-the-beach-5016-large.webm" type="video/webm">
-        <!-- MP4 (fallback) -->
         <source src="https://assets.mixkit.co/videos/preview/mixkit-waves-coming-to-the-beach-5016-large.mp4" type="video/mp4">
-        <!-- Fallback text for browsers that don't support video -->
-        Your browser does not support HTML5 video.
+        <!-- Fallback image will be shown via JavaScript -->
       </video>
+      <img id="fallback-image" src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
+           alt="Ocean background" 
+           class="fallback-image brightness-50">
     </div>
-    <!-- Image fallback that will show if JavaScript detects video failure -->
-    <img id="fallback-image" 
-         src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
-         alt="Ocean waves" 
-         class="absolute h-full w-full object-cover brightness-50 hidden">
+    
+    <!-- Gradient overlay -->
     <div class="absolute inset-0 bg-gradient-to-r from-[#0F172A]/90 via-[#0F172A]/70 to-[#0F172A]/30"></div>
-  </div>
-  
-  <!-- Rest of your hero section content remains the same -->
-  <div class="absolute inset-0 md:inset-y-0 md:left-0 z-1 w-full md:w-[120%] pointer-events-none">
-    <img src="LOGO-04.png" alt="Team of environmental consultants reviewing documents" 
-         class="h-full w-full object-cover md:object-left object-center">
-    <div class="absolute inset-0 bg-gradient-to-r from-[#0F172A]/70 via-[#0F172A]/40 to-[#0F172A]/0"></div>
-  </div>
-  
-  <div class="container mx-auto px-4 relative z-10">
-    <div class="max-w-4xl mx-auto text-center">
-      <h1 class="text-3xl md:text-5xl font-bold mb-6">Environmental Compliance Experts in Mexico</h1>
-      <p class="text-xl mb-8">Navigating Mexico's environmental regulations with precision and expertise since 2017</p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="#contact" class="inline-block bg-white text-green-700 px-8 py-4 rounded-lg hover:bg-gray-100 transition font-bold shadow-lg">Get a Free Consultation</a>
-        <a href="#services" class="inline-block border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-green-600 transition font-bold">Our Services</a>
+    
+    <!-- Foreground content -->
+    <div class="absolute inset-0 md:inset-y-0 md:left-0 z-1 w-full md:w-[120%] pointer-events-none">
+      <img src="LOGO-04.png" alt="Team of environmental consultants reviewing documents" 
+           class="h-full w-full object-cover md:object-left object-center">
+      <div class="absolute inset-0 bg-gradient-to-r from-[#0F172A]/70 via-[#0F172A]/40 to-[#0F172A]/0"></div>
+    </div>
+    
+    <!-- Centered Content -->
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="text-3xl md:text-5xl font-bold mb-6">Environmental Compliance Experts in Mexico</h1>
+        <p class="text-xl mb-8">Navigating Mexico's environmental regulations with precision and expertise since 2017</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="#contact" class="inline-block bg-white text-green-700 px-8 py-4 rounded-lg hover:bg-gray-100 transition font-bold shadow-lg">Get a Free Consultation</a>
+          <a href="#services" class="inline-block border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-green-600 transition font-bold">Our Services</a>
+        </div>
       </div>
     </div>
-  </div>
-</section>
-
-<style>
-  /* Improved video styling */
-  .video-container {
-    position: relative;
-    overflow: hidden;
-  }
-  .video-container video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    transform: translate(-50%, -50%);
-  }
-  #fallback-image {
-    display: none; /* Hidden by default, shown by JS if needed */
-  }
-</style>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const video = document.querySelector('video');
-    const fallbackImage = document.getElementById('fallback-image');
-    
-    // Check if video element exists
-    if (!video) {
-      if (fallbackImage) fallbackImage.classList.remove('hidden');
-      return;
-    }
-
-    // Check if video can play
-    const canPlay = video.canPlayType('video/webm') || video.canPlayType('video/mp4');
-    if (!canPlay && fallbackImage) {
-      fallbackImage.classList.remove('hidden');
-      return;
-    }
-
-    // Try to play video
-    const playPromise = video.play();
-    
-    if (playPromise !== undefined) {
-      playPromise.catch(error => {
-        // If autoplay fails, mute and try again
-        video.muted = true;
-        video.play().catch(e => {
-          console.log('Video playback failed:', e);
-          if (fallbackImage) fallbackImage.classList.remove('hidden');
-        });
-      });
-    }
-
-    // Fallback if video doesn't load within 3 seconds
-    setTimeout(() => {
-      if (video.readyState < 3 && fallbackImage) { // 3 = HAVE_FUTURE_DATA
-        fallbackImage.classList.remove('hidden');
-      }
-    }, 3000);
-  });
-</script>
+  </section>
 
   <!-- Trust Indicators -->
   <section class="bg-white py-8 shadow-sm">
@@ -760,6 +728,61 @@
     }
   });
 </script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const video = document.getElementById('background-video');
+      const fallbackImage = document.getElementById('fallback-image');
+      
+      // Check if video element exists
+      if (!video) {
+        if (fallbackImage) fallbackImage.style.display = 'block';
+        return;
+      }
 
+      // Check if browser can play video formats
+      const canPlayWebM = video.canPlayType('video/webm').replace('no', '');
+      const canPlayMP4 = video.canPlayType('video/mp4').replace('no', '');
+      
+      if (!canPlayWebM && !canPlayMP4 && fallbackImage) {
+        fallbackImage.style.display = 'block';
+        return;
+      }
+
+      // Try to play video
+      const playPromise = video.play();
+      
+      if (playPromise !== undefined) {
+        playPromise.catch(error => {
+          console.log('Autoplay prevented:', error);
+          showFallback();
+        });
+      }
+
+      // If video errors out
+      video.addEventListener('error', function() {
+        console.log('Video error occurred');
+        showFallback();
+      });
+
+      // Fallback if video doesn't load within 3 seconds
+      const videoTimeout = setTimeout(() => {
+        if (video.readyState < 3) { // 3 = HAVE_FUTURE_DATA
+          showFallback();
+        }
+      }, 3000);
+
+      // If video does load, clear timeout
+      video.addEventListener('canplay', function() {
+        clearTimeout(videoTimeout);
+      });
+
+      function showFallback() {
+        if (fallbackImage) {
+          fallbackImage.style.display = 'block';
+          video.style.display = 'none';
+        }
+      }
+    });
+  </script>
 </body>
 </html>
