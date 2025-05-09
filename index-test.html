@@ -440,8 +440,94 @@
     </div>
   </footer>
     
-<!DOCTYPE html>
-<html lang="en">
+<!-- Add this right before the chat button code -->
+<div class="call-button" id="callButton" onclick="window.location.href='tel:+529997394656'">
+  <i class="fas fa-phone"></i>
+</div>
+
+<!-- Add this CSS to your style section -->
+<style>
+  /* Call button styles */
+  .call-button {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #10B981; /* Slightly different green for distinction */
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+  
+  .call-button:hover {
+    background-color: #059669;
+    transform: scale(1.05);
+  }
+  
+  .call-button i {
+    font-size: 24px;
+  }
+  
+  /* Adjust chat button position */
+  .chat-button {
+    bottom: 30px;
+    right: 30px;
+    /* rest of your existing chat button styles */
+  }
+</style>    
+<!-- Call Button -->
+<div class="call-button" id="callButton" onclick="window.location.href='tel:+529997394656'">
+  <i class="fas fa-phone"></i>
+</div>
+
+<!-- Chat Button -->
+<div class="chat-button" id="chatButton">
+  <i class="fas fa-comment-dots"></i>
+</div>
+
+<style>
+  /* Call button styles */
+  .call-button {
+    position: fixed;
+    bottom: 100px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #10B981;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+  
+  .call-button:hover {
+    background-color: #059669;
+    transform: scale(1.05);
+  }
+  
+  .call-button i {
+    font-size: 24px;
+  }
+  
+  /* Adjust chat button position */
+  .chat-button {
+    bottom: 30px;
+    right: 30px;
+  }
+</style>
+    
 <head>
   <meta charset="UTF-8">
   <title>Chat with Bedrock Agent</title>
