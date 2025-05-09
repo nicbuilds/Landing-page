@@ -65,19 +65,24 @@
 
 <!-- Hero Section -->
 <section class="hero-gradient text-white py-16 md:py-24 relative overflow-hidden">
-  <!-- Video Background -->
-  <div class="absolute inset-0 z-0">
-    <!-- Video with multiple sources and fallback -->
-    <video autoplay muted loop playsinline class="h-full w-full object-cover brightness-50">
-      <!-- WebM format (better compression) -->
-      <source src="https://assets.mixkit.co/videos/preview/mixkit-waves-coming-to-the-beach-5016-large.webm" type="video/webm">
-      <!-- MP4 format (fallback) -->
-      <source src="https://assets.mixkit.co/videos/preview/mixkit-waves-coming-to-the-beach-5016-large.mp4" type="video/mp4">
-      <!-- Fallback image -->
-      <img src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
-           alt="Aerial view of ocean" 
-           class="h-full w-full object-cover">
-    </video>
+  <!-- Video Background with multiple fallbacks -->
+  <div class="absolute inset-0 z-0 bg-gray-900">
+    <!-- Video Container -->
+    <div class="video-container h-full w-full">
+      <!-- WebM (best compression) -->
+      <video autoplay muted loop playsinline class="absolute h-full w-full object-cover brightness-50">
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-waves-coming-to-the-beach-5016-large.webm" type="video/webm">
+        <!-- MP4 (fallback) -->
+        <source src="https://assets.mixkit.co/videos/preview/mixkit-waves-coming-to-the-beach-5016-large.mp4" type="video/mp4">
+        <!-- Fallback text for browsers that don't support video -->
+        Your browser does not support HTML5 video.
+      </video>
+    </div>
+    <!-- Image fallback that will show if JavaScript detects video failure -->
+    <img id="fallback-image" 
+         src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
+         alt="Ocean waves" 
+         class="absolute h-full w-full object-cover brightness-50 hidden">
     <div class="absolute inset-0 bg-gradient-to-r from-[#0F172A]/90 via-[#0F172A]/70 to-[#0F172A]/30"></div>
   </div>
   
@@ -101,49 +106,64 @@
 </section>
 
 <style>
-  /* Add this to ensure video covers the space properly */
-  video {
+  /* Improved video styling */
+  .video-container {
+    position: relative;
+    overflow: hidden;
+  }
+  .video-container video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
     min-width: 100%;
     min-height: 100%;
     width: auto;
     height: auto;
-    position: absolute;
-    top: 50%;
-    left: 50%;
     transform: translate(-50%, -50%);
+  }
+  #fallback-image {
+    display: none; /* Hidden by default, shown by JS if needed */
   }
 </style>
 
 <script>
-  // Add this script to handle video loading and fallback
   document.addEventListener('DOMContentLoaded', function() {
     const video = document.querySelector('video');
+    const fallbackImage = document.getElementById('fallback-image');
     
+    // Check if video element exists
+    if (!video) {
+      if (fallbackImage) fallbackImage.classList.remove('hidden');
+      return;
+    }
+
     // Check if video can play
-    if(video) {
-      video.addEventListener('error', function() {
-        // If video fails, show the fallback image
-        const fallbackImg = video.querySelector('img');
-        if(fallbackImg) {
-          fallbackImg.style.display = 'block';
-          video.style.display = 'none';
-        }
-      });
-      
-      // For mobile devices, sometimes autoplay is blocked
-      video.play().catch(error => {
+    const canPlay = video.canPlayType('video/webm') || video.canPlayType('video/mp4');
+    if (!canPlay && fallbackImage) {
+      fallbackImage.classList.remove('hidden');
+      return;
+    }
+
+    // Try to play video
+    const playPromise = video.play();
+    
+    if (playPromise !== undefined) {
+      playPromise.catch(error => {
         // If autoplay fails, mute and try again
         video.muted = true;
         video.play().catch(e => {
           console.log('Video playback failed:', e);
-          const fallbackImg = video.querySelector('img');
-          if(fallbackImg) {
-            fallbackImg.style.display = 'block';
-            video.style.display = 'none';
-          }
+          if (fallbackImage) fallbackImage.classList.remove('hidden');
         });
       });
     }
+
+    // Fallback if video doesn't load within 3 seconds
+    setTimeout(() => {
+      if (video.readyState < 3 && fallbackImage) { // 3 = HAVE_FUTURE_DATA
+        fallbackImage.classList.remove('hidden');
+      }
+    }, 3000);
   });
 </script>
 
