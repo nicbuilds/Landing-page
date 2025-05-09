@@ -4,9 +4,25 @@
   <meta charset="UTF-8">
   <title>Chat with Bedrock Agent</title>
   <style>
-    body { font-family: sans-serif; max-width: 600px; margin: auto; padding: 1em; }
-    input, button { padding: 0.5em; font-size: 1em; }
-    #response { margin-top: 1em; background: #f0f0f0; padding: 1em; border-radius: 8px; }
+    body {
+      font-family: sans-serif;
+      max-width: 600px;
+      margin: auto;
+      padding: 1em;
+    }
+    input, button {
+      padding: 0.5em;
+      font-size: 1em;
+      width: calc(100% - 1em);
+      margin-bottom: 0.5em;
+    }
+    #response {
+      margin-top: 1em;
+      background: #f0f0f0;
+      padding: 1em;
+      border-radius: 8px;
+      white-space: pre-wrap;
+    }
   </style>
 </head>
 <body>
@@ -17,7 +33,7 @@
     <button type="submit">Send</button>
   </form>
 
-  <div id="response"></div>
+  <div id="response">Agent response will appear here.</div>
 
   <script>
     const form = document.getElementById('chatForm');
@@ -38,7 +54,7 @@
           headers: {
             "Content-Type": "application/json"
           },
-          body: JSON.stringify({ query })
+          body: JSON.stringify({ input: query })  // ✅ Correct field name
         });
 
         const data = await res.json();
