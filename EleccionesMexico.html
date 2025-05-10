@@ -41,7 +41,7 @@
             text-decoration: none;
             padding: 15px 0;
             white-space: nowrap;
-            margin-left: auto; /* Mueve el logo a la derecha */
+            margin-left: auto;
         }
         
         .nav-menu {
@@ -49,8 +49,8 @@
             list-style: none;
             margin: 0;
             padding: 0;
-            justify-content: flex-start; /* Alinea las opciones a la izquierda */
-            flex-grow: 1; /* Permite que el menú ocupe el espacio disponible */
+            justify-content: flex-start;
+            flex-grow: 1;
         }
         
         .nav-item {
@@ -69,7 +69,7 @@
             background-color: #34495e;
         }
         
-        /* Menú desplegable de estados - Columna única con scroll */
+        /* Menú desplegable de estados */
         .dropdown-menu {
             position: absolute;
             top: 100%;
@@ -128,7 +128,7 @@
             background: #a8a8a8;
         }
 
-        /* Resto del CSS se mantiene igual... */
+        /* Contenedor principal */
         .container {
             max-width: 1200px;
             margin: 20px auto;
@@ -223,13 +223,27 @@
         }
         
         .info-item {
-            margin-bottom: 5px;
+            margin-bottom: 10px;
         }
         
         .info-label {
             font-weight: bold;
             display: inline-block;
             width: 120px;
+            vertical-align: top;
+        }
+        
+        .info-content {
+            display: inline-block;
+            width: calc(100% - 130px);
+        }
+        
+        .sources {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 10px;
+            border-top: 1px dashed #ddd;
+            padding-top: 5px;
         }
         
         footer {
@@ -292,7 +306,7 @@
     <div class="container" id="candidatos">
         <h1>Candidatos para Puestos Judiciales en México</h1>
         
-        <!-- SCJN -->
+        <!-- SCJN - Actualizado -->
         <div class="accordion">
             <div class="accordion-header scjn">
                 Ministras y ministros de la Suprema Corte de Justicia de la Nación
@@ -300,17 +314,93 @@
             <div class="accordion-content">
                 <div class="accordion-content-inner">
                     <div class="candidate">
-                        <h3>Dra. María del Carmen López Morales</h3>
-                        <div class="info-item"><span class="info-label">Experiencia:</span> 25 años en el Poder Judicial</div>
-                        <div class="info-item"><span class="info-label">Formación:</span> Doctora en Derecho por la UNAM</div>
-                        <div class="info-item"><span class="info-label">Propuesta:</span> Modernización del sistema judicial</div>
+                        <h3>Lenia Batres Guadarrama</h3>
+                        <div class="info-item">
+                            <span class="info-label">Perfil:</span>
+                            <span class="info-content">Actual ministra de la SCJN desde diciembre de 2023, propuesta por el expresidente Andrés Manuel López Obrador. Hermana de Martí Batres, jefe de Gobierno de la Ciudad de México.</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Trayectoria:</span>
+                            <span class="info-content">Abogada con maestrías en Derecho Penal y Estudios de la Ciudad. Ha sido diputada federal y militante en partidos de izquierda como el PRD y Morena.</span>
+                        </div>
+                        <div class="sources">
+                            <strong>Fuentes:</strong> infobae, Wikipedia, ADNPolítico
+                        </div>
                     </div>
                     
                     <div class="candidate">
-                        <h3>Lic. Javier Hernández Rodríguez</h3>
-                        <div class="info-item"><span class="info-label">Experiencia:</span> Ex fiscal general</div>
-                        <div class="info-item"><span class="info-label">Formación:</span> Maestría en Derecho Constitucional</div>
-                        <div class="info-item"><span class="info-label">Propuesta:</span> Enfoque en derechos humanos</div>
+                        <h3>Loretta Ortiz Ahlf</h3>
+                        <div class="info-item">
+                            <span class="info-label">Perfil:</span>
+                            <span class="info-content">Ministra de la SCJN desde diciembre de 2021, propuesta por López Obrador. Aunque renunció a Morena en 2018 para asumir su cargo con imparcialidad, mantiene afinidad ideológica con la Cuarta Transformación.</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Especialización:</span>
+                            <span class="info-content">Derechos humanos y derecho internacional.</span>
+                        </div>
+                        <div class="sources">
+                            <strong>Fuentes:</strong> Noticias de México
+                        </div>
+                    </div>
+                    
+                    <div class="candidate">
+                        <h3>Yasmín Esquivel Mossa</h3>
+                        <div class="info-item">
+                            <span class="info-label">Perfil:</span>
+                            <span class="info-content">Ministra de la SCJN desde 2019, propuesta por López Obrador. Ha enfrentado controversias relacionadas con su tesis de licenciatura.</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Trayectoria:</span>
+                            <span class="info-content">Ha defendido derechos humanos y ha sido presidenta de la Segunda Sala de la SCJN.</span>
+                        </div>
+                        <div class="sources">
+                            <strong>Fuentes:</strong> Noticias de México
+                        </div>
+                    </div>
+                    
+                    <div class="candidate">
+                        <h3>Ana María Ibarra Olguín</h3>
+                        <div class="info-item">
+                            <span class="info-label">Perfil:</span>
+                            <span class="info-content">Magistrada de Circuito y candidata a ministra de la SCJN en 2025. Cercana al exministro Arturo Zaldívar, con quien trabajó en la SCJN.</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Especialización:</span>
+                            <span class="info-content">Derecho constitucional y derechos humanos.</span>
+                        </div>
+                        <div class="sources">
+                            <strong>Fuentes:</strong> Wikipedia, ADNPolítico, infobae
+                        </div>
+                    </div>
+                    
+                    <div class="candidate">
+                        <h3>Paula María García Villegas Sánchez Cordero</h3>
+                        <div class="info-item">
+                            <span class="info-label">Perfil:</span>
+                            <span class="info-content">Magistrada de Circuito y candidata a ministra de la SCJN. Hija de Olga Sánchez Cordero, exministra y exsecretaria de Gobernación.</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Trayectoria:</span>
+                            <span class="info-content">Licenciada en Economía por el ITAM y maestra en Derecho por la London School of Economics. Aunque inicialmente expresó reservas sobre la reforma judicial, es reconocida por su cercanía a Morena.</span>
+                        </div>
+                        <div class="sources">
+                            <strong>Fuentes:</strong> ADNPolítico, El País
+                        </div>
+                    </div>
+                    
+                    <div class="candidate">
+                        <h3>Zulema Mosri Gutiérrez</h3>
+                        <div class="info-item">
+                            <span class="info-label">Perfil:</span>
+                            <span class="info-content">Magistrada del Tribunal Federal de Justicia Administrativa desde 2012 y candidata a ministra de la SCJN.</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Trayectoria:</span>
+                            <span class="info-content">Ha trabajado en temas de igualdad de género y ha sido reconocida por su labor en el ámbito jurídico.</span>
+                        </div>
+                        <div class="sources">
+                            <strong>Fuentes:</strong> Wikipedia
+                        </div>
                     </div>
                 </div>
             </div>
