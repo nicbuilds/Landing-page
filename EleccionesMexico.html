@@ -67,25 +67,28 @@
             background-color: #34495e;
         }
         
-        /* Menú desplegable de estados */
+        /* Menú desplegable de estados - Columna única con scroll */
         .dropdown-menu {
             position: absolute;
             top: 100%;
             left: 0;
             background-color: white;
-            width: 300px;
-            max-height: 400px;
+            width: 250px;
+            max-height: 300px;
             overflow-y: auto;
             box-shadow: 0 5px 10px rgba(0,0,0,0.2);
             border-radius: 0 0 5px 5px;
             display: none;
-            grid-template-columns: 1fr 1fr;
-            column-gap: 10px;
-            padding: 10px;
+            padding: 5px 0;
         }
         
         .dropdown-item {
-            padding: 8px 5px;
+            padding: 8px 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        .dropdown-item:last-child {
+            border-bottom: none;
         }
         
         .dropdown-item a {
@@ -101,10 +104,29 @@
         }
         
         .nav-item:hover .dropdown-menu {
-            display: grid;
+            display: block;
         }
         
-        /* Contenido principal */
+        /* Estilo del scroll */
+        .dropdown-menu::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .dropdown-menu::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 4px;
+        }
+        
+        .dropdown-menu::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+        }
+        
+        .dropdown-menu::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+
+        /* Resto del CSS se mantiene igual... */
         .container {
             max-width: 1200px;
             margin: 20px auto;
@@ -122,7 +144,6 @@
             padding-bottom: 10px;
         }
         
-        /* Acordeones */
         .accordion {
             margin-bottom: 15px;
             border-radius: 5px;
@@ -160,7 +181,6 @@
             padding: 20px;
         }
         
-        /* Colores por categoría */
         .scjn {
             background-color: #7e76c7;
         }
@@ -218,7 +238,6 @@
             color: #7f8c8d;
         }
         
-        /* Responsive */
         @media (max-width: 768px) {
             body {
                 padding-top: 120px;
@@ -237,19 +256,12 @@
             .dropdown-menu {
                 position: static;
                 width: 100%;
-                max-height: none;
-                display: none;
-                grid-template-columns: 1fr;
+                max-height: 200px;
             }
             
             .container {
                 padding: 15px;
                 margin-top: 10px;
-            }
-            
-            .info-label {
-                display: block;
-                width: auto;
             }
         }
     </style>
@@ -265,19 +277,16 @@
                 <li class="nav-item">
                     <a href="#" class="nav-link">Estados</a>
                     <div class="dropdown-menu">
-                        <!-- Columna 1 -->
                         <div class="dropdown-item"><a href="https://fwdco.net/aguascalientes">Aguascalientes</a></div>
                         <div class="dropdown-item"><a href="https://fwdco.net/baja-california">Baja California</a></div>
                         <div class="dropdown-item"><a href="https://fwdco.net/baja-california-sur">Baja California Sur</a></div>
                         <div class="dropdown-item"><a href="https://fwdco.net/campeche">Campeche</a></div>
                         <div class="dropdown-item"><a href="https://fwdco.net/chiapas">Chiapas</a></div>
                         <div class="dropdown-item"><a href="https://fwdco.net/chihuahua">Chihuahua</a></div>
-                        <div class="dropdown-item"><a href="https://fwdco.net/ciudad-de-mexico">CDMX</a></div>
+                        <div class="dropdown-item"><a href="https://fwdco.net/ciudad-de-mexico">Ciudad de México</a></div>
                         <div class="dropdown-item"><a href="https://fwdco.net/coahuila">Coahuila</a></div>
                         <div class="dropdown-item"><a href="https://fwdco.net/colima">Colima</a></div>
                         <div class="dropdown-item"><a href="https://fwdco.net/durango">Durango</a></div>
-                        
-                        <!-- Columna 2 -->
                         <div class="dropdown-item"><a href="https://fwdco.net/estado-de-mexico">Estado de México</a></div>
                         <div class="dropdown-item"><a href="https://fwdco.net/guanajuato">Guanajuato</a></div>
                         <div class="dropdown-item"><a href="https://fwdco.net/guerrero">Guerrero</a></div>
@@ -288,6 +297,18 @@
                         <div class="dropdown-item"><a href="https://fwdco.net/nayarit">Nayarit</a></div>
                         <div class="dropdown-item"><a href="https://fwdco.net/nuevo-leon">Nuevo León</a></div>
                         <div class="dropdown-item"><a href="https://fwdco.net/oaxaca">Oaxaca</a></div>
+                        <div class="dropdown-item"><a href="https://fwdco.net/puebla">Puebla</a></div>
+                        <div class="dropdown-item"><a href="https://fwdco.net/queretaro">Querétaro</a></div>
+                        <div class="dropdown-item"><a href="https://fwdco.net/quintana-roo">Quintana Roo</a></div>
+                        <div class="dropdown-item"><a href="https://fwdco.net/san-luis-potosi">San Luis Potosí</a></div>
+                        <div class="dropdown-item"><a href="https://fwdco.net/sinaloa">Sinaloa</a></div>
+                        <div class="dropdown-item"><a href="https://fwdco.net/sonora">Sonora</a></div>
+                        <div class="dropdown-item"><a href="https://fwdco.net/tabasco">Tabasco</a></div>
+                        <div class="dropdown-item"><a href="https://fwdco.net/tamaulipas">Tamaulipas</a></div>
+                        <div class="dropdown-item"><a href="https://fwdco.net/tlaxcala">Tlaxcala</a></div>
+                        <div class="dropdown-item"><a href="https://fwdco.net/veracruz">Veracruz</a></div>
+                        <div class="dropdown-item"><a href="https://fwdco.net/yucatan">Yucatán</a></div>
+                        <div class="dropdown-item"><a href="https://fwdco.net/zacatecas">Zacatecas</a></div>
                     </div>
                 </li>
             </ul>
@@ -466,41 +487,35 @@
             });
             
             // Menú móvil
-            function setupMobileMenu() {
-                const hamburger = document.createElement('div');
-                hamburger.className = 'hamburger-menu';
-                hamburger.innerHTML = '☰';
-                hamburger.style.display = 'none';
-                hamburger.style.cursor = 'pointer';
-                hamburger.style.color = 'white';
-                hamburger.style.fontSize = '24px';
-                hamburger.style.padding = '15px';
-                
-                const navContainer = document.querySelector('.nav-container');
-                navContainer.prepend(hamburger);
-                
-                const navMenu = document.querySelector('.nav-menu');
-                
-                function toggleMenu() {
-                    navMenu.style.display = navMenu.style.display === 'none' ? 'flex' : 'none';
-                }
-                
-                function checkScreenSize() {
-                    if (window.innerWidth <= 768) {
-                        hamburger.style.display = 'block';
-                        navMenu.style.display = 'none';
-                    } else {
-                        hamburger.style.display = 'none';
-                        navMenu.style.display = 'flex';
-                    }
-                }
-                
-                hamburger.addEventListener('click', toggleMenu);
-                window.addEventListener('resize', checkScreenSize);
-                checkScreenSize();
+            const hamburger = document.createElement('div');
+            hamburger.className = 'hamburger-menu';
+            hamburger.innerHTML = '☰';
+            hamburger.style.display = 'none';
+            hamburger.style.cursor = 'pointer';
+            hamburger.style.color = 'white';
+            hamburger.style.fontSize = '24px';
+            hamburger.style.padding = '15px';
+            
+            document.querySelector('.nav-container').prepend(hamburger);
+            
+            function toggleMenu() {
+                const menu = document.querySelector('.nav-menu');
+                menu.style.display = menu.style.display === 'none' ? 'flex' : 'none';
             }
             
-            setupMobileMenu();
+            function checkScreenSize() {
+                if (window.innerWidth <= 768) {
+                    hamburger.style.display = 'block';
+                    document.querySelector('.nav-menu').style.display = 'none';
+                } else {
+                    hamburger.style.display = 'none';
+                    document.querySelector('.nav-menu').style.display = 'flex';
+                }
+            }
+            
+            hamburger.addEventListener('click', toggleMenu);
+            window.addEventListener('resize', checkScreenSize);
+            checkScreenSize();
         });
     </script>
 </body>
