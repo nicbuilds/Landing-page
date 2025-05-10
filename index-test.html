@@ -844,8 +844,16 @@
         
         // Función para convertir URLs en enlaces
         const linkify = (text) => {
+          const whatsappRegex = /(https?:\/\/wa\.me\/[^\s]+)/g;
           const urlRegex = /(https?:\/\/[^\s]+)/g;
-          return text.replace(urlRegex, url => `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`);
+          
+          // Replace WhatsApp links first
+          text = text.replace(whatsappRegex, url => 
+            `<a href="${url}" target="_blank" rel="noopener noreferrer" style="color: #25D366; text-decoration: underline;">WhatsApp</a>`);
+          
+          // Then replace other URLs
+          return text.replace(urlRegex, url => 
+            `<a href="${url}" target="_blank" rel="noopener noreferrer" style="color: #0066cc; text-decoration: underline;">${url}</a>`);
         };
         
         // Usamos innerHTML en lugar de textContent para renderizar HTML
