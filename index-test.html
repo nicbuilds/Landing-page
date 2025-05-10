@@ -477,11 +477,11 @@
       </div>
     </div>
   </footer>
-  
+
   <!-- Botones flotantes -->
   <div class="call-button" id="callButton">
-    <a href="tel:+529997394656">
-      <i class="fas fa-phone-alt"></i>
+    <a href="tel:+529997394656" class="flex items-center justify-center w-full h-full">
+      <i class="fas fa-phone text-white text-xl"></i>
     </a>
   </div>
 
@@ -505,7 +505,7 @@
   </div>
 
   <div class="chat-button" id="chatButton">
-    <i class="fas fa-comment-dots"></i>
+    <i class="fas fa-comment-dots text-white text-xl"></i>
   </div>
 
   <style>
@@ -531,20 +531,6 @@
     .call-button:hover {
       background-color: #2563eb; /* Azul más oscuro al hover */
       transform: scale(1.05);
-    }
-
-    .call-button a {
-      color: white;
-      text-decoration: none;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: 100%;
-    }
-
-    .call-button i {
-      font-size: 24px;
     }
 
     /* Estilos para el chat */
@@ -765,6 +751,5 @@
       }
     });
   </script>
-
 </body>
 </html>
