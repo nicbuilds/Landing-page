@@ -477,68 +477,77 @@
       </div>
     </div>
   </footer>
-    
-<html lang="en">
-<head>
-  <!-- Añade esto justo antes del botón de chat existente -->
-<div class="call-button" id="callButton">
-  <a href="tel:+529997394656" class="flex items-center justify-center">
-    <i class="fas fa-phone-alt mr-2"></i>
-    <span>Llamar</span>
-  </a>
-</div>
+  
+  <!-- Botones flotantes -->
+  <div class="call-button" id="callButton">
+    <a href="tel:+529997394656">
+      <i class="fas fa-phone-alt"></i>
+    </a>
+  </div>
 
-<div class="chat-button" id="chatButton">
-  <i class="fas fa-comment-dots"></i>
-</div>
+  <div class="chat-modal" id="chatModal">
+    <div class="chat-header">
+      <span>Environmental Compliance Assistant</span>
+      <span class="chat-close" id="chatClose">&times;</span>
+    </div>
+    <div class="chat-body" id="chatBody">
+      <div class="chat-message agent-message">
+        Hello! I'm your environmental compliance assistant. How can I help you with SEMARNAT permits, impact assessments, or other regulatory questions today?
+      </div>
+    </div>
+    <div class="chat-input-area">
+      <textarea class="chat-input" id="userInput" placeholder="Ask about environmental regulations..." rows="2"></textarea>
+      <button class="chat-submit" id="chatSubmit">Send</button>
+    </div>
+    <div class="typing-indicator" id="typingIndicator">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
 
-<style>
-  /* Estilos para el botón de llamada */
-  .call-button {
-    position: fixed;
-    bottom: 100px;
-    right: 30px;
-    width: 120px;
-    height: 60px;
-    background-color: #059669;
-    color: white;
-    border-radius: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    z-index: 1000;
-    transition: all 0.3s ease;
-    font-weight: 500;
-    font-size: 16px;
-  }
+  <div class="chat-button" id="chatButton">
+    <i class="fas fa-comment-dots"></i>
+  </div>
 
-  .call-button:hover {
-    background-color: #047857;
-    transform: scale(1.05);
-  }
-
-  .call-button a {
-    color: white;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    padding: 0 15px;
-    width: 100%;
-    height: 100%;
-  }
-
-  /* Ajuste para el botón de chat existente */
-  .chat-button {
-    bottom: 30px; /* Mantiene esta posición */
-  }
-</style>
-  <meta charset="UTF-8">
-  <title>Chat with Bedrock Agent</title>
   <style>
-    body { font-family: sans-serif; }
+    /* Estilos para el botón de llamada */
+    .call-button {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background-color: #3b82f6; /* Azul */
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
 
+    .call-button:hover {
+      background-color: #2563eb; /* Azul más oscuro al hover */
+      transform: scale(1.05);
+    }
+
+    .call-button a {
+      color: white;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    .call-button i {
+      font-size: 24px;
+    }
+
+    /* Estilos para el chat */
     .chat-button {
       position: fixed;
       bottom: 30px;
@@ -687,156 +696,75 @@
       50% { transform: translateY(-5px); }
     }
   </style>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-</head>
-<body>
 
-  <div class="chat-button" id="chatButton">
-    <i class="fas fa-comment-dots"></i>
-  </div>
-
-  <div class="chat-modal" id="chatModal">
-    <div class="chat-header">
-      <span>Environmental Compliance Assistant</span>
-      <span class="chat-close" id="chatClose">&times;</span>
-    </div>
-    <div class="chat-body" id="chatBody">
-      <div class="chat-message agent-message">
-        Hello! I'm your environmental compliance assistant. How can I help you with SEMARNAT permits, impact assessments, or other regulatory questions today?
-      </div>
-    </div>
-    <div class="chat-input-area">
-      <textarea class="chat-input" id="userInput" placeholder="Ask about environmental regulations..." rows="2"></textarea>
-      <button class="chat-submit" id="chatSubmit">Send</button>
-    </div>
-    <div class="typing-indicator" id="typingIndicator">
-      <span></span><span></span><span></span>
-    </div>
-  </div>
-
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    const chatButton = document.getElementById('chatButton');
-    const chatModal = document.getElementById('chatModal');
-    const chatClose = document.getElementById('chatClose');
-    const chatBody = document.getElementById('chatBody');
-    const userInput = document.getElementById('userInput');
-    const chatSubmit = document.getElementById('chatSubmit');
-    const typingIndicator = document.getElementById('typingIndicator');
-
-    // Generate and persist sessionId
-    let sessionId = localStorage.getItem("bedrockSessionId");
-    if (!sessionId) {
-      sessionId = crypto.randomUUID();
-      localStorage.setItem("bedrockSessionId", sessionId);
-    }
-
-    chatButton.addEventListener('click', () => {
-      chatModal.classList.toggle('active');
-    });
-
-    chatClose.addEventListener('click', () => {
-      chatModal.classList.remove('active');
-    });
-
-    chatSubmit.addEventListener('click', sendMessage);
-    userInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter' && !e.shiftKey) {
-        e.preventDefault();
-        sendMessage();
-      }
-    });
-
-    async function sendMessage() {
-      const query = userInput.value.trim();
-      if (!query) return;
-
-      addMessage(query, 'user');
-      userInput.value = '';
-      typingIndicator.style.display = 'block';
-      chatBody.scrollTop = chatBody.scrollHeight;
-
-      try {
-        const res = await fetch("https://k0jmry5lx4.execute-api.us-east-1.amazonaws.com/prod/invoke", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ input: query, sessionId: sessionId })
-        });
-
-        const data = await res.json();
-        addMessage(data.response || "I couldn't get a response. Please try again.", 'agent');
-      } catch (error) {
-        console.error("Error:", error);
-        addMessage("Sorry, there was an error processing your request.", 'agent');
-      } finally {
-        typingIndicator.style.display = 'none';
-      }
-    }
-
-    function addMessage(text, sender) {
-      const messageDiv = document.createElement('div');
-      messageDiv.classList.add('chat-message', sender === 'user' ? 'user-message' : 'agent-message');
-      messageDiv.textContent = text;
-      chatBody.appendChild(messageDiv);
-      chatBody.scrollTop = chatBody.scrollHeight;
-    }
-  });
-</script>
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const video = document.getElementById('background-video');
-      const fallbackImage = document.getElementById('fallback-image');
-      
-      // Check if video element exists
-      if (!video) {
-        if (fallbackImage) fallbackImage.style.display = 'block';
-        return;
+    document.addEventListener("DOMContentLoaded", () => {
+      const chatButton = document.getElementById('chatButton');
+      const chatModal = document.getElementById('chatModal');
+      const chatClose = document.getElementById('chatClose');
+      const chatBody = document.getElementById('chatBody');
+      const userInput = document.getElementById('userInput');
+      const chatSubmit = document.getElementById('chatSubmit');
+      const typingIndicator = document.getElementById('typingIndicator');
+
+      // Generate and persist sessionId
+      let sessionId = localStorage.getItem("bedrockSessionId");
+      if (!sessionId) {
+        sessionId = crypto.randomUUID();
+        localStorage.setItem("bedrockSessionId", sessionId);
       }
 
-      // Check if browser can play video formats
-      const canPlayWebM = video.canPlayType('video/webm').replace('no', '');
-      const canPlayMP4 = video.canPlayType('video/mp4').replace('no', '');
-      
-      if (!canPlayWebM && !canPlayMP4 && fallbackImage) {
-        fallbackImage.style.display = 'block';
-        return;
-      }
-
-      // Try to play video
-      const playPromise = video.play();
-      
-      if (playPromise !== undefined) {
-        playPromise.catch(error => {
-          console.log('Autoplay prevented:', error);
-          showFallback();
-        });
-      }
-
-      // If video errors out
-      video.addEventListener('error', function() {
-        console.log('Video error occurred');
-        showFallback();
+      chatButton.addEventListener('click', () => {
+        chatModal.classList.toggle('active');
       });
 
-      // Fallback if video doesn't load within 3 seconds
-      const videoTimeout = setTimeout(() => {
-        if (video.readyState < 3) { // 3 = HAVE_FUTURE_DATA
-          showFallback();
-        }
-      }, 3000);
-
-      // If video does load, clear timeout
-      video.addEventListener('canplay', function() {
-        clearTimeout(videoTimeout);
+      chatClose.addEventListener('click', () => {
+        chatModal.classList.remove('active');
       });
 
-      function showFallback() {
-        if (fallbackImage) {
-          fallbackImage.style.display = 'block';
-          video.style.display = 'none';
+      chatSubmit.addEventListener('click', sendMessage);
+      userInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+          e.preventDefault();
+          sendMessage();
         }
+      });
+
+      async function sendMessage() {
+        const query = userInput.value.trim();
+        if (!query) return;
+
+        addMessage(query, 'user');
+        userInput.value = '';
+        typingIndicator.style.display = 'block';
+        chatBody.scrollTop = chatBody.scrollHeight;
+
+        try {
+          const res = await fetch("https://k0jmry5lx4.execute-api.us-east-1.amazonaws.com/prod/invoke", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ input: query, sessionId: sessionId })
+          });
+
+          const data = await res.json();
+          addMessage(data.response || "I couldn't get a response. Please try again.", 'agent');
+        } catch (error) {
+          console.error("Error:", error);
+          addMessage("Sorry, there was an error processing your request.", 'agent');
+        } finally {
+          typingIndicator.style.display = 'none';
+        }
+      }
+
+      function addMessage(text, sender) {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('chat-message', sender === 'user' ? 'user-message' : 'agent-message');
+        messageDiv.textContent = text;
+        chatBody.appendChild(messageDiv);
+        chatBody.scrollTop = chatBody.scrollHeight;
       }
     });
   </script>
+
 </body>
 </html>
