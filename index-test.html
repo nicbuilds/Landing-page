@@ -779,7 +779,7 @@
     }
   </style>
 
-  <script>
+ <script>
     document.addEventListener("DOMContentLoaded", () => {
       const chatButton = document.getElementById('chatButton');
       const chatModal = document.getElementById('chatModal');
@@ -841,11 +841,19 @@
       function addMessage(text, sender) {
         const messageDiv = document.createElement('div');
         messageDiv.classList.add('chat-message', sender === 'user' ? 'user-message' : 'agent-message');
-        messageDiv.textContent = text;
+        
+        // Función para convertir URLs en enlaces
+        const linkify = (text) => {
+          const urlRegex = /(https?:\/\/[^\s]+)/g;
+          return text.replace(urlRegex, url => `<a href="${url}" target="_blank" rel="noopener noreferrer">${url}</a>`);
+        };
+        
+        // Usamos innerHTML en lugar de textContent para renderizar HTML
+        messageDiv.innerHTML = linkify(text);
         chatBody.appendChild(messageDiv);
         chatBody.scrollTop = chatBody.scrollHeight;
       }
     });
-  </script>
+</script>
 </body>
 </html>
