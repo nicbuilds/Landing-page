@@ -30,7 +30,6 @@
             max-width: 1200px;
             margin: 0 auto;
             display: flex;
-            justify-content: space-between;
             align-items: center;
             padding: 0 20px;
         }
@@ -42,6 +41,7 @@
             text-decoration: none;
             padding: 15px 0;
             white-space: nowrap;
+            margin-left: auto; /* Mueve el logo a la derecha */
         }
         
         .nav-menu {
@@ -49,6 +49,8 @@
             list-style: none;
             margin: 0;
             padding: 0;
+            justify-content: flex-start; /* Alinea las opciones a la izquierda */
+            flex-grow: 1; /* Permite que el menú ocupe el espacio disponible */
         }
         
         .nav-item {
@@ -270,7 +272,6 @@
     <!-- Barra de navegación -->
     <nav class="navbar">
         <div class="nav-container">
-            <a href="#" class="nav-logo">Justicia MX</a>
             <ul class="nav-menu">
                 <li class="nav-item"><a href="#" class="nav-link">Inicio</a></li>
                 <li class="nav-item"><a href="#candidatos" class="nav-link">Candidatos</a></li>
@@ -312,6 +313,7 @@
                     </div>
                 </li>
             </ul>
+            <a href="#" class="nav-logo">Justicia MX</a>
         </div>
     </nav>
 
