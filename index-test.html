@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,7 +23,6 @@
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌍</text></svg>"> 
   
   <style>
-}
     @font-face {
       font-family: 'Nasalization';
       src: url('https://fwdco.net/nasalization-rg.ttf') format('truetype');
@@ -153,8 +153,8 @@
       font-size: 8pt;
       line-height: 11pt;
     }
-    
-.elementor-shape {
+/* wave effect*/
+    .elementor-shape {
   position: absolute;
   width: 100%;
   overflow: hidden;
@@ -177,31 +177,31 @@
 }
 
   </style>
+  
 </head>
 <body class="bg-gray-50 text-gray-800">
-
   <!-- Header -->
-<header class="bg-[#8BD9B4] text-[#1B2B40] py-4 shadow-md sticky top-0 z-50">
-  <div class="container mx-auto px-4">
-    <!-- Mobile Version - Centered Logo and Menu -->
-    <div class="md:hidden flex flex-col items-center">
-      <div class="mb-3">
-        <a href="index.html">
-          <img src="IMG_5174.jpg" 
-               alt="Forward Consultants Network"
-               class="h-12 w-auto mx-auto">          
-        </a>
+  <header class="bg-white text-[#0F172A] py-4 shadow-md sticky top-0 z-50">
+    <div class="container mx-auto px-4">
+      <!-- Mobile Version - Centered Logo and Menu -->
+      <div class="md:hidden flex flex-col items-center">
+        <div class="mb-3">
+          <a href="index.html">
+            <img src="IMG_5174.jpg" 
+                 alt="Forward Consultants Network"
+                 class="h-12 w-auto mx-auto">          
+          </a>
+        </div>
+        <nav class="flex flex-wrap justify-center gap-3" aria-label="Main navigation">
+          <a href="#" class="hover:text-[#1B2B40] font-medium text-sm">Home</a>
+          <a href="#services" class="hover:text-[#1B2B40] font-medium text-sm">Services</a>
+          <a href="#industries" class="hover:text-[#1B2B40] font-medium text-sm">Industries</a>
+          <a href="#contact" class="hover:text-[#1B2B40] font-medium text-sm">Contact</a>
+          <a href="index-es.html" class="hover:text-[#1B2B40] font-medium text-sm">
+            <span class="fi fi-mx" aria-label="Español"></span>
+          </a>
+        </nav>
       </div>
-      <nav class="flex flex-wrap justify-center gap-3" aria-label="Main navigation">
-        <a href="#" class="hover:text-[#1B2B40] font-medium text-sm">Home</a>
-        <a href="#services" class="hover:text-[#1B2B40] font-medium text-sm">Services</a>
-        <a href="#industries" class="hover:text-[#1B2B40] font-medium text-sm">Industries</a>
-        <a href="#contact" class="hover:text-[#1B2B40] font-medium text-sm">Contact</a>
-        <a href="index-es.html" class="hover:text-[#1B2B40] font-medium text-sm">
-          <span class="fi fi-mx" aria-label="Español"></span>
-        </a>
-      </nav>
-    </div>
 
       <!-- Desktop Version - Left Logo, Right Menu -->
       <div class="hidden md:flex justify-between items-center">
@@ -225,38 +225,30 @@
     </div>
   </header>
 
-<!-- Hero Section with Wave Bottom -->
-<section class="hero-gradient text-white py-16 md:py-24 relative overflow-hidden">
-  <!-- Darkened Marine Aerial Background -->
-  <div class="absolute inset-0 z-0">
-    <img src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
-         alt="Aerial view of ocean" 
-         class="h-full w-full object-cover brightness-50">
-    <div class="absolute inset-0 bg-gradient-to-r from-[#0F172A]/90 via-[#0F172A]/70 to-[#0F172A]/30"></div>
+  <!-- Hero Section -->
+  <section class="hero-gradient text-white py-16 md:py-24 relative overflow-hidden">
+    <!-- Darkened Marine Aerial Background -->
+    <div class="absolute inset-0 z-0">
+      <img src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
+           alt="Aerial view of ocean" 
+           class="h-full w-full object-cover brightness-50">
+      <div class="absolute inset-0 bg-gradient-to-r from-[#0F172A]/90 via-[#0F172A]/70 to-[#0F172A]/30"></div>
+    </div>
+
     
-<div class="elementor-shape elementor-shape-bottom" data-negative="true">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none" style="height: 30px;">
-    <path class="elementor-shape-fill" d="M790.5,93.1c-59.3-5.3-116.8-18-192.6-50c-29.6-12.7-76.9-31-100.5-35.9
-      c-23.6-4.9-52.6-7.8-75.5-5.3c-10.2,1.1-22.6,1.4-50.1,7.4c-27.2,6.3-58.2,16.6-79.4,24.7
-      c-41.3,15.9-94.9,21.9-134,22.6C72,58.2,0,25.8,0,25.8V100h1000V65.3c0,0-51.5,19.4-106.2,25.7
-      C839.5,97,814.1,95.2,790.5,93.1z"></path>
-  </svg>
-</div>
-
-
-  <!-- Centered Content -->
-  <div class="container mx-auto px-4 relative z-10">
-    <div class="max-w-4xl mx-auto text-center">
-      <h1 class="big-heading mb-6">Environmental Compliance Experts in Mexico</h1>
-      <p class="text-xl mb-8">Navigating Mexico's environmental regulations with precision and expertise since 2017</p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="#contact" class="inline-block bg-white text-green-700 px-8 py-4 rounded-lg hover:bg-gray-100 transition font-bold shadow-lg">Get a Free Consultation</a>
-        <a href="#services" class="inline-block border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-green-600 transition font-bold">Our Services</a>
+    <!-- Centered Content -->
+    <div class="container mx-auto px-4 relative z-10">
+      <div class="max-w-4xl mx-auto text-center">
+        <h1 class="big-heading mb-6">Environmental Compliance Experts in Mexico</h1>
+        <p class="text-xl mb-8">Navigating Mexico's environmental regulations with precision and expertise since 2017</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="#contact" class="inline-block bg-white text-green-700 px-8 py-4 rounded-lg hover:bg-gray-100 transition font-bold shadow-lg">Get a Free Consultation</a>
+          <a href="#services" class="inline-block border-2 border-white text-white px-8 py-4 rounded-lg hover:bg-green-600 transition font-bold">Our Services</a>
+        </div>
       </div>
     </div>
-  </div>
 </section>
-  
+
   <!-- Trust Indicators -->
   <section class="bg-white py-8 shadow-sm">
     <div class="container mx-auto px-4">
@@ -290,6 +282,116 @@
       <a href="#industries" class="inline-block border-2 border-green-600 text-green-600 px-6 py-3 rounded hover:bg-green-50 transition font-medium">Our Industries</a>
     </div>
   </section>
+
+  <!-- After the "Navigate Environmental Regulations with Confidence" section -->
+<section class="mb-12">
+  <!-- Environmental Image Sequence Slider -->
+  <div class="relative w-full h-64 md:h-96 overflow-hidden">
+    <div class="absolute inset-0 flex transition-transform duration-700 ease-in-out" id="envSlider">
+      <!-- Image 1 - Solar Farm -->
+      <div class="flex-none w-full h-full">
+        <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
+             alt="Solar farm with renewable energy panels" 
+             class="w-full h-full object-cover brightness-75">
+        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+          <h3 class="text-white font-bold text-lg md:text-xl">Renewable Energy Solutions</h3>
+        </div>
+      </div>
+      
+      <!-- Image 2 - Water Testing -->
+      <div class="flex-none w-full h-full">
+        <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
+             alt="Scientist testing water quality" 
+             class="w-full h-full object-cover brightness-75">
+        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+          <h3 class="text-white font-bold text-lg md:text-xl">Water Quality Analysis</h3>
+        </div>
+      </div>
+      
+      <!-- Image 3 - Forest Conservation -->
+      <div class="flex-none w-full h-full">
+        <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
+             alt="Lush green forest conservation area" 
+             class="w-full h-full object-cover brightness-75">
+        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+          <h3 class="text-white font-bold text-lg md:text-xl">Ecosystem Preservation</h3>
+        </div>
+      </div>
+      
+      <!-- Image 4 - Wind Turbines -->
+      <div class="flex-none w-full h-full">
+        <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
+             alt="Wind turbines at sunset" 
+             class="w-full h-full object-cover brightness-75">
+        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
+          <h3 class="text-white font-bold text-lg md:text-xl">Sustainable Energy Projects</h3>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Navigation Dots -->
+    <div class="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10">
+      <button class="w-3 h-3 rounded-full bg-white/30 hover:bg-white/50 transition" onclick="goToSlide(0)"></button>
+      <button class="w-3 h-3 rounded-full bg-white/30 hover:bg-white/50 transition" onclick="goToSlide(1)"></button>
+      <button class="w-3 h-3 rounded-full bg-white/30 hover:bg-white/50 transition" onclick="goToSlide(2)"></button>
+      <button class="w-3 h-3 rounded-full bg-white/30 hover:bg-white/50 transition" onclick="goToSlide(3)"></button>
+    </div>
+    
+    <!-- Navigation Arrows -->
+    <button class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/30 hover:bg-white/50 text-white p-2 rounded-full transition z-10" onclick="prevSlide()">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+    <button class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/30 hover:bg-white/50 text-white p-2 rounded-full transition z-10" onclick="nextSlide()">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  </div>
+</section>
+
+<script>
+  let currentSlide = 0;
+  const totalSlides = 4;
+  const slider = document.getElementById('envSlider');
+  
+  function updateSlider() {
+    slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+    // Update active dot
+    document.querySelectorAll('#envSlider ~ div button').forEach((btn, index) => {
+      btn.classList.toggle('bg-white/80', index === currentSlide);
+      btn.classList.toggle('bg-white/30', index !== currentSlide);
+    });
+  }
+  
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % totalSlides;
+    updateSlider();
+  }
+  
+  function prevSlide() {
+    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+    updateSlider();
+  }
+  
+  function goToSlide(index) {
+    currentSlide = index;
+    updateSlider();
+  }
+  
+  // Auto-advance slides every 5 seconds
+  setInterval(nextSlide, 5000);
+  
+  // Initialize
+  updateSlider();
+</script>
+
+<style>
+  #envSlider ~ div button.bg-white/80 {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+  }
+</style>
 
      <!-- Services Section -->
   <section id="services" class="py-16 bg-gray-50">
@@ -495,8 +597,9 @@
     </div>
   </section>
 
-<!-- Testimonials Section -->
+   <!-- Testimonials Section -->
 <section class="py-16 relative overflow-hidden">
+  
   <!-- New coastal background image -->
   <div class="absolute inset-0 z-0">
     <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
@@ -862,7 +965,7 @@
     }
   </style>
 
- <script>
+  <script>
     document.addEventListener("DOMContentLoaded", () => {
       const chatButton = document.getElementById('chatButton');
       const chatModal = document.getElementById('chatModal');
@@ -924,27 +1027,11 @@
       function addMessage(text, sender) {
         const messageDiv = document.createElement('div');
         messageDiv.classList.add('chat-message', sender === 'user' ? 'user-message' : 'agent-message');
-        
-        // Función para convertir URLs en enlaces
-        const linkify = (text) => {
-          const whatsappRegex = /(https?:\/\/wa\.me\/[^\s]+)/g;
-          const urlRegex = /(https?:\/\/[^\s]+)/g;
-          
-          // Replace WhatsApp links first
-          text = text.replace(whatsappRegex, url => 
-            `<a href="${url}" target="_blank" rel="noopener noreferrer" style="color: #25D366; text-decoration: underline;">WhatsApp</a>`);
-          
-          // Then replace other URLs
-          return text.replace(urlRegex, url => 
-            `<a href="${url}" target="_blank" rel="noopener noreferrer" style="color: #0066cc; text-decoration: underline;">${url}</a>`);
-        };
-        
-        // Usamos innerHTML en lugar de textContent para renderizar HTML
-        messageDiv.innerHTML = linkify(text);
+        messageDiv.textContent = text;
         chatBody.appendChild(messageDiv);
         chatBody.scrollTop = chatBody.scrollHeight;
       }
     });
-</script>
+  </script>
 </body>
 </html>
