@@ -274,16 +274,6 @@
       </div>
     </div>
   </section>  
-  
-  <main class="container mx-auto px-4 py-12">
-    <section class="mb-12 text-center">
-    <h2 class="subline-section mb-4">NAVEGUE LAS REGULACIONES AMBIENTALES CON CONFIANZA</h2>
-    <p class="text-xl mb-6 max-w-3xl mx-auto">Ayudamos a empresas y desarrolladores a cumplir con las leyes ambientales de México mediante Evaluaciones de Impacto Ambiental, Informes Preventivos y Estudios de Riesgo expertos.</p>
-    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="#contact" class="inline-block bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700 transition font-medium">Obtener Consulta Gratuita</a>
-      <a href="#industries" class="inline-block border-2 border-green-600 text-green-600 px-6 py-3 rounded hover:bg-green-50 transition font-medium">Nuestras Industrias</a>
-    </div>
-  </section>
 
      <!-- Services Section -->
   <section id="services" class="py-16 bg-gray-50">
@@ -399,6 +389,75 @@
     </div>
   </section>
 
+  <!-- Reemplaza tu sección actual de "Navegar por las regulaciones ambientales" con esto: -->
+<section class="relative py-16 md:py-24 overflow-hidden">
+  <!-- Imágenes de fondo con ciclo automático -->
+  <div class="absolute inset-0 z-0">
+    <!-- Imagen 1 - Granja solar -->
+    <div class="absolute inset-0 transition-opacity duration-1000" id="bgImage1">
+      <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
+           alt="Granja solar" 
+           class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-black/60"></div> <!-- Superposición oscura -->
+    </div>
+    
+    <!-- Imagen 2 - Pruebas de agua -->
+    <div class="absolute inset-0 transition-opacity duration-1000 opacity-0" id="bgImage2">
+      <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
+           alt="Pruebas de agua" 
+           class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-black/60"></div> <!-- Superposición oscura -->
+    </div>
+    
+    <!-- Imagen 3 - Bosque -->
+    <div class="absolute inset-0 transition-opacity duration-1000 opacity-0" id="bgImage3">
+      <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
+           alt="Conservación forestal" 
+           class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-black/60"></div> <!-- Superposición oscura -->
+    </div>
+    
+    <!-- Imagen 4 - Turbinas eólicas -->
+    <div class="absolute inset-0 transition-opacity duration-1000 opacity-0" id="bgImage4">
+      <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
+           alt="Turbinas eólicas" 
+           class="w-full h-full object-cover">
+      <div class="absolute inset-0 bg-black/60"></div> <!-- Superposición oscura -->
+    </div>
+  </div>
+
+  <!-- Contenido superpuesto -->
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="max-w-3xl mx-auto text-center">
+      <h2 class="subline-section mb-4 text-white">Navega por las regulaciones ambientales con confianza</h2>
+      <p class="text-xl mb-6 text-white">Ayudamos a empresas y desarrolladores a cumplir con las leyes ambientales de México mediante Evaluaciones de Impacto Ambiental, Informes Preventivos y Estudios de Riesgo realizados por expertos.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="#contact" class="inline-block bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700 transition font-medium">Obtén una consulta gratuita</a>
+        <a href="#industries" class="inline-block border-2 border-green-600 text-white px-6 py-3 rounded hover:bg-green-600 hover:border-green-600 transition font-medium">Nuestros sectores</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  let currentBgImage = 1;
+  const totalBgImages = 4;
+  
+  function cycleBackgroundImages() {
+    // Oculta la imagen actual
+    document.getElementById(`bgImage${currentBgImage}`).classList.add('opacity-0');
+    
+    // Pasa a la siguiente imagen
+    currentBgImage = currentBgImage % totalBgImages + 1;
+    
+    // Muestra la nueva imagen
+    document.getElementById(`bgImage${currentBgImage}`).classList.remove('opacity-0');
+  }
+  
+  // Cambia la imagen cada 5 segundos
+  setInterval(cycleBackgroundImages, 5000);
+</script>
+  
    <!-- Industries Section -->
   <section id="industries" class="py-16 bg-white">
     <div class="container mx-auto px-4">
