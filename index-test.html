@@ -220,26 +220,23 @@
     </div>
   </header>
 
+<!-- Hero Section with Wave Bottom -->
 <section class="hero-gradient text-white py-16 md:py-24 relative overflow-hidden">
-  <!-- Darkened Marine Aerial Background with Wave Mask -->
-  <div class="absolute inset-0 z-0 overflow-hidden">
-    <!-- Background Image with Wave Clip Path -->
-    <div class="absolute inset-0" style="clip-path: url(#waveClipPath);">
-      <img src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
-           alt="Aerial view of ocean" 
-           class="h-full w-full object-cover brightness-50">
-    </div>
-    <!-- Gradient Overlay -->
+  <!-- Darkened Marine Aerial Background -->
+  <div class="absolute inset-0 z-0">
+    <img src="https://images.unsplash.com/photo-1505118380757-91f5f5632de0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
+         alt="Aerial view of ocean" 
+         class="h-full w-full object-cover brightness-50">
     <div class="absolute inset-0 bg-gradient-to-r from-[#0F172A]/90 via-[#0F172A]/70 to-[#0F172A]/30"></div>
     
-    <!-- SVG Wave Definition (hidden) -->
-    <svg width="0" height="0" class="absolute">
-      <defs>
-        <clipPath id="waveClipPath" clipPathUnits="objectBoundingBox">
-          <path d="M0,0.8 C0.1,0.8 0.2,0.9 0.3,0.8 C0.4,0.7 0.5,0.7 0.6,0.8 C0.7,0.9 0.8,0.8 1,0.8 L1,1 L0,1 Z"></path>
-        </clipPath>
-      </defs>
-    </svg>
+    <!-- Wave Bottom Effect -->
+    <div class="absolute bottom-0 left-0 w-full overflow-hidden" style="transform: rotate(180deg);">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none" class="w-full h-20">
+        <path fill="#0F172A" d="M790.5,93.1c-59.3-5.3-116.8-18-192.6-50c-29.6-12.7-76.9-31-100.5-35.9c-23.6-4.9-52.6-7.8-75.5-5.3
+        c-10.2,1.1-22.6,1.4-50.1,7.4c-27.2,6.3-58.2,16.6-79.4,24.7c-41.3,15.9-94.9,21.9-134,22.6C72,58.2,0,25.8,0,25.8V100h1000V65.3
+        c0,0-51.5,19.4-106.2,25.7C839.5,97,814.1,95.2,790.5,93.1z"></path>
+      </svg>
+    </div>
   </div>
   
   <!-- Centered Content -->
