@@ -153,7 +153,7 @@
       font-size: 8pt;
       line-height: 11pt;
     }
-/* wave effect*/
+/* wave effect success stories*/
     .elementor-shape {
   position: absolute;
   width: 100%;
@@ -176,6 +176,35 @@
   fill: #fff; /* Adjust to match your background color */
 }
 
+   /* <!-- navigate section images --> */
+  .elementor-shape {
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    z-index: 5;
+  }
+
+  .elementor-shape-top {
+    top: 0;
+    left: 0;
+    transform: rotate(180deg);
+  }
+
+  .elementor-shape-bottom {
+    bottom: 0;
+    left: 0;
+  }
+
+  .elementor-shape svg {
+    display: block;
+    width: 100%;
+    height: 30px;
+  }
+
+  .elementor-shape-fill {
+    fill: #fff; /* Match your background color */
+  }
   </style>
   
 </head>
@@ -275,6 +304,16 @@
   
 <!-- Replace your current Navigate Environmental Regulations section with this: -->
 <section class="relative py-16 md:py-24 overflow-hidden">
+  <!-- Top Wave Effect -->
+  <div class="elementor-shape elementor-shape-top" data-negative="false">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none" style="height: 30px;">
+      <path class="elementor-shape-fill" d="M790.5,93.1c-59.3-5.3-116.8-18-192.6-50c-29.6-12.7-76.9-31-100.5-35.9
+        c-23.6-4.9-52.6-7.8-75.5-5.3c-10.2,1.1-22.6,1.4-50.1,7.4c-27.2,6.3-58.2,16.6-79.4,24.7
+        c-41.3,15.9-94.9,21.9-134,22.6C72,58.2,0,25.8,0,25.8V100h1000V65.3c0,0-51.5,19.4-106.2,25.7
+        C839.5,97,814.1,95.2,790.5,93.1z"></path>
+    </svg>
+  </div>
+
   <!-- Background Images with Auto-Cycle -->
   <div class="absolute inset-0 z-0">
     <!-- Image 1 - Solar Farm -->
@@ -308,6 +347,16 @@
            class="w-full h-full object-cover">
       <div class="absolute inset-0 bg-black/60"></div> <!-- Dark overlay -->
     </div>
+  </div>
+
+  <!-- Bottom Wave Effect -->
+  <div class="elementor-shape elementor-shape-bottom" data-negative="true">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none" style="height: 30px;">
+      <path class="elementor-shape-fill" d="M790.5,93.1c-59.3-5.3-116.8-18-192.6-50c-29.6-12.7-76.9-31-100.5-35.9
+        c-23.6-4.9-52.6-7.8-75.5-5.3c-10.2,1.1-22.6,1.4-50.1,7.4c-27.2,6.3-58.2,16.6-79.4,24.7
+        c-41.3,15.9-94.9,21.9-134,22.6C72,58.2,0,25.8,0,25.8V100h1000V65.3c0,0-51.5,19.4-106.2,25.7
+        C839.5,97,814.1,95.2,790.5,93.1z"></path>
+    </svg>
   </div>
 
   <!-- Content Overlay -->
