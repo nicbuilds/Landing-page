@@ -283,115 +283,56 @@
     </div>
   </section>
 
-  <!-- After the "Navigate Environmental Regulations with Confidence" section -->
+    <!-- After the "Navigate Environmental Regulations with Confidence" section -->
 <section class="mb-12">
-  <!-- Environmental Image Sequence Slider -->
+  <!-- Environmental Image Sequence -->
   <div class="relative w-full h-64 md:h-96 overflow-hidden">
-    <div class="absolute inset-0 flex transition-transform duration-700 ease-in-out" id="envSlider">
-      <!-- Image 1 - Solar Farm -->
-      <div class="flex-none w-full h-full">
-        <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
-             alt="Solar farm with renewable energy panels" 
-             class="w-full h-full object-cover brightness-75">
-        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
-          <h3 class="text-white font-bold text-lg md:text-xl">Renewable Energy Solutions</h3>
-        </div>
-      </div>
-      
-      <!-- Image 2 - Water Testing -->
-      <div class="flex-none w-full h-full">
-        <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
-             alt="Scientist testing water quality" 
-             class="w-full h-full object-cover brightness-75">
-        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
-          <h3 class="text-white font-bold text-lg md:text-xl">Water Quality Analysis</h3>
-        </div>
-      </div>
-      
-      <!-- Image 3 - Forest Conservation -->
-      <div class="flex-none w-full h-full">
-        <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
-             alt="Lush green forest conservation area" 
-             class="w-full h-full object-cover brightness-75">
-        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
-          <h3 class="text-white font-bold text-lg md:text-xl">Ecosystem Preservation</h3>
-        </div>
-      </div>
-      
-      <!-- Image 4 - Wind Turbines -->
-      <div class="flex-none w-full h-full">
-        <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
-             alt="Wind turbines at sunset" 
-             class="w-full h-full object-cover brightness-75">
-        <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-6">
-          <h3 class="text-white font-bold text-lg md:text-xl">Sustainable Energy Projects</h3>
-        </div>
-      </div>
+    <!-- All images stacked with only one visible at a time -->
+    <div class="absolute inset-0">
+      <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
+           alt="Solar farm with renewable energy panels" 
+           class="w-full h-full object-cover brightness-75 transition-opacity duration-1000"
+           id="envImage1">
     </div>
-    
-    <!-- Navigation Dots -->
-    <div class="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-10">
-      <button class="w-3 h-3 rounded-full bg-white/30 hover:bg-white/50 transition" onclick="goToSlide(0)"></button>
-      <button class="w-3 h-3 rounded-full bg-white/30 hover:bg-white/50 transition" onclick="goToSlide(1)"></button>
-      <button class="w-3 h-3 rounded-full bg-white/30 hover:bg-white/50 transition" onclick="goToSlide(2)"></button>
-      <button class="w-3 h-3 rounded-full bg-white/30 hover:bg-white/50 transition" onclick="goToSlide(3)"></button>
+    <div class="absolute inset-0">
+      <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
+           alt="Scientist testing water quality" 
+           class="w-full h-full object-cover brightness-75 transition-opacity duration-1000 opacity-0"
+           id="envImage2">
     </div>
-    
-    <!-- Navigation Arrows -->
-    <button class="absolute left-4 top-1/2 -translate-y-1/2 bg-white/30 hover:bg-white/50 text-white p-2 rounded-full transition z-10" onclick="prevSlide()">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-      </svg>
-    </button>
-    <button class="absolute right-4 top-1/2 -translate-y-1/2 bg-white/30 hover:bg-white/50 text-white p-2 rounded-full transition z-10" onclick="nextSlide()">
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-      </svg>
-    </button>
+    <div class="absolute inset-0">
+      <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
+           alt="Lush green forest conservation area" 
+           class="w-full h-full object-cover brightness-75 transition-opacity duration-1000 opacity-0"
+           id="envImage3">
+    </div>
+    <div class="absolute inset-0">
+      <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
+           alt="Wind turbines at sunset" 
+           class="w-full h-full object-cover brightness-75 transition-opacity duration-1000 opacity-0"
+           id="envImage4">
+    </div>
   </div>
 </section>
 
 <script>
-  let currentSlide = 0;
-  const totalSlides = 4;
-  const slider = document.getElementById('envSlider');
+  let currentImage = 1;
+  const totalImages = 4;
   
-  function updateSlider() {
-    slider.style.transform = `translateX(-${currentSlide * 100}%)`;
-    // Update active dot
-    document.querySelectorAll('#envSlider ~ div button').forEach((btn, index) => {
-      btn.classList.toggle('bg-white/80', index === currentSlide);
-      btn.classList.toggle('bg-white/30', index !== currentSlide);
-    });
+  function cycleImages() {
+    // Hide current image
+    document.getElementById(`envImage${currentImage}`).classList.add('opacity-0');
+    
+    // Move to next image
+    currentImage = currentImage % totalImages + 1;
+    
+    // Show new image
+    document.getElementById(`envImage${currentImage}`).classList.remove('opacity-0');
   }
   
-  function nextSlide() {
-    currentSlide = (currentSlide + 1) % totalSlides;
-    updateSlider();
-  }
-  
-  function prevSlide() {
-    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-    updateSlider();
-  }
-  
-  function goToSlide(index) {
-    currentSlide = index;
-    updateSlider();
-  }
-  
-  // Auto-advance slides every 5 seconds
-  setInterval(nextSlide, 5000);
-  
-  // Initialize
-  updateSlider();
+  // Change image every 5 seconds
+  setInterval(cycleImages, 5000);
 </script>
-
-<style>
-  #envSlider ~ div button.bg-white/80 {
-    background-color: rgba(255, 255, 255, 0.8) !important;
-  }
-</style>
 
      <!-- Services Section -->
   <section id="services" class="py-16 bg-gray-50">
