@@ -153,7 +153,7 @@
       font-size: 8pt;
       line-height: 11pt;
     }
-/* wave effect success stories*/
+/* wave effect*/
     .elementor-shape {
   position: absolute;
   width: 100%;
@@ -175,7 +175,35 @@
 .elementor-shape-fill {
   fill: #fff; /* Adjust to match your background color */
 }
+    /*<!-navigate whatever waves-->*/
+  .elementor-shape {
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    z-index: 5;
+  }
 
+  .elementor-shape-top {
+    top: 0;
+    left: 0;
+    transform: rotate(180deg);
+  }
+
+  .elementor-shape-bottom {
+    bottom: 0;
+    left: 0;
+  }
+
+  .elementor-shape svg {
+    display: block;
+    width: 100%;
+    height: 30px;
+  }
+
+  .elementor-shape-fill {
+    fill: #fff; /* Match your background color */
+  }
   </style>
   
 </head>
@@ -274,15 +302,25 @@
   </section>  
   
 <!-- Replace your current Navigate Environmental Regulations section with this: -->
-<section class="relative h-screen min-h-[600px] overflow-hidden">
-  <!-- Background Images with Auto-Cycle (fixed position) -->
-  <div class="fixed inset-0 z-0">
+<section class="relative py-16 md:py-24 overflow-hidden">
+  <!-- Top Wave Effect -->
+  <div class="elementor-shape elementor-shape-top" data-negative="false">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none" style="height: 30px;">
+      <path class="elementor-shape-fill" d="M790.5,93.1c-59.3-5.3-116.8-18-192.6-50c-29.6-12.7-76.9-31-100.5-35.9
+        c-23.6-4.9-52.6-7.8-75.5-5.3c-10.2,1.1-22.6,1.4-50.1,7.4c-27.2,6.3-58.2,16.6-79.4,24.7
+        c-41.3,15.9-94.9,21.9-134,22.6C72,58.2,0,25.8,0,25.8V100h1000V65.3c0,0-51.5,19.4-106.2,25.7
+        C839.5,97,814.1,95.2,790.5,93.1z"></path>
+    </svg>
+  </div>
+
+  <!-- Background Images with Auto-Cycle -->
+  <div class="absolute inset-0 z-0">
     <!-- Image 1 - Solar Farm -->
     <div class="absolute inset-0 transition-opacity duration-1000" id="bgImage1">
       <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
            alt="Solar farm" 
            class="w-full h-full object-cover">
-      <div class="absolute inset-0 bg-black/60"></div>
+      <div class="absolute inset-0 bg-black/60"></div> <!-- Dark overlay -->
     </div>
     
     <!-- Image 2 - Water Testing -->
@@ -290,7 +328,7 @@
       <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
            alt="Water testing" 
            class="w-full h-full object-cover">
-      <div class="absolute inset-0 bg-black/60"></div>
+      <div class="absolute inset-0 bg-black/60"></div> <!-- Dark overlay -->
     </div>
     
     <!-- Image 3 - Forest -->
@@ -298,7 +336,7 @@
       <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
            alt="Forest conservation" 
            class="w-full h-full object-cover">
-      <div class="absolute inset-0 bg-black/60"></div>
+      <div class="absolute inset-0 bg-black/60"></div> <!-- Dark overlay -->
     </div>
     
     <!-- Image 4 - Wind Turbines -->
@@ -306,13 +344,23 @@
       <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
            alt="Wind turbines" 
            class="w-full h-full object-cover">
-      <div class="absolute inset-0 bg-black/60"></div>
+      <div class="absolute inset-0 bg-black/60"></div> <!-- Dark overlay -->
     </div>
   </div>
 
-  <!-- Content Container (scrolls normally) -->
-  <div class="relative z-10 h-full flex items-center justify-center">
-    <div class="container mx-auto px-4 text-center transform translate-y-0 transition-transform duration-300">
+  <!-- Bottom Wave Effect -->
+  <div class="elementor-shape elementor-shape-bottom" data-negative="true">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none" style="height: 30px;">
+      <path class="elementor-shape-fill" d="M790.5,93.1c-59.3-5.3-116.8-18-192.6-50c-29.6-12.7-76.9-31-100.5-35.9
+        c-23.6-4.9-52.6-7.8-75.5-5.3c-10.2,1.1-22.6,1.4-50.1,7.4c-27.2,6.3-58.2,16.6-79.4,24.7
+        c-41.3,15.9-94.9,21.9-134,22.6C72,58.2,0,25.8,0,25.8V100h1000V65.3c0,0-51.5,19.4-106.2,25.7
+        C839.5,97,814.1,95.2,790.5,93.1z"></path>
+    </svg>
+  </div>
+
+  <!-- Content Overlay -->
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="max-w-3xl mx-auto text-center">
       <h2 class="subline-section mb-4 text-white">Navigate Environmental Regulations with Confidence</h2>
       <p class="text-xl mb-6 text-white">We help businesses and developers comply with Mexico's environmental laws through expert Environmental Impact Assessments, Preventive Reports, and Risk Studies.</p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
@@ -321,93 +369,27 @@
       </div>
     </div>
   </div>
-
-  <!-- Wave Effects -->
-  <div class="elementor-shape elementor-shape-top">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
-      <path class="elementor-shape-fill" d="M790.5,93.1c-59.3-5.3-116.8-18-192.6-50c-29.6-12.7-76.9-31-100.5-35.9
-        c-23.6-4.9-52.6-7.8-75.5-5.3c-10.2,1.1-22.6,1.4-50.1,7.4c-27.2,6.3-58.2,16.6-79.4,24.7
-        c-41.3,15.9-94.9,21.9-134,22.6C72,58.2,0,25.8,0,25.8V100h1000V65.3c0,0-51.5,19.4-106.2,25.7
-        C839.5,97,814.1,95.2,790.5,93.1z"></path>
-    </svg>
-  </div>
-  <div class="elementor-shape elementor-shape-bottom">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
-      <path class="elementor-shape-fill" d="M790.5,93.1c-59.3-5.3-116.8-18-192.6-50c-29.6-12.7-76.9-31-100.5-35.9
-        c-23.6-4.9-52.6-7.8-75.5-5.3c-10.2,1.1-22.6,1.4-50.1,7.4c-27.2,6.3-58.2,16.6-79.4,24.7
-        c-41.3,15.9-94.9,21.9-134,22.6C72,58.2,0,25.8,0,25.8V100h1000V65.3c0,0-51.5,19.4-106.2,25.7
-        C839.5,97,814.1,95.2,790.5,93.1z"></path>
-    </svg>
-  </div>
 </section>
 
-<style>
-  /* Fixed background styles */
-  .fixed {
-    position: fixed;
-    will-change: transform;
-  }
-  
-  /* Section sizing */
-  .h-screen {
-    height: 100vh;
-  }
-  
-  .min-h-\[600px\] {
-    min-height: 600px;
-  }
-  
-  /* Wave effects */
-  .elementor-shape {
-    position: absolute;
-    width: 100%;
-    overflow: hidden;
-    line-height: 0;
-    z-index: 5;
-  }
-
-  .elementor-shape-top {
-    top: 0;
-    left: 0;
-    transform: rotate(180deg);
-  }
-
-  .elementor-shape-bottom {
-    bottom: 0;
-    left: 0;
-  }
-
-  .elementor-shape svg {
-    display: block;
-    width: 100%;
-    height: 30px;
-  }
-
-  .elementor-shape-fill {
-    fill: #fff;
-  }
-</style>
-
 <script>
-  // Image cycling
   let currentBgImage = 1;
   const totalBgImages = 4;
   
   function cycleBackgroundImages() {
+    // Hide current image
     document.getElementById(`bgImage${currentBgImage}`).classList.add('opacity-0');
+    
+    // Move to next image
     currentBgImage = currentBgImage % totalBgImages + 1;
+    
+    // Show new image
     document.getElementById(`bgImage${currentBgImage}`).classList.remove('opacity-0');
   }
-  setInterval(cycleBackgroundImages, 5000);
-
-  // Optional: Add parallax effect to content
-  document.addEventListener('scroll', function() {
-    const content = document.querySelector('.translate-y-0');
-    const scrollPosition = window.scrollY;
-    content.style.transform = `translateY(${scrollPosition * 0.5}px)`;
-  });
-</script>
   
+  // Change image every 5 seconds
+  setInterval(cycleBackgroundImages, 5000);
+</script>
+
      <!-- Services Section -->
   <section id="services" class="py-16 bg-gray-50">
     <div class="container mx-auto px-4">
