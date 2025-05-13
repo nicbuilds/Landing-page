@@ -11,6 +11,10 @@
   <meta property="og:type" content="website">
   <title>Environmental Consulting Services | Forward Consultants Network</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <!-- Flag Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/css/flag-icons.min.css">
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- Google Fonts - Poppins -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   <!-- Nasalization Font -->
@@ -173,7 +177,8 @@
           <a href="https://fwdco.net/index.html#services" class="hover:text-[#14B8A6] font-medium text-sm md:text-base">Services</a>
           <a href="https://fwdco.net/index.html#industries" class="hover:text-[#14B8A6] font-medium text-sm md:text-base">Industries</a>
           <a href="https://fwdco.net/index.html#contact" class="hover:text-[#14B8A6] font-medium text-sm md:text-base">Contact</a>
-          <a href="index-es.html" class="hover:underline font-medium">Español</a>
+          <a href="index-es.html" class="hover:text-[#1B2B40] font-medium">
+            <span class="fi fi-mx" aria-label="Español"></span>
         </nav>
       </div>
     </div>
@@ -383,5 +388,279 @@
       </div>
     </div>
   </footer>
+
+   <!-- Botones flotantes -->
+  <div class="call-button" id="callButton">
+    <a href="tel:+529997394656" class="flex items-center justify-center w-full h-full">
+      <i class="fas fa-phone text-white text-xl"></i>
+    </a>
+  </div>
+
+  <div class="chat-modal" id="chatModal">
+    <div class="chat-header">
+      <span>Environmental Compliance Assistant</span>
+      <span class="chat-close" id="chatClose">&times;</span>
+    </div>
+    <div class="chat-body" id="chatBody">
+      <div class="chat-message agent-message">
+        Hello! I'm your environmental compliance assistant. How can I help you with SEMARNAT permits, impact assessments, or other regulatory questions today?
+      </div>
+    </div>
+    <div class="chat-input-area">
+      <textarea class="chat-input" id="userInput" placeholder="Ask about environmental regulations..." rows="2"></textarea>
+      <button class="chat-submit" id="chatSubmit">Send</button>
+    </div>
+    <div class="typing-indicator" id="typingIndicator">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+
+  <div class="chat-button" id="chatButton">
+    <i class="fas fa-comment-dots text-white text-xl"></i>
+  </div>
+
+  <style>
+    /* Estilos para el botón de llamada */
+    .call-button {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background-color: #3b82f6; /* Azul */
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .call-button:hover {
+      background-color: #2563eb; /* Azul más oscuro al hover */
+      transform: scale(1.05);
+    }
+
+    /* Estilos para el chat */
+    .chat-button {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background-color: #059669;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .chat-button:hover {
+      background-color: #047857;
+      transform: scale(1.05);
+    }
+
+    .chat-modal {
+      position: fixed;
+      bottom: 100px;
+      right: 30px;
+      width: 350px;
+      max-height: 500px;
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      z-index: 1001;
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid #e5e7eb;
+    }
+
+    .chat-modal.active {
+      display: flex;
+    }
+
+    .chat-header {
+      background-color: #059669;
+      color: white;
+      padding: 15px;
+      font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .chat-close {
+      cursor: pointer;
+      font-size: 20px;
+    }
+
+    .chat-body {
+      flex: 1;
+      padding: 15px;
+      overflow-y: auto;
+      background-color: #f9fafb;
+    }
+
+    .chat-message {
+      margin-bottom: 12px;
+      max-width: 80%;
+      padding: 10px 14px;
+      border-radius: 18px;
+      line-height: 1.4;
+      font-size: 14px;
+    }
+
+    .user-message {
+      background-color: #d1fae5;
+      color: #065f46;
+      margin-left: auto;
+      border-bottom-right-radius: 4px;
+    }
+
+    .agent-message {
+      background-color: white;
+      color: #1f2937;
+      margin-right: auto;
+      border-bottom-left-radius: 4px;
+      border: 1px solid #e5e7eb;
+    }
+
+    .chat-input-area {
+      padding: 12px;
+      border-top: 1px solid #e5e7eb;
+      background-color: white;
+    }
+
+    .chat-input {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      resize: none;
+      font-family: sans-serif;
+      margin-bottom: 8px;
+    }
+
+    .chat-submit {
+      background-color: #059669;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      width: 100%;
+    }
+
+    .chat-submit:hover {
+      background-color: #047857;
+    }
+
+    .typing-indicator {
+      display: none;
+      padding: 10px 14px;
+      background-color: white;
+      border-radius: 18px;
+      border: 1px solid #e5e7eb;
+      margin-bottom: 12px;
+      width: fit-content;
+    }
+
+    .typing-indicator span {
+      height: 8px;
+      width: 8px;
+      background-color: #6b7280;
+      border-radius: 50%;
+      display: inline-block;
+      margin: 0 2px;
+      animation: typing 1s infinite ease-in-out;
+    }
+
+    .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+    .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes typing {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
+    }
+  </style>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const chatButton = document.getElementById('chatButton');
+      const chatModal = document.getElementById('chatModal');
+      const chatClose = document.getElementById('chatClose');
+      const chatBody = document.getElementById('chatBody');
+      const userInput = document.getElementById('userInput');
+      const chatSubmit = document.getElementById('chatSubmit');
+      const typingIndicator = document.getElementById('typingIndicator');
+
+      // Generate and persist sessionId
+      let sessionId = localStorage.getItem("bedrockSessionId");
+      if (!sessionId) {
+        sessionId = crypto.randomUUID();
+        localStorage.setItem("bedrockSessionId", sessionId);
+      }
+
+      chatButton.addEventListener('click', () => {
+        chatModal.classList.toggle('active');
+      });
+
+      chatClose.addEventListener('click', () => {
+        chatModal.classList.remove('active');
+      });
+
+      chatSubmit.addEventListener('click', sendMessage);
+      userInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter' && !e.shiftKey) {
+          e.preventDefault();
+          sendMessage();
+        }
+      });
+
+      async function sendMessage() {
+        const query = userInput.value.trim();
+        if (!query) return;
+
+        addMessage(query, 'user');
+        userInput.value = '';
+        typingIndicator.style.display = 'block';
+        chatBody.scrollTop = chatBody.scrollHeight;
+
+        try {
+          const res = await fetch("https://k0jmry5lx4.execute-api.us-east-1.amazonaws.com/prod/invoke", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ input: query, sessionId: sessionId })
+          });
+
+          const data = await res.json();
+          addMessage(data.response || "I couldn't get a response. Please try again.", 'agent');
+        } catch (error) {
+          console.error("Error:", error);
+          addMessage("Sorry, there was an error processing your request.", 'agent');
+        } finally {
+          typingIndicator.style.display = 'none';
+        }
+      }
+
+      function addMessage(text, sender) {
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('chat-message', sender === 'user' ? 'user-message' : 'agent-message');
+        messageDiv.textContent = text;
+        chatBody.appendChild(messageDiv);
+        chatBody.scrollTop = chatBody.scrollHeight;
+      }
+    });
+  </script>
 </body>
 </html>
