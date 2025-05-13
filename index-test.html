@@ -181,7 +181,28 @@
   .elementor-shape-fill {
     fill: #fff; /* Match your background color */
   }
-</style>
+    /* Add this to your existing style section */
+.parallax-wrapper {
+  height: 100%;
+  perspective: 1px;
+  transform-style: preserve-3d;
+  z-index: -1;
+}
+
+.parallax-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: translateZ(-1px) scale(2);
+  z-index: -1;
+}
+
+/* Ensure content stays in normal document flow */
+.container.mx-auto {
+  transform: translateZ(0);
+}
   </style>
   
 </head>
@@ -404,7 +425,7 @@
   </section>
 
   
-<!-- Replace your current Navigate Environmental Regulations section with this: -->
+<!-- Replace the current Navigate Environmental Regulations section with this: -->
 <section class="relative py-16 md:py-24 overflow-hidden">
   <!-- Top Wave Effect -->
   <div class="elementor-shape elementor-shape-top" data-negative="false">
@@ -415,42 +436,46 @@
         C839.5,97,814.1,95.2,790.5,93.1z"></path>
     </svg>
   </div>
-  <!-- Background Images with Auto-Cycle -->
-  <div class="absolute inset-0 z-0">
-    <!-- Image 1 - Solar Farm -->
-    <div class="absolute inset-0 transition-opacity duration-1000" id="bgImage1">
-      <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
-           alt="Solar farm" 
-           class="w-full h-full object-cover">
-      <div class="absolute inset-0 bg-black/60"></div> <!-- Dark overlay -->
-    </div>
-    
-    <!-- Image 2 - Water Testing -->
-    <div class="absolute inset-0 transition-opacity duration-1000 opacity-0" id="bgImage2">
-      <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
-           alt="Water testing" 
-           class="w-full h-full object-cover">
-      <div class="absolute inset-0 bg-black/60"></div> <!-- Dark overlay -->
-    </div>
-    
-    <!-- Image 3 - Forest -->
-    <div class="absolute inset-0 transition-opacity duration-1000 opacity-0" id="bgImage3">
-      <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
-           alt="Forest conservation" 
-           class="w-full h-full object-cover">
-      <div class="absolute inset-0 bg-black/60"></div> <!-- Dark overlay -->
-    </div>
-    
-    <!-- Image 4 - Wind Turbines -->
-    <div class="absolute inset-0 transition-opacity duration-1000 opacity-0" id="bgImage4">
-      <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
-           alt="Wind turbines" 
-           class="w-full h-full object-cover">
-      <div class="absolute inset-0 bg-black/60"></div> <!-- Dark overlay -->
+  
+  <!-- Parallax Wrapper -->
+  <div class="parallax-wrapper absolute inset-0 overflow-hidden">
+    <!-- Background Images with Auto-Cycle -->
+    <div class="parallax-background absolute inset-0">
+      <!-- Image 1 - Solar Farm -->
+      <div class="absolute inset-0 transition-opacity duration-1000" id="bgImage1">
+        <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
+             alt="Solar farm" 
+             class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/60"></div>
+      </div>
+      
+      <!-- Image 2 - Water Testing -->
+      <div class="absolute inset-0 transition-opacity duration-1000 opacity-0" id="bgImage2">
+        <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
+             alt="Water testing" 
+             class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/60"></div>
+      </div>
+      
+      <!-- Image 3 - Forest -->
+      <div class="absolute inset-0 transition-opacity duration-1000 opacity-0" id="bgImage3">
+        <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
+             alt="Forest conservation" 
+             class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/60"></div>
+      </div>
+      
+      <!-- Image 4 - Wind Turbines -->
+      <div class="absolute inset-0 transition-opacity duration-1000 opacity-0" id="bgImage4">
+        <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
+             alt="Wind turbines" 
+             class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/60"></div>
+      </div>
     </div>
   </div>
 
-    <!-- Bottom Wave Effect -->
+  <!-- Bottom Wave Effect -->
   <div class="elementor-shape elementor-shape-bottom" data-negative="true">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none" style="height: 30px;">
       <path class="elementor-shape-fill" d="M790.5,93.1c-59.3-5.3-116.8-18-192.6-50c-29.6-12.7-76.9-31-100.5-35.9
@@ -490,6 +515,35 @@
   
   // Change image every 5 seconds
   setInterval(cycleBackgroundImages, 5000);
+
+  // Add this to your existing script section
+document.addEventListener('DOMContentLoaded', function() {
+  // Only apply parallax to this specific section
+  const parallaxSection = document.querySelector('.parallax-wrapper');
+  
+  if (parallaxSection) {
+    window.addEventListener('scroll', function() {
+      const scrollPosition = window.pageYOffset;
+      const parallaxSpeed = 0.5;
+      const offset = scrollPosition * parallaxSpeed;
+      
+      const background = parallaxSection.querySelector('.parallax-background');
+      background.style.transform = `translateZ(-1px) scale(2) translateY(${offset}px)`;
+    });
+  }
+  
+  // Keep your existing background cycling code
+  let currentBgImage = 1;
+  const totalBgImages = 4;
+  
+  function cycleBackgroundImages() {
+    document.getElementById(`bgImage${currentBgImage}`).classList.add('opacity-0');
+    currentBgImage = currentBgImage % totalBgImages + 1;
+    document.getElementById(`bgImage${currentBgImage}`).classList.remove('opacity-0');
+  }
+  
+  setInterval(cycleBackgroundImages, 5000);
+});
 </script>
   
    <!-- Industries Section -->
