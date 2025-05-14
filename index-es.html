@@ -179,6 +179,28 @@
 .elementor-shape-fill {
   fill: #fff; /* Adjust to match your background color */
 }
+
+  /* Add this to your existing style section */
+.parallax-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.parallax-bg img {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translateY(var(--parallax-offset));
+  will-change: transform;
+  transition: transform 0.1s ease-out;
+}
   </style>
   
 </head>
@@ -389,72 +411,118 @@
     </div>
   </section>
 
-  <!-- Reemplaza tu sección actual de "Navegar por las regulaciones ambientales" con esto: -->
-<section class="relative py-16 md:py-24 overflow-hidden">
-  <!-- Imágenes de fondo con ciclo automático -->
-  <div class="absolute inset-0 z-0">
-    <!-- Imagen 1 - Granja solar -->
-    <div class="absolute inset-0 transition-opacity duration-1000" id="bgImage1">
-      <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
-           alt="Granja solar" 
-           class="w-full h-full object-cover">
-      <div class="absolute inset-0 bg-black/60"></div> <!-- Superposición oscura -->
-    </div>
-    
-    <!-- Imagen 2 - Pruebas de agua -->
-    <div class="absolute inset-0 transition-opacity duration-1000 opacity-0" id="bgImage2">
-      <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
-           alt="Pruebas de agua" 
-           class="w-full h-full object-cover">
-      <div class="absolute inset-0 bg-black/60"></div> <!-- Superposición oscura -->
-    </div>
-    
-    <!-- Imagen 3 - Bosque -->
-    <div class="absolute inset-0 transition-opacity duration-1000 opacity-0" id="bgImage3">
-      <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
-           alt="Conservación forestal" 
-           class="w-full h-full object-cover">
-      <div class="absolute inset-0 bg-black/60"></div> <!-- Superposición oscura -->
-    </div>
-    
-    <!-- Imagen 4 - Turbinas eólicas -->
-    <div class="absolute inset-0 transition-opacity duration-1000 opacity-0" id="bgImage4">
-      <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
-           alt="Turbinas eólicas" 
-           class="w-full h-full object-cover">
-      <div class="absolute inset-0 bg-black/60"></div> <!-- Superposición oscura -->
+<!-- Sección de Navegación de Regulaciones Ambientales con Efecto Parallax -->
+<section class="relative py-16 md:py-24 overflow-hidden h-[500px]"> <!-- Altura fija añadida -->
+  
+  <!-- Contenedor de Fondo con Parallax -->
+  <div class="parallax-bg absolute inset-0 overflow-hidden">
+    <!-- Imágenes de fondo con ciclo automático -->
+    <div class="absolute inset-0">
+      <!-- Imagen 1 - Planta Solar -->
+      <div class="absolute inset-0 transition-opacity duration-1000" id="bgImage1">
+        <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
+             alt="Planta solar" 
+             class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/60"></div>
+      </div>
+      
+      <!-- Otras imágenes se mantienen igual -->
+      <!-- Imagen 2 - Pruebas de Agua -->
+      <div class="absolute inset-0 transition-opacity duration-1000 opacity-0" id="bgImage2">
+        <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
+             alt="Pruebas de agua" 
+             class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/60"></div>
+      </div>
+      
+      <!-- Imagen 3 - Bosque -->
+      <div class="absolute inset-0 transition-opacity duration-1000 opacity-0" id="bgImage3">
+        <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
+             alt="Conservación forestal" 
+             class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/60"></div>
+      </div>
+      
+      <!-- Imagen 4 - Turbinas Eólicas -->
+      <div class="absolute inset-0 transition-opacity duration-1000 opacity-0" id="bgImage4">
+        <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2000&q=80" 
+             alt="Turbinas eólicas" 
+             class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/60"></div>
+      </div>
     </div>
   </div>
 
-  <!-- Contenido superpuesto -->
-  <div class="container mx-auto px-4 relative z-10">
+  <!-- Contenido Superpuesto -->
+  <div class="container mx-auto px-4 relative z-10 h-full flex items-center">
     <div class="max-w-3xl mx-auto text-center">
-      <h2 class="subline-section mb-4 text-white">Navega por las regulaciones ambientales con confianza</h2>
+      <h2 class="subline-section mb-4 text-white">Navegue las Regulaciones Ambientales con Confianza</h2>
       <p class="text-xl mb-6 text-white">Ayudamos a empresas y desarrolladores a cumplir con las leyes ambientales de México mediante Evaluaciones de Impacto Ambiental, Informes Preventivos y Estudios de Riesgo realizados por expertos.</p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="#contact" class="inline-block bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700 transition font-medium">Obtén una consulta gratuita</a>
-        <a href="#industries" class="inline-block border-2 border-green-600 text-white px-6 py-3 rounded hover:bg-green-600 hover:border-green-600 transition font-medium">Nuestros sectores</a>
+        <a href="#contact" class="inline-block bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700 transition font-medium">Obtenga una Consulta Gratis</a>
+        <a href="#industries" class="inline-block border-2 border-green-600 text-white px-6 py-3 rounded hover:bg-green-600 hover:border-green-600 transition font-medium">Nuestros Sectores</a>
       </div>
     </div>
   </div>
 </section>
 
 <script>
+  // Añada esto a su sección de script existente
+document.addEventListener('DOMContentLoaded', function() {
+  // Efecto parallax para la sección específica
+  const parallaxSection = document.querySelector('.parallax-bg');
+  
+  if (parallaxSection) {
+    const images = parallaxSection.querySelectorAll('img');
+    const parallaxSpeed = 0.3;
+    
+    function updateParallax() {
+      const scrollPosition = window.pageYOffset;
+      const sectionOffset = parallaxSection.getBoundingClientRect().top + scrollPosition;
+      const sectionHeight = parallaxSection.offsetHeight;
+      
+      // Solo aplicar parallax cuando la sección está visible
+      if (scrollPosition > sectionOffset - window.innerHeight && 
+          scrollPosition < sectionOffset + sectionHeight) {
+        const offset = (scrollPosition - sectionOffset) * parallaxSpeed;
+        images.forEach(img => {
+          img.style.setProperty('--parallax-offset', `${offset}px`);
+        });
+      }
+    }
+    
+    window.addEventListener('scroll', updateParallax);
+    window.addEventListener('resize', updateParallax);
+    updateParallax();
+  }
+  
+  // Mantenga su código existente de ciclo de imágenes
   let currentBgImage = 1;
   const totalBgImages = 4;
   
   function cycleBackgroundImages() {
-    // Oculta la imagen actual
     document.getElementById(`bgImage${currentBgImage}`).classList.add('opacity-0');
-    
-    // Pasa a la siguiente imagen
     currentBgImage = currentBgImage % totalBgImages + 1;
-    
-    // Muestra la nueva imagen
     document.getElementById(`bgImage${currentBgImage}`).classList.remove('opacity-0');
   }
   
-  // Cambia la imagen cada 5 segundos
+  setInterval(cycleBackgroundImages, 5000);
+});
+  let currentBgImage = 1;
+  const totalBgImages = 4;
+  
+  function cycleBackgroundImages() {
+    // Ocultar imagen actual
+    document.getElementById(`bgImage${currentBgImage}`).classList.add('opacity-0');
+    
+    // Cambiar a la siguiente imagen
+    currentBgImage = currentBgImage % totalBgImages + 1;
+    
+    // Mostrar nueva imagen
+    document.getElementById(`bgImage${currentBgImage}`).classList.remove('opacity-0');
+  }
+  
+  // Cambiar imagen cada 5 segundos
   setInterval(cycleBackgroundImages, 5000);
 </script>
   
