@@ -10,12 +10,22 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
-    /* Se elimina background-attachment: fixed. El parallax se controlará con JS */
+    /* Estilo base para todas las secciones con fondo */
     .parallax {
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
       position: relative;
+    }
+    /* Efecto parallax FIJO solo para el hero en escritorio */
+    #hero {
+      background-attachment: fixed;
+    }
+    /* Se desactiva el efecto fijo en móvil para el hero para evitar 'jank' */
+    @media (max-width: 768px) {
+      #hero {
+        background-attachment: scroll;
+      }
     }
     .transition-all {
       transition: all 0.3s ease;
@@ -53,7 +63,7 @@
     </div>
   </header>
 
-  <section class="parallax h-screen flex items-center justify-center" style="background-image: url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=2000&q=80');">
+  <section id="hero" class="parallax h-screen flex items-center justify-center" style="background-image: url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=2000&q=80');">
     <div class="bg-purple-800 bg-opacity-60 w-full h-full flex items-center justify-center">
       <div class="text-center text-white px-4">
         <h1 class="text-4xl md:text-6xl font-bold mb-6">Reconéctate con tu esencia</h1>
@@ -136,7 +146,7 @@
           <div class="team-img-container mb-6 overflow-hidden rounded-full w-40 h-40 mx-auto border-4 border-purple-200">
             <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=400&q=80" alt="Maestro Alejandro" class="team-img w-full h-full object-cover transition-all">
           </div>
-          <h3 class="text-xl font-bold text-purple-800 mb-2">Maestro Miguel Cota</h3>
+          <h3 class="text-xl font-bold text-purple-800 mb-2">Maestro Alejandro</h3>
           <p class="text-purple-600 font-medium mb-4">Guía Espiritual</p>
           <p class="text-gray-700 mb-4">Más de 20 años acompañando procesos de crecimiento espiritual y autoconocimiento.</p>
           <div class="flex justify-center space-x-3">
@@ -146,11 +156,11 @@
         </div>
         <div class="team-member bg-white p-8 rounded-xl shadow-lg transition-all text-center">
           <div class="team-img-container mb-6 overflow-hidden rounded-full w-40 h-40 mx-auto border-4 border-purple-200">
-            <img src="perfilnicolas.jpg" alt="Biol. Nicolas Medina" class="team-img w-full h-full object-cover transition-all">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80" alt="Psic. Laura Méndez" class="team-img w-full h-full object-cover transition-all">
           </div>
-          <h3 class="text-xl font-bold text-purple-800 mb-2">Biól. Marino. Nicolas Medina</h3>
-          <p class="text-purple-600 font-medium mb-4">Guía y apoyo</p>
-          <p class="text-gray-700 mb-4">Técnico en calidad química de brebajes.</p>
+          <h3 class="text-xl font-bold text-purple-800 mb-2">Biólogo Marino. Lauro Méndez</h3>
+          <p class="text-purple-600 font-medium mb-4">Guía de anclaje</p>
+          <p class="text-gray-700 mb-4">Terapeuta especializada en acompañamiento emocional y procesos de sanación.</p>
           <div class="flex justify-center space-x-3">
             <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Terapia</span>
             <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Acompañamiento</span>
@@ -324,17 +334,15 @@
       mobileMenu.classList.toggle('hidden');
     });
     
-    // --- SCRIPT PARA EFECTO PARALLAX EN MÓVIL Y ESCRITORIO ---
+    // --- SCRIPT PARA EFECTO PARALLAX (NO AFECTA AL HERO) ---
     document.addEventListener('scroll', function() {
-      const parallaxElements = document.querySelectorAll('.parallax');
-      // Puedes ajustar este valor. Un valor más bajo da un efecto más sutil.
+      // Selecciona todos los elementos .parallax EXCEPTO el que tiene id #hero
+      const parallaxElements = document.querySelectorAll('.parallax:not(#hero)');
       const speed = 0.5;
 
       parallaxElements.forEach(function(element) {
         const rect = element.getBoundingClientRect();
-        // Aplica el efecto solo si el elemento está visible en la pantalla
         if (rect.bottom >= 0 && rect.top <= window.innerHeight) {
-          // Calcula la nueva posición del fondo
           const yPos = rect.top * speed;
           element.style.backgroundPositionY = yPos + "px";
         }
