@@ -10,18 +10,12 @@
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
+    /* Se elimina background-attachment: fixed. El parallax se controlará con JS */
     .parallax {
-      background-attachment: fixed;
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
       position: relative;
-    }
-    /* Correctly disables parallax effect on mobile for better performance */
-    @media (max-width: 768px) {
-      .parallax {
-        background-attachment: scroll;
-      }
     }
     .transition-all {
       transition: all 0.3s ease;
@@ -88,7 +82,6 @@
             <a href="#contacto" class="text-purple-600 hover:text-purple-800 font-medium">Más información →</a>
           </div>
         </div>
-        
         <div class="bg-purple-50 p-8 rounded-xl shadow-lg hover-scale transition-all">
           <div class="flex justify-center mb-6">
             <i class="fas fa-brain text-purple-600 text-4xl"></i>
@@ -104,7 +97,6 @@
             <a href="#contacto" class="text-purple-600 hover:text-purple-800 font-medium">Más información →</a>
           </div>
         </div>
-        
         <div class="bg-purple-50 p-8 rounded-xl shadow-lg hover-scale transition-all">
           <div class="flex justify-center mb-6">
             <i class="fas fa-heart text-purple-600 text-4xl"></i>
@@ -140,7 +132,6 @@
             <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Nutrición</span>
           </div>
         </div>
-        
         <div class="team-member bg-white p-8 rounded-xl shadow-lg transition-all text-center">
           <div class="team-img-container mb-6 overflow-hidden rounded-full w-40 h-40 mx-auto border-4 border-purple-200">
             <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=400&q=80" alt="Maestro Alejandro" class="team-img w-full h-full object-cover transition-all">
@@ -153,7 +144,6 @@
             <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Sabiduría</span>
           </div>
         </div>
-        
         <div class="team-member bg-white p-8 rounded-xl shadow-lg transition-all text-center">
           <div class="team-img-container mb-6 overflow-hidden rounded-full w-40 h-40 mx-auto border-4 border-purple-200">
             <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80" alt="Psic. Laura Méndez" class="team-img w-full h-full object-cover transition-all">
@@ -167,7 +157,6 @@
           </div>
         </div>
       </div>
-      
       <div class="mt-16 text-center">
         <h3 class="text-2xl font-bold text-purple-800 mb-6">Nuestro Enfoque Integral</h3>
         <p class="text-gray-700 max-w-3xl mx-auto">
@@ -200,15 +189,10 @@
             <p class="font-bold text-purple-800">Laura Medina</p>
             <p class="text-sm text-gray-600">Terapeuta Holística</p>
             <div class="flex justify-center mt-2 text-yellow-400">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
             </div>
           </div>
         </div>
-        
         <div class="bg-white p-8 rounded-xl shadow-lg hover-scale transition-all">
           <div class="flex justify-center mb-6">
             <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Carlos Ramírez" class="w-20 h-20 rounded-full object-cover border-4 border-purple-200">
@@ -220,15 +204,10 @@
             <p class="font-bold text-purple-800">Carlos Ramírez</p>
             <p class="text-sm text-gray-600">Ingeniero & Meditador</p>
             <div class="flex justify-center mt-2 text-yellow-400">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
             </div>
           </div>
         </div>
-        
         <div class="bg-white p-8 rounded-xl shadow-lg hover-scale transition-all">
           <div class="flex justify-center mb-6">
             <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Andrea López" class="w-20 h-20 rounded-full object-cover border-4 border-purple-200">
@@ -240,11 +219,7 @@
             <p class="font-bold text-purple-800">Andrea López</p>
             <p class="text-sm text-gray-600">Emprendedora</p>
             <div class="flex justify-center mt-2 text-yellow-400">
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star"></i>
-              <i class="fas fa-star-half-alt"></i>
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
             </div>
           </div>
         </div>
@@ -331,22 +306,39 @@
   </footer>
 
   <script>
-    // Simple script para suavizar el scroll
+    // --- SCRIPT PARA SCROLL SUAVE ---
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-          behavior: 'smooth'
-        });
+        const targetElement = document.querySelector(this.getAttribute('href'));
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+        }
       });
     });
 
     // --- SCRIPT PARA MENÚ HAMBURGUESA ---
     const hamburgerBtn = document.getElementById('hamburger-btn');
     const mobileMenu = document.getElementById('mobile-menu');
-
     hamburgerBtn.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
+    });
+    
+    // --- SCRIPT PARA EFECTO PARALLAX EN MÓVIL Y ESCRITORIO ---
+    document.addEventListener('scroll', function() {
+      const parallaxElements = document.querySelectorAll('.parallax');
+      // Puedes ajustar este valor. Un valor más bajo da un efecto más sutil.
+      const speed = 0.5;
+
+      parallaxElements.forEach(function(element) {
+        const rect = element.getBoundingClientRect();
+        // Aplica el efecto solo si el elemento está visible en la pantalla
+        if (rect.bottom >= 0 && rect.top <= window.innerHeight) {
+          // Calcula la nueva posición del fondo
+          const yPos = rect.top * speed;
+          element.style.backgroundPositionY = yPos + "px";
+        }
+      });
     });
   </script>
 </body>
