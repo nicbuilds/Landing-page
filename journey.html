@@ -17,6 +17,7 @@
       background-size: cover;
       position: relative;
     }
+    /* Correctly disables parallax effect on mobile for better performance */
     @media (max-width: 768px) {
       .parallax {
         background-attachment: scroll;
@@ -38,16 +39,23 @@
   <header class="bg-white shadow-md py-4 sticky top-0 z-50">
     <div class="container mx-auto flex justify-between items-center px-4">
       <img src="https://cdn-icons-png.flaticon.com/512/2917/2917242.png" alt="Journey" class="h-12">
-      <nav class="hidden md:flex space-x-6">
+      <nav id="nav-menu" class="hidden md:flex space-x-6">
         <a href="#" class="text-purple-700 font-semibold hover:text-purple-900 transition-all">Inicio</a>
         <a href="#terapias" class="text-purple-700 font-semibold hover:text-purple-900 transition-all">Terapias</a>
         <a href="#equipo" class="text-purple-700 font-semibold hover:text-purple-900 transition-all">Equipo</a>
         <a href="#testimonios" class="text-purple-700 font-semibold hover:text-purple-900 transition-all">Testimonios</a>
         <a href="#contacto" class="text-purple-700 font-semibold hover:text-purple-900 transition-all">Contacto</a>
       </nav>
-      <button class="md:hidden text-purple-700">
+      <button id="hamburger-btn" class="md:hidden text-purple-700">
         <i class="fas fa-bars text-2xl"></i>
       </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden px-4 pt-2 pb-4 space-y-2">
+      <a href="#" class="block text-purple-700 font-semibold hover:bg-purple-100 rounded-md py-2">Inicio</a>
+      <a href="#terapias" class="block text-purple-700 font-semibold hover:bg-purple-100 rounded-md py-2">Terapias</a>
+      <a href="#equipo" class="block text-purple-700 font-semibold hover:bg-purple-100 rounded-md py-2">Equipo</a>
+      <a href="#testimonios" class="block text-purple-700 font-semibold hover:bg-purple-100 rounded-md py-2">Testimonios</a>
+      <a href="#contacto" class="block text-purple-700 font-semibold hover:bg-purple-100 rounded-md py-2">Contacto</a>
     </div>
   </header>
 
@@ -65,7 +73,6 @@
     <div class="container mx-auto px-4">
       <h2 class="text-3xl md:text-4xl font-bold text-center text-purple-800 mb-16">Nuestros Servicios Holísticos</h2>
       <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-        <!-- Terapia Card -->
         <div class="bg-purple-50 p-8 rounded-xl shadow-lg hover-scale transition-all">
           <div class="flex justify-center mb-6">
             <i class="fas fa-leaf text-purple-600 text-4xl"></i>
@@ -117,12 +124,10 @@
     </div>
   </section>
 
-  <!-- Nueva Sección: Equipo Clínico-Espiritual -->
   <section id="equipo" class="py-20 bg-purple-100">
     <div class="container mx-auto px-4">
       <h2 class="text-3xl md:text-4xl font-bold text-center text-purple-800 mb-16">Nuestro Equipo Clínico-Espiritual</h2>
       <div class="grid md:grid-cols-3 gap-10">
-        <!-- Médico -->
         <div class="team-member bg-white p-8 rounded-xl shadow-lg transition-all text-center">
           <div class="team-img-container mb-6 overflow-hidden rounded-full w-40 h-40 mx-auto border-4 border-purple-200">
             <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=400&q=80" alt="Dra. María González" class="team-img w-full h-full object-cover transition-all">
@@ -136,28 +141,26 @@
           </div>
         </div>
         
-        <!-- Guía Espiritual -->
         <div class="team-member bg-white p-8 rounded-xl shadow-lg transition-all text-center">
           <div class="team-img-container mb-6 overflow-hidden rounded-full w-40 h-40 mx-auto border-4 border-purple-200">
             <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=400&q=80" alt="Maestro Alejandro" class="team-img w-full h-full object-cover transition-all">
           </div>
-          <h3 class="text-xl font-bold text-purple-800 mb-2">Maestro Miguel Cota</h3>
+          <h3 class="text-xl font-bold text-purple-800 mb-2">Maestro Alejandro</h3>
           <p class="text-purple-600 font-medium mb-4">Guía Espiritual</p>
-          <p class="text-gray-700 mb-4">Más de 12 años acompañando procesos de crecimiento espiritual y autoconocimiento.</p>
+          <p class="text-gray-700 mb-4">Más de 20 años acompañando procesos de crecimiento espiritual y autoconocimiento.</p>
           <div class="flex justify-center space-x-3">
             <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Meditación</span>
             <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Sabiduría</span>
           </div>
         </div>
         
-        <!-- Apoyo Emocional -->
         <div class="team-member bg-white p-8 rounded-xl shadow-lg transition-all text-center">
           <div class="team-img-container mb-6 overflow-hidden rounded-full w-40 h-40 mx-auto border-4 border-purple-200">
-            <img src="perfilnicolas.jpg">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80" alt="Psic. Laura Méndez" class="team-img w-full h-full object-cover transition-all">
           </div>
-          <h3 class="text-xl font-bold text-purple-800 mb-2">Biól. Marino. Nicolas A. Medina Razo</h3>
-          <p class="text-purple-600 font-medium mb-4">Supervisor de calidad química</p>
-          <p class="text-gray-700 mb-4">Experto en preparación de brevajes terapéuticos</p>
+          <h3 class="text-xl font-bold text-purple-800 mb-2">Biólogo Marino. Lauro Méndez</h3>
+          <p class="text-purple-600 font-medium mb-4">Guía de anclaje</p>
+          <p class="text-gray-700 mb-4">Terapeuta especializada en acompañamiento emocional y procesos de sanación.</p>
           <div class="flex justify-center space-x-3">
             <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Terapia</span>
             <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Acompañamiento</span>
@@ -260,36 +263,36 @@
   </section>
 
   <section id="contacto" class="py-20 bg-white">
-  <div class="container mx-auto px-4 max-w-2xl">
-    <h2 class="text-3xl md:text-4xl font-bold text-center text-purple-800 mb-12">Contáctanos</h2>
-    <form action="https://formspree.io/f/xwpbovyw" method="POST" class="space-y-6 bg-purple-50 p-8 rounded-xl shadow-lg">
-      <div>
-        <label for="nombre" class="block text-purple-800 font-medium mb-2">Nombre</label>
-        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" class="w-full p-4 border border-purple-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" required>
-      </div>
-      <div>
-        <label for="email" class="block text-purple-800 font-medium mb-2">Correo electrónico</label>
-        <input type="email" id="email" name="email" placeholder="tu@email.com" class="w-full p-4 border border-purple-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" required>
-      </div>
-      <div>
-        <label for="servicio" class="block text-purple-800 font-medium mb-2">Servicio de interés</label>
-        <select id="servicio" name="servicio" class="w-full p-4 border border-purple-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
-          <option value="">Selecciona un servicio</option>
-          <option value="sanacion">Sanación Energética</option>
-          <option value="meditacion">Meditación Guiada</option>
-          <option value="terapia">Terapia Emocional</option>
-          <option value="consulta">Consulta con nuestro equipo</option>
-          <option value="otro">Otro</option>
-        </select>
-      </div>
-      <div>
-        <label for="mensaje" class="block text-purple-800 font-medium mb-2">Mensaje</label>
-        <textarea id="mensaje" name="mensaje" placeholder="Cuéntanos cómo podemos ayudarte" class="w-full p-4 border border-purple-200 rounded-lg h-32 focus:ring-2 focus:ring-purple-500 focus:border-transparent" required></textarea>
-      </div>
-      <button type="submit" class="w-full bg-purple-600 text-white py-4 px-6 rounded-lg font-bold hover:bg-purple-700 transition-all">Enviar mensaje</button>
-    </form>
-  </div>
-</section>
+    <div class="container mx-auto px-4 max-w-2xl">
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-purple-800 mb-12">Contáctanos</h2>
+      <form class="space-y-6 bg-purple-50 p-8 rounded-xl shadow-lg">
+        <div>
+          <label for="nombre" class="block text-purple-800 font-medium mb-2">Nombre</label>
+          <input type="text" id="nombre" placeholder="Tu nombre completo" class="w-full p-4 border border-purple-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" required>
+        </div>
+        <div>
+          <label for="email" class="block text-purple-800 font-medium mb-2">Correo electrónico</label>
+          <input type="email" id="email" placeholder="tu@email.com" class="w-full p-4 border border-purple-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent" required>
+        </div>
+        <div>
+          <label for="servicio" class="block text-purple-800 font-medium mb-2">Servicio de interés</label>
+          <select id="servicio" class="w-full p-4 border border-purple-200 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent">
+            <option value="">Selecciona un servicio</option>
+            <option value="sanacion">Sanación Energética</option>
+            <option value="meditacion">Meditación Guiada</option>
+            <option value="terapia">Terapia Emocional</option>
+            <option value="consulta">Consulta con nuestro equipo</option>
+            <option value="otro">Otro</option>
+          </select>
+        </div>
+        <div>
+          <label for="mensaje" class="block text-purple-800 font-medium mb-2">Mensaje</label>
+          <textarea id="mensaje" placeholder="Cuéntanos cómo podemos ayudarte" class="w-full p-4 border border-purple-200 rounded-lg h-32 focus:ring-2 focus:ring-purple-500 focus:border-transparent" required></textarea>
+        </div>
+        <button type="submit" class="w-full bg-purple-600 text-white py-4 px-6 rounded-lg font-bold hover:bg-purple-700 transition-all">Enviar mensaje</button>
+      </form>
+    </div>
+  </section>
 
   <footer class="bg-purple-900 text-white py-10">
     <div class="container mx-auto px-4">
@@ -336,6 +339,14 @@
           behavior: 'smooth'
         });
       });
+    });
+
+    // --- SCRIPT PARA MENÚ HAMBURGUESA ---
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    hamburgerBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
     });
   </script>
 </body>
