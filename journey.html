@@ -28,6 +28,10 @@
     .hover-scale:hover {
       transform: scale(1.03);
     }
+    .team-member:hover .team-img {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(128, 0, 128, 0.3);
+    }
   </style>
 </head>
 <body class="bg-purple-50 text-gray-800">
@@ -37,6 +41,7 @@
       <nav class="hidden md:flex space-x-6">
         <a href="#" class="text-purple-700 font-semibold hover:text-purple-900 transition-all">Inicio</a>
         <a href="#terapias" class="text-purple-700 font-semibold hover:text-purple-900 transition-all">Terapias</a>
+        <a href="#equipo" class="text-purple-700 font-semibold hover:text-purple-900 transition-all">Equipo</a>
         <a href="#testimonios" class="text-purple-700 font-semibold hover:text-purple-900 transition-all">Testimonios</a>
         <a href="#contacto" class="text-purple-700 font-semibold hover:text-purple-900 transition-all">Contacto</a>
       </nav>
@@ -49,7 +54,7 @@
   <section class="parallax h-screen flex items-center justify-center" style="background-image: url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=2000&q=80');">
     <div class="bg-purple-800 bg-opacity-60 w-full h-full flex items-center justify-center">
       <div class="text-center text-white px-4">
-        <h1 class="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">Reconéctate con tu esencia</h1>
+        <h1 class="text-4xl md:text-6xl font-bold mb-6">Reconéctate con tu esencia</h1>
         <p class="text-xl md:text-2xl mb-8">Te acompañamos en tu viaje de sanación y despertar interior</p>
         <a href="#contacto" class="bg-white text-purple-800 font-bold px-8 py-4 rounded-lg shadow-lg hover:bg-purple-100 hover:shadow-xl transition-all">Agenda tu sesión</a>
       </div>
@@ -108,6 +113,64 @@
             <a href="#contacto" class="text-purple-600 hover:text-purple-800 font-medium">Más información →</a>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nueva Sección: Equipo Clínico-Espiritual -->
+  <section id="equipo" class="py-20 bg-purple-100">
+    <div class="container mx-auto px-4">
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-purple-800 mb-16">Nuestro Equipo Clínico-Espiritual</h2>
+      <div class="grid md:grid-cols-3 gap-10">
+        <!-- Médico -->
+        <div class="team-member bg-white p-8 rounded-xl shadow-lg transition-all text-center">
+          <div class="team-img-container mb-6 overflow-hidden rounded-full w-40 h-40 mx-auto border-4 border-purple-200">
+            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=400&q=80" alt="Dra. María González" class="team-img w-full h-full object-cover transition-all">
+          </div>
+          <h3 class="text-xl font-bold text-purple-800 mb-2">Dra. María González</h3>
+          <p class="text-purple-600 font-medium mb-4">Médico Integrativo</p>
+          <p class="text-gray-700 mb-4">Especializada en medicina funcional y enfoques holísticos para la salud integral.</p>
+          <div class="flex justify-center space-x-3">
+            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Medicina</span>
+            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Nutrición</span>
+          </div>
+        </div>
+        
+        <!-- Guía Espiritual -->
+        <div class="team-member bg-white p-8 rounded-xl shadow-lg transition-all text-center">
+          <div class="team-img-container mb-6 overflow-hidden rounded-full w-40 h-40 mx-auto border-4 border-purple-200">
+            <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=400&q=80" alt="Maestro Alejandro" class="team-img w-full h-full object-cover transition-all">
+          </div>
+          <h3 class="text-xl font-bold text-purple-800 mb-2">Maestro Alejandro</h3>
+          <p class="text-purple-600 font-medium mb-4">Guía Espiritual</p>
+          <p class="text-gray-700 mb-4">Más de 20 años acompañando procesos de crecimiento espiritual y autoconocimiento.</p>
+          <div class="flex justify-center space-x-3">
+            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Meditación</span>
+            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Sabiduría</span>
+          </div>
+        </div>
+        
+        <!-- Apoyo Emocional -->
+        <div class="team-member bg-white p-8 rounded-xl shadow-lg transition-all text-center">
+          <div class="team-img-container mb-6 overflow-hidden rounded-full w-40 h-40 mx-auto border-4 border-purple-200">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80" alt="Psic. Laura Méndez" class="team-img w-full h-full object-cover transition-all">
+          </div>
+          <h3 class="text-xl font-bold text-purple-800 mb-2">Psic. Laura Méndez</h3>
+          <p class="text-purple-600 font-medium mb-4">Apoyo Emocional</p>
+          <p class="text-gray-700 mb-4">Terapeuta especializada en acompañamiento emocional y procesos de sanación.</p>
+          <div class="flex justify-center space-x-3">
+            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Terapia</span>
+            <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Acompañamiento</span>
+          </div>
+        </div>
+      </div>
+      
+      <div class="mt-16 text-center">
+        <h3 class="text-2xl font-bold text-purple-800 mb-6">Nuestro Enfoque Integral</h3>
+        <p class="text-gray-700 max-w-3xl mx-auto">
+          En Journey combinamos lo mejor de la medicina convencional con terapias complementarias, guía espiritual profunda y apoyo emocional personalizado. 
+          Nuestro equipo multidisciplinario trabaja en conjunto para ofrecerte un abordaje completo que atiende cuerpo, mente y espíritu.
+        </p>
       </div>
     </div>
   </section>
@@ -215,6 +278,7 @@
             <option value="sanacion">Sanación Energética</option>
             <option value="meditacion">Meditación Guiada</option>
             <option value="terapia">Terapia Emocional</option>
+            <option value="consulta">Consulta con nuestro equipo</option>
             <option value="otro">Otro</option>
           </select>
         </div>
@@ -238,6 +302,7 @@
           <h3 class="text-xl font-bold mb-4">Enlaces rápidos</h3>
           <ul class="space-y-2">
             <li><a href="#terapias" class="text-purple-200 hover:text-white transition-all">Nuestros servicios</a></li>
+            <li><a href="#equipo" class="text-purple-200 hover:text-white transition-all">Nuestro equipo</a></li>
             <li><a href="#testimonios" class="text-purple-200 hover:text-white transition-all">Testimonios</a></li>
             <li><a href="#contacto" class="text-purple-200 hover:text-white transition-all">Contacto</a></li>
           </ul>
