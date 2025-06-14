@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Terapias espirituales, sanación energética, meditación guiada y acompañamiento holístico personalizado." />
+  <meta name="description" content="Descubre un espacio de sanación y bienestar en Mérida. Ofrecemos terapia individual, de pareja, familiar, meditación guiada y más. Empieza tu viaje hacia la paz interior." />
   <meta property="og:title" content="Journey | Terapias Holísticas y Bienestar Espiritual" />
   <meta property="og:description" content="Explora tu paz interior con sesiones espirituales personalizadas: meditación, energía, yoga y más." />
-  <title>Lupita Iñigo | Psicóloga</title>
+  <title>Journey | Terapias Holísticas con Lupita Iñigo</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
@@ -47,19 +47,23 @@
         flex: 0 0 33.3333%; /* En desktop, 3 items */
       }
     }
+    /* Estilo para los botones del carrusel */
+    #prevBtn, #nextBtn {
+      transition: opacity 0.3s ease;
+    }
   </style>
 </head>
 <body class="bg-purple-50 text-gray-800">
   <header class="bg-white shadow-md py-4 sticky top-0 z-50">
     <div class="container mx-auto flex justify-between items-center px-4">
-      <img src="https://cdn-icons-png.flaticon.com/512/2917/2917242.png" alt="Journey" class="h-12">
+      <img src="https://cdn-icons-png.flaticon.com/512/2917/2917242.png" alt="Journey Logo" class="h-12">
       <nav id="nav-menu" class="hidden md:flex space-x-6">
         <a href="#" class="text-purple-700 font-semibold hover:text-purple-900 transition-all">Inicio</a>
         <a href="#terapias" class="text-purple-700 font-semibold hover:text-purple-900 transition-all">Servicios</a>
         <a href="#certificaciones" class="text-purple-700 font-semibold hover:text-purple-900 transition-all">Certificaciones</a>
         <a href="#contacto" class="text-purple-700 font-semibold hover:text-purple-900 transition-all">Contacto</a>
       </nav>
-      <button id="hamburger-btn" class="md:hidden text-purple-700">
+      <button id="hamburger-btn" class="md:hidden text-purple-700" aria-label="Abrir menú">
         <i class="fas fa-bars text-2xl"></i>
       </button>
     </div>
@@ -74,8 +78,8 @@
   <section id="hero" class="parallax h-screen flex items-center justify-center" style="background-image: url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=2000&q=80');">
     <div class="bg-purple-800 bg-opacity-60 w-full h-full flex items-center justify-center">
       <div class="text-center text-white px-4">
-        <h1 class="text-4xl md:text-6xl font-bold mb-6">Frase elegida por Lupita</h1>
-        <p class="text-xl md:text-2xl mb-8">Subtítulo elegido por Lupita</p>
+        <h1 class="text-4xl md:text-6xl font-bold mb-6">Encuentra tu Equilibrio Interior</h1>
+        <p class="text-xl md:text-2xl mb-8">Un viaje de sanación y autoconocimiento a través de terapias holísticas personalizadas.</p>
         <a href="#contacto" class="bg-white text-purple-800 font-bold px-8 py-4 rounded-lg shadow-lg hover:bg-purple-100 hover:shadow-xl transition-all">Agenda tu sesión</a>
       </div>
     </div>
@@ -89,7 +93,7 @@
           <div class="flex justify-center mb-6">
             <i class="fas fa-leaf text-purple-600 text-4xl"></i>
           </div>
-          <h3 class="text-xl font-bold text-purple-800 mb-4 text-center">Terapia</h3>
+          <h3 class="text-xl font-bold text-purple-800 mb-4 text-center">Terapia Psicológica</h3>
           <ul class="list-disc list-inside text-gray-700 space-y-2">
             <li>De pareja</li>
             <li>Terapia familiar</li>
@@ -107,7 +111,7 @@
           <ul class="list-disc list-inside text-gray-700 space-y-2">
             <li>Para conectar con tu esencia</li>
             <li>Conecta con el presente</li>
-            <li>Sesion individual</li>
+            <li>Sesión individual y grupal</li>
           </ul>
           <div class="mt-6 text-center">
             <a href="#contacto" class="text-purple-600 hover:text-purple-800 font-medium">Más información →</a>
@@ -117,10 +121,10 @@
           <div class="flex justify-center mb-6">
             <i class="fas fa-heart text-purple-600 text-4xl"></i>
           </div>
-          <h3 class="text-xl font-bold text-purple-800 mb-4 text-center">Terapia grupal</h3>
+          <h3 class="text-xl font-bold text-purple-800 mb-4 text-center">Terapia Grupal</h3>
           <ul class="list-disc list-inside text-gray-700 space-y-2">
-            <li>Para familias</li>
-            <li>Para toda ocasion</li>
+            <li>Círculos de mujeres</li>
+            <li>Talleres de autoestima</li>
             <li>Sesiones personalizadas</li>
           </ul>
           <div class="mt-6 text-center">
@@ -141,9 +145,7 @@
             <div class="carousel-item p-4">
               <div class="bg-white p-8 rounded-xl shadow-lg text-center h-full flex flex-col justify-between">
                 <div>
-                  <div class="flex justify-center mb-6">
-                    <i class="fas fa-award text-purple-500 text-6xl"></i>
-                  </div>
+                  <div class="flex justify-center mb-6"><i class="fas fa-award text-purple-500 text-6xl"></i></div>
                   <h3 class="text-xl font-bold text-purple-800 mb-2">Lic. en Psicología</h3>
                   <p class="text-purple-600 font-medium mb-4">Por la UNAM</p>
                   <p class="text-gray-700 mb-4">Especializada en medicina funcional para la salud integral.</p>
@@ -157,9 +159,7 @@
             <div class="carousel-item p-4">
               <div class="bg-white p-8 rounded-xl shadow-lg text-center h-full flex flex-col justify-between">
                 <div>
-                  <div class="flex justify-center mb-6">
-                    <i class="fas fa-award text-purple-500 text-6xl"></i>
-                  </div>
+                  <div class="flex justify-center mb-6"><i class="fas fa-award text-purple-500 text-6xl"></i></div>
                   <h3 class="text-xl font-bold text-purple-800 mb-2">Maestría en Terapia</h3>
                   <p class="text-purple-600 font-medium mb-4">Por la UADY</p>
                   <p class="text-gray-700 mb-4">Más de 12 años acompañando procesos de autoconocimiento.</p>
@@ -173,9 +173,7 @@
             <div class="carousel-item p-4">
               <div class="bg-white p-8 rounded-xl shadow-lg text-center h-full flex flex-col justify-between">
                 <div>
-                  <div class="flex justify-center mb-6">
-                    <i class="fas fa-award text-purple-500 text-6xl"></i>
-                  </div>
+                  <div class="flex justify-center mb-6"><i class="fas fa-award text-purple-500 text-6xl"></i></div>
                   <h3 class="text-xl font-bold text-purple-800 mb-2">Dra. en Tanatología</h3>
                   <p class="text-purple-600 font-medium mb-4">Seguimiento tanatológico</p>
                   <p class="text-gray-700 mb-4">Experiencia en manejo de duelo y situaciones difíciles.</p>
@@ -189,9 +187,7 @@
             <div class="carousel-item p-4">
               <div class="bg-white p-8 rounded-xl shadow-lg text-center h-full flex flex-col justify-between">
                 <div>
-                  <div class="flex justify-center mb-6">
-                    <i class="fas fa-award text-purple-500 text-6xl"></i>
-                  </div>
+                  <div class="flex justify-center mb-6"><i class="fas fa-award text-purple-500 text-6xl"></i></div>
                   <h3 class="text-xl font-bold text-purple-800 mb-2">Certificación en Mindfulness</h3>
                   <p class="text-purple-600 font-medium mb-4">Instituto de Mindfulness</p>
                   <p class="text-gray-700 mb-4">Técnicas de atención plena para reducir el estrés y la ansiedad.</p>
@@ -205,9 +201,7 @@
             <div class="carousel-item p-4">
               <div class="bg-white p-8 rounded-xl shadow-lg text-center h-full flex flex-col justify-between">
                 <div>
-                  <div class="flex justify-center mb-6">
-                    <i class="fas fa-award text-purple-500 text-6xl"></i>
-                  </div>
+                  <div class="flex justify-center mb-6"><i class="fas fa-award text-purple-500 text-6xl"></i></div>
                   <h3 class="text-xl font-bold text-purple-800 mb-2">Diplomado en Terapia de Pareja</h3>
                   <p class="text-purple-600 font-medium mb-4">Asociación de Terapeutas</p>
                   <p class="text-gray-700 mb-4">Enfoque sistémico para la resolución de conflictos en relaciones.</p>
@@ -221,9 +215,7 @@
             <div class="carousel-item p-4">
               <div class="bg-white p-8 rounded-xl shadow-lg text-center h-full flex flex-col justify-between">
                 <div>
-                  <div class="flex justify-center mb-6">
-                    <i class="fas fa-award text-purple-500 text-6xl"></i>
-                  </div>
+                  <div class="flex justify-center mb-6"><i class="fas fa-award text-purple-500 text-6xl"></i></div>
                   <h3 class="text-xl font-bold text-purple-800 mb-2">Certificación en Sanación Energética</h3>
                   <p class="text-purple-600 font-medium mb-4">Escuela de Terapias Alternativas</p>
                   <p class="text-gray-700 mb-4">Dominio de técnicas de reiki y balance de chakras.</p>
@@ -237,19 +229,21 @@
           </div>
         </div>
         
-        <button id="prevBtn" class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 text-purple-700 p-2 rounded-full shadow-md -ml-4 z-10">
+        <button id="prevBtn" aria-label="Anterior" class="absolute top-1/2 left-0 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 text-purple-700 p-2 rounded-full shadow-md -ml-4 z-10">
           <i class="fas fa-chevron-left"></i>
         </button>
-        <button id="nextBtn" class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 text-purple-700 p-2 rounded-full shadow-md -mr-4 z-10">
+        <button id="nextBtn" aria-label="Siguiente" class="absolute top-1/2 right-0 transform -translate-y-1/2 bg-white bg-opacity-70 hover:bg-opacity-100 text-purple-700 p-2 rounded-full shadow-md -mr-4 z-10">
           <i class="fas fa-chevron-right"></i>
         </button>
       </div>
+
+      <div id="carousel-dots" class="flex justify-center mt-8 space-x-3"></div>
 
       <div class="mt-16 text-center">
         <h3 class="text-2xl font-bold text-purple-800 mb-6">Un Enfoque Integral</h3>
         <p class="text-gray-700 max-w-3xl mx-auto">
           La mejor combinación de experiencia y apoyo emocional personalizado. 
-          Nuestro equipo multidisciplinario trabaja en conjunto para ofrecerte un abordaje completo que atiende cuerpo, mente y espíritu.
+          Mi enfoque multidisciplinario trabaja en conjunto para ofrecerte un abordaje completo que atiende cuerpo, mente y espíritu.
         </p>
       </div>
     </div>
@@ -258,16 +252,16 @@
   <section class="parallax py-32" style="background-image: url('https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=2000&q=80');">
     <div class="container mx-auto px-4 text-center">
       <div class="bg-white bg-opacity-90 p-8 rounded-xl inline-block max-w-2xl">
-        <h2 class="text-3xl md:text-4xl font-bold text-purple-800 mb-6">¿Ya eres usuario?</h2>
-        <p class="text-xl text-gray-700 mb-8">Conectate conmigo a través de mi portal.</p>
-        <a href="#contacto" class="bg-purple-600 text-white py-3 px-8 rounded-lg font-bold hover:bg-purple-700 transition-all">Entrar ahora</a>
+        <h2 class="text-3xl md:text-4xl font-bold text-purple-800 mb-6">¿ya eres usuario?</h2>
+        <p class="text-xl text-gray-700 mb-8">Ingresa al portal de atencion.</p>
+        <a href="#https://atcpunisher.github.io/Psichy/" class="bg-purple-600 text-white py-3 px-8 rounded-lg font-bold hover:bg-purple-700 transition-all">Ingresar</a>
       </div>
     </div>
   </section>
 
   <section id="contacto" class="py-20 bg-white">
     <div class="container mx-auto px-4 max-w-2xl">
-      <h2 class="text-3xl md:text-4xl font-bold text-center text-purple-800 mb-12">Contáctanos</h2>
+      <h2 class="text-3xl md:text-4xl font-bold text-center text-purple-800 mb-12">Contáctame</h2>
       <form class="space-y-6 bg-purple-50 p-8 rounded-xl shadow-lg">
         <div>
           <label for="nombre" class="block text-purple-800 font-medium mb-2">Nombre</label>
@@ -283,14 +277,14 @@
             <option value="">Selecciona un servicio</option>
             <option value="sanacion">Sanación Energética</option>
             <option value="meditacion">Meditación Guiada</option>
-            <option value="terapia">Terapia Emocional</option>
-            <option value="consulta">Consulta con nuestro equipo</option>
+            <option value="terapia">Terapia Psicológica</option>
+            <option value="consulta">Consulta General</option>
             <option value="otro">Otro</option>
           </select>
         </div>
         <div>
           <label for="mensaje" class="block text-purple-800 font-medium mb-2">Mensaje</label>
-          <textarea id="mensaje" placeholder="Cuéntanos cómo podemos ayudarte" class="w-full p-4 border border-purple-200 rounded-lg h-32 focus:ring-2 focus:ring-purple-500 focus:border-transparent" required></textarea>
+          <textarea id="mensaje" placeholder="Cuéntame cómo puedo ayudarte" class="w-full p-4 border border-purple-200 rounded-lg h-32 focus:ring-2 focus:ring-purple-500 focus:border-transparent" required></textarea>
         </div>
         <button type="submit" class="w-full bg-purple-600 text-white py-4 px-6 rounded-lg font-bold hover:bg-purple-700 transition-all">Enviar mensaje</button>
       </form>
@@ -353,7 +347,6 @@
     
     // --- SCRIPT PARA EFECTO PARALLAX (NO AFECTA AL HERO) ---
     document.addEventListener('scroll', function() {
-      // Selecciona todos los elementos .parallax EXCEPTO el que tiene id #hero
       const parallaxElements = document.querySelectorAll('.parallax:not(#hero)');
       const speed = 0.5;
 
@@ -366,16 +359,30 @@
       });
     });
 
-    // --- SCRIPT PARA EL CARRUSEL DE CERTIFICACIONES ---
+    // --- SCRIPT PARA EL CARRUSEL DE CERTIFICACIONES (MEJORADO) ---
     document.addEventListener('DOMContentLoaded', function () {
       const carousel = document.getElementById('carousel');
       const prevBtn = document.getElementById('prevBtn');
       const nextBtn = document.getElementById('nextBtn');
       const items = document.querySelectorAll('.carousel-item');
+      const dotsContainer = document.getElementById('carousel-dots');
       
+      if (!carousel) return; // Salir si el carrusel no existe
+
       let currentIndex = 0;
-      let itemsPerPage = getItemsPerPage();
       const totalItems = items.length;
+
+      // --- Crear Puntos de Navegación ---
+      items.forEach((_, index) => {
+        const dot = document.createElement('button');
+        dot.classList.add('w-3', 'h-3', 'rounded-full', 'transition-all', 'duration-300', 'hover:bg-purple-500');
+        dot.setAttribute('aria-label', `Ir a la certificación ${index + 1}`);
+        dot.addEventListener('click', () => {
+          currentIndex = index;
+          updateCarousel();
+        });
+        dotsContainer.appendChild(dot);
+      });
 
       function getItemsPerPage() {
         if (window.innerWidth >= 1024) return 3;
@@ -384,21 +391,42 @@
       }
 
       function updateCarousel() {
-        itemsPerPage = getItemsPerPage();
+        const itemsPerPage = getItemsPerPage();
         const maxIndex = totalItems - itemsPerPage;
+        
+        // Asegurarse que el índice actual no se salga de los límites
         if (currentIndex > maxIndex) {
           currentIndex = maxIndex;
         }
+        if (currentIndex < 0) {
+          currentIndex = 0;
+        }
         
-        const offset = -currentIndex * (100 / itemsPerPage);
-        carousel.style.transform = `translateX(${offset * (totalItems / itemsPerPage)}%)`;
+        // Cálculo de la nueva posición del carrusel
+        // Mueve el carrusel un 'ancho de item' a la vez. El ancho del item es 1/totalItems del ancho total del carrusel.
+        const offsetPercentage = -currentIndex * (100 / totalItems);
+        carousel.style.transform = `translateX(${offsetPercentage}%)`;
 
-        // Actualizar visibilidad de los botones
-        prevBtn.style.display = currentIndex === 0 ? 'none' : 'block';
-        nextBtn.style.display = currentIndex >= maxIndex ? 'none' : 'block';
+        // Actualizar visibilidad de los botones con una transición suave
+        prevBtn.style.opacity = currentIndex === 0 ? '0' : '1';
+        prevBtn.style.pointerEvents = currentIndex === 0 ? 'none' : 'auto';
+        nextBtn.style.opacity = currentIndex >= maxIndex ? '0' : '1';
+        nextBtn.style.pointerEvents = currentIndex >= maxIndex ? 'none' : 'auto';
+
+        // Actualizar el punto activo
+        const dots = dotsContainer.children;
+        Array.from(dots).forEach((dot, index) => {
+          dot.classList.remove('bg-purple-700', 'bg-purple-300');
+          if (index === currentIndex) {
+            dot.classList.add('bg-purple-700'); // Punto activo
+          } else {
+            dot.classList.add('bg-purple-300'); // Punto inactivo
+          }
+        });
       }
 
       nextBtn.addEventListener('click', () => {
+        const itemsPerPage = getItemsPerPage();
         const maxIndex = totalItems - itemsPerPage;
         if (currentIndex < maxIndex) {
           currentIndex++;
@@ -414,7 +442,7 @@
       });
       
       window.addEventListener('resize', updateCarousel);
-      updateCarousel(); // Llamada inicial
+      updateCarousel(); // Llamada inicial para configurar el estado del carrusel
     });
   </script>
 </body>
