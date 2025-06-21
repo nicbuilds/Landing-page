@@ -41,8 +41,6 @@
             background-position: center;
             background-attachment: fixed;
         }
-        
-        /* Corrected CSS for Shape Dividers */
         .custom-shape-divider-top {
             position: absolute;
             top: 0;
@@ -50,7 +48,7 @@
             width: 100%;
             overflow: hidden;
             line-height: 0;
-            z-index: 2;
+            transform: rotate(180deg);
         }
         .custom-shape-divider-top svg {
             position: relative;
@@ -61,15 +59,13 @@
         .custom-shape-divider-top .shape-fill {
             fill: #F9FAFB; /* bg-gray-50 */
         }
-
         .custom-shape-divider-bottom {
             position: absolute;
-            bottom: 0;
+            bottom: -1px; /* Avoid small gap */
             left: 0;
             width: 100%;
             overflow: hidden;
             line-height: 0;
-            z-index: 2;
         }
         .custom-shape-divider-bottom svg {
             position: relative;
@@ -187,56 +183,58 @@
         </section>
 
         <section id="testimonials" class="relative parallax-break-bg text-white">
-            
-            <div class="absolute inset-0 bg-black/50 z-10"></div>
-            
-            <div class="custom-shape-divider-top">
-                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                    <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.39-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill"></path>
-                </svg>
-            </div>
-            <div class="custom-shape-divider-bottom">
-                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,23.5V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
-                </svg>
-            </div>
+            <div class="absolute inset-0 bg-black/50"></div>
 
-            <div class="relative container mx-auto px-6 py-24 z-30">
-                <div class="text-center mb-12">
-                    <h2 class="section-title text-white">What Our Clients Say</h2>
-                    <p class="mt-4 max-w-2xl mx-auto text-gray-200">We're proud to have helped so many people start their new chapter in Yucatán.</p>
+            <div class="relative">
+                <div class="custom-shape-divider-top">
+                    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,23.5V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+                    </svg>
                 </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="bg-white/10 p-6 rounded-lg backdrop-blur-sm">
-                        <p class="mb-4">"YucaFriends made our move from Canada completely stress-free. Their knowledge of the real estate market is unmatched. We found our dream home in Mérida in just one week!"</p>
-                        <div class="flex items-center">
-                            <img src="https://placehold.co/100x100/f0e68c/333333?text=J+S" class="w-12 h-12 rounded-full object-cover mr-4" alt="Client 1" onerror="this.onerror=null;this.src='https://placehold.co/100x100/f0e68c/333333?text=J+S';">
-                            <div>
-                                <p class="font-bold">John & Sarah</p>
-                                <p class="text-sm text-gray-300">from Vancouver, BC</p>
+
+                <div class="container mx-auto px-6 py-20">
+                    <div class="text-center pt-10 mb-12">
+                        <h2 class="section-title text-white">What Our Clients Say</h2>
+                        <p class="mt-4 max-w-2xl mx-auto text-gray-200">We're proud to have helped so many people start their new chapter in Yucatán.</p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-10">
+                        <div class="bg-white/10 p-6 rounded-lg backdrop-blur-sm">
+                            <p class="mb-4">"YucaFriends made our move from Canada completely stress-free. Their knowledge of the real estate market is unmatched. We found our dream home in Mérida in just one week!"</p>
+                            <div class="flex items-center">
+                                <img src="https://placehold.co/100x100/f0e68c/333333?text=J+S" class="w-12 h-12 rounded-full object-cover mr-4" alt="Client 1" onerror="this.onerror=null;this.src='https://placehold.co/100x100/f0e68c/333333?text=J+S';">
+                                <div>
+                                    <p class="font-bold">John & Sarah</p>
+                                    <p class="text-sm text-gray-300">from Vancouver, BC</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white/10 p-6 rounded-lg backdrop-blur-sm">
+                            <p class="mb-4">"Navigating the immigration process seemed impossible until we found YucaFriends. Carlos was patient, thorough, and got our residency approved faster than we ever expected."</p>
+                            <div class="flex items-center">
+                                <img src="https://placehold.co/100x100/add8e6/333333?text=M+R" class="w-12 h-12 rounded-full object-cover mr-4" alt="Client 2" onerror="this.onerror=null;this.src='https://placehold.co/100x100/add8e6/333333?text=M+R';">
+                                <div>
+                                    <p class="font-bold">Michael R.</p>
+                                    <p class="text-sm text-gray-300">from Austin, TX</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-white/10 p-6 rounded-lg backdrop-blur-sm">
+                            <p class="mb-4">"The peace of mind knowing our property is looked after by YucaFriends is priceless. Their maintenance team is reliable, professional, and always does a fantastic job."</p>
+                            <div class="flex items-center">
+                                <img src="https://placehold.co/100x100/d3d3d3/333333?text=E+L" class="w-12 h-12 rounded-full object-cover mr-4" alt="Client 3" onerror="this.onerror=null;this.src='https://placehold.co/100x100/d3d3d3/333333?text=E+L';">
+                                <div>
+                                    <p class="font-bold">Elena</p>
+                                    <p class="text-sm text-gray-300">from San Francisco, CA</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="bg-white/10 p-6 rounded-lg backdrop-blur-sm">
-                        <p class="mb-4">"Navigating the immigration process seemed impossible until we found YucaFriends. Carlos was patient, thorough, and got our residency approved faster than we ever expected."</p>
-                        <div class="flex items-center">
-                            <img src="https://placehold.co/100x100/add8e6/333333?text=M+R" class="w-12 h-12 rounded-full object-cover mr-4" alt="Client 2" onerror="this.onerror=null;this.src='https://placehold.co/100x100/add8e6/333333?text=M+R';">
-                            <div>
-                                <p class="font-bold">Michael R.</p>
-                                <p class="text-sm text-gray-300">from Austin, TX</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bg-white/10 p-6 rounded-lg backdrop-blur-sm">
-                        <p class="mb-4">"The peace of mind knowing our property is looked after by YucaFriends is priceless. Their maintenance team is reliable, professional, and always does a fantastic job."</p>
-                        <div class="flex items-center">
-                            <img src="https://placehold.co/100x100/d3d3d3/333333?text=E+L" class="w-12 h-12 rounded-full object-cover mr-4" alt="Client 3" onerror="this.onerror=null;this.src='https://placehold.co/100x100/d3d3d3/333333?text=E+L';">
-                            <div>
-                                <p class="font-bold">Elena</p>
-                                <p class="text-sm text-gray-300">from San Francisco, CA</p>
-                            </div>
-                        </div>
-                    </div>
+                </div>
+
+                <div class="custom-shape-divider-bottom">
+                    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,23.5V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+                    </svg>
                 </div>
             </div>
         </section>
