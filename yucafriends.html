@@ -1,57 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>YucaFriends - Your Trusted Partner in Yucatán</title>
-
-  <!-- Tailwind CSS -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Google Fonts: Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
-
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide-react@latest/dist/lucide-react.js"></script>
-  <script src="https://unpkg.com/lucide@latest"></script>
-
-  <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      scroll-behavior: smooth;
-    }
-    .hero-bg {
-      background-image: url('https://images.unsplash.com/photo-1601856993381-d4c6f87f217e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
-      background-size: cover;
-      background-position: center;
-    }
-    .parallax-bg {
-      background-image: url('https://images.unsplash.com/photo-1618338159331-ccf3924d6d37?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
-      background-attachment: fixed;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-    }
-    .section-title {
-      font-size: 2.25rem;
-      font-weight: 700;
-      line-height: 2.5rem;
-    }
-    .section-subtitle {
-      font-size: 1.125rem;
-      color: #4a5568;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YucaFriends - Your Trusted Partner in Yucatán</title>
     
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/lucide-react@latest/dist/lucide-react.js"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Custom styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .hero-bg {
+            /* Using a real photo of a Yucatan home from Unsplash */
+            background-image: url('https://images.unsplash.com/photo-1599827553538-25f17893a7b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            /* Added this line to create the parallax effect */
+            background-attachment: fixed; 
+        }
+        .section-title {
+            font-size: 2.25rem; /* 36px */
+            font-weight: 700;
+            line-height: 2.5rem; /* 40px */
+        }
+        .section-subtitle {
+            font-size: 1.125rem; /* 18px */
+            color: #4a5568; /* gray-600 */
+        }
+    </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
-    <!-- Header -->
     <header id="header" class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50 transition-all duration-300">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <!-- Updated with correct logo URL -->
             <a href="#" aria-label="YucaFriends Home">
                 <img src="https://fwdco.net/yucafriends_logo.png" alt="YucaFriends Logo" class="h-14 w-auto" onerror="this.onerror=null;this.src='https://placehold.co/150x40/ffffff/teal?text=YucaFriends';">
             </a>
@@ -65,7 +56,6 @@
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
         </div>
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
             <a href="#about" class="block py-2 text-gray-600 hover:text-teal-600">About Us</a>
             <a href="#services" class="block py-2 text-gray-600 hover:text-teal-600">Services</a>
@@ -74,28 +64,18 @@
         </div>
     </header>
 
-    <!-- Main Content -->
-     <main>
+    <main>
 
-    <!-- Hero Section with new image -->
-    <section id="home" class="hero-bg text-white">
-      <div class="bg-black/50 min-h-[70vh] flex items-center">
-        <div class="container mx-auto px-6 text-center">
-          <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4">Your Trusted Partner for Living in Yucatán</h1>
-          <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8">From finding your dream home to navigating legalities, we provide the expert guidance you need for a seamless life in paradise.</p>
-          <a href="#services" class="bg-teal-600 text-white px-8 py-4 rounded-lg shadow-lg hover:bg-teal-700 font-bold text-lg transition-all transform hover:scale-105">Explore Our Services</a>
-        </div>
-      </div>
-    </section>
+        <section id="home" class="hero-bg text-white">
+            <div class="bg-black/40 min-h-[70vh] flex items-center">
+                <div class="container mx-auto px-6 text-center">
+                    <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4">Your Trusted Partner for Living in Yucatán</h1>
+                    <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8">From finding your dream home to navigating legalities, we provide the expert guidance you need for a seamless life in paradise.</p>
+                    <a href="#services" class="bg-teal-600 text-white px-8 py-4 rounded-lg shadow-lg hover:bg-teal-700 font-bold text-lg transition-all transform hover:scale-105">Explore Our Services</a>
+                </div>
+            </div>
+        </section>
 
-    <!-- Parallax Background Section -->
-    <section class="parallax-bg h-[50vh] flex items-center justify-center">
-      <div class="bg-black/30 w-full h-full flex items-center justify-center text-white text-center">
-        <h2 class="text-4xl md:text-5xl font-bold drop-shadow-lg">Experience Colonial Charm</h2>
-      </div>
-    </section>
-         
-        <!-- About Us Section -->
         <section id="about" class="py-20 bg-white">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
@@ -122,7 +102,6 @@
             </div>
         </section>
 
-        <!-- Services Section -->
         <section id="services" class="py-20 bg-gray-50">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
@@ -130,37 +109,31 @@
                     <p class="section-subtitle mt-4 max-w-2xl mx-auto">We handle the complexities so you can focus on enjoying your life in Yucatán.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Service Card 1 -->
                     <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
                         <i data-lucide="home" class="w-12 h-12 text-teal-600 mb-4"></i>
                         <h3 class="text-2xl font-bold mb-2">Real Estate Services</h3>
                         <p class="text-gray-600">Whether you're buying, selling, or renting, our local market experts will guide you to the perfect property.</p>
                     </div>
-                    <!-- Service Card 2 -->
                     <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
                         <i data-lucide="scale" class="w-12 h-12 text-teal-600 mb-4"></i>
                         <h3 class="text-2xl font-bold mb-2">Legal & Immigration</h3>
                         <p class="text-gray-600">From residency visas to property trusts (fideicomisos), we provide clear, reliable legal assistance.</p>
                     </div>
-                    <!-- Service Card 3 -->
                     <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
                         <i data-lucide="hammer" class="w-12 h-12 text-teal-600 mb-4"></i>
                         <h3 class="text-2xl font-bold mb-2">Home Maintenance</h3>
                         <p class="text-gray-600">Trustworthy and efficient solutions for pool care, gardening, repairs, and general home upkeep.</p>
                     </div>
-                    <!-- Service Card 4 -->
                     <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
                         <i data-lucide="briefcase" class="w-12 h-12 text-teal-600 mb-4"></i>
                         <h3 class="text-2xl font-bold mb-2">Foreign Investment</h3>
                         <p class="text-gray-600">Navigate the process of investing in Mexico securely with our expert guidance and support.</p>
                     </div>
-                    <!-- Service Card 5 -->
                     <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
                         <i data-lucide="languages" class="w-12 h-12 text-teal-600 mb-4"></i>
                         <h3 class="text-2xl font-bold mb-2">Translations</h3>
                         <p class="text-gray-600">Official and unofficial translation services to bridge the language gap in all your official dealings.</p>
                     </div>
-                    <!-- Service Card 6 -->
                     <div class="bg-white p-8 rounded-lg shadow-md hover:shadow-xl hover:-translate-y-2 transition-all duration-300">
                         <i data-lucide="car" class="w-12 h-12 text-teal-600 mb-4"></i>
                         <h3 class="text-2xl font-bold mb-2">Transportation</h3>
@@ -170,7 +143,6 @@
             </div>
         </section>
 
-        <!-- Testimonials Section -->
         <section id="testimonials" class="py-20 bg-teal-700 text-white">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
@@ -178,7 +150,6 @@
                     <p class="mt-4 max-w-2xl mx-auto text-teal-100">We're proud to have helped so many people start their new chapter in Yucatán.</p>
                 </div>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Testimonial Card 1 -->
                     <div class="bg-white/10 p-6 rounded-lg backdrop-blur-sm">
                         <p class="mb-4">"YucaFriends made our move from Canada completely stress-free. Their knowledge of the real estate market is unmatched. We found our dream home in Mérida in just one week!"</p>
                         <div class="flex items-center">
@@ -189,7 +160,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Testimonial Card 2 -->
                     <div class="bg-white/10 p-6 rounded-lg backdrop-blur-sm">
                         <p class="mb-4">"Navigating the immigration process seemed impossible until we found YucaFriends. Carlos was patient, thorough, and got our residency approved faster than we ever expected."</p>
                         <div class="flex items-center">
@@ -200,7 +170,6 @@
                             </div>
                         </div>
                     </div>
-                    <!-- Testimonial Card 3 -->
                     <div class="bg-white/10 p-6 rounded-lg backdrop-blur-sm">
                         <p class="mb-4">"The peace of mind knowing our property is looked after by YucaFriends is priceless. Their maintenance team is reliable, professional, and always does a fantastic job."</p>
                         <div class="flex items-center">
@@ -215,7 +184,6 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
         <section id="contact" class="py-20 bg-white">
             <div class="container mx-auto px-6">
                  <div class="text-center mb-12">
@@ -223,7 +191,6 @@
                     <p class="section-subtitle mt-4 max-w-2xl mx-auto">Get in touch with us today. We're excited to hear from you and help you with your needs in Yucatán.</p>
                 </div>
                 <div class="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 bg-gray-50 p-8 rounded-lg shadow-md">
-                    <!-- Contact Form -->
                     <div>
                         <h3 class="text-2xl font-bold mb-4">Send us a Message</h3>
                         <form action="#">
@@ -252,7 +219,6 @@
                             <button type="submit" class="w-full bg-teal-600 text-white font-bold px-6 py-3 rounded-lg shadow hover:bg-teal-700 transition-colors">Submit Inquiry</button>
                         </form>
                     </div>
-                    <!-- Contact Info -->
                     <div class="flex flex-col justify-center">
                         <h3 class="text-2xl font-bold mb-4">Contact Information</h3>
                         <div class="space-y-4">
@@ -292,7 +258,6 @@
         </section>
     </main>
     
-    <!-- Footer -->
     <footer class="bg-gray-800 text-white py-8">
         <div class="container mx-auto px-6 text-center">
             <p>&copy; <span id="year"></span> YucaFriends. All Rights Reserved.</p>
