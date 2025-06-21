@@ -46,13 +46,9 @@
     <!-- Header -->
     <header id="header" class="bg-white/80 backdrop-blur-md shadow-sm sticky top-0 z-50 transition-all duration-300">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <!-- Replaced text with a custom SVG logo -->
+            <!-- Replaced SVG logo with an image logo -->
             <a href="#" aria-label="YucaFriends Home">
-                <svg class="h-9 w-auto text-teal-700" viewBox="0 0 114 32" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M22.0811 15.2539L31.5405 0.5H41L27.5676 24.0898V31.5H19.4595V24.0898L6 0.5H14.9189L22.0811 15.2539Z"/>
-                    <path d="M51.5 31.5V0.5H74.3243C79.8243 0.5 83.5 4.39453 83.5 9.75C83.5 15.1055 79.8243 19 74.3243 19H60V31.5H51.5ZM60 12.5H73.2162C75.527 12.5 76.5 11.2031 76.5 9.75C76.5 8.29688 75.527 7 73.2162 7H60V12.5Z"/>
-                    <path d="M88.5 31.5V0.5H113.5V7H97V12.5H111.5V19H97V25H114V31.5H88.5Z"/>
-                </svg>
+                <img src="https://www.fwdco.net/yucafriends_logo.png" alt="YucaFriends Logo" class="h-10 w-auto" onerror="this.onerror=null;this.src='https://placehold.co/150x40/ffffff/teal?text=YucaFriends';">
             </a>
             <nav class="hidden md:flex space-x-8 items-center">
                 <a href="#about" class="text-gray-600 hover:text-teal-600 transition-colors">About Us</a>
@@ -78,7 +74,8 @@
 
         <!-- Hero Section -->
         <section id="home" class="hero-bg text-white">
-            <div class="bg-black/50 min-h-[70vh] flex items-center">
+            <!-- Reduced overlay opacity to make image more visible -->
+            <div class="bg-black/40 min-h-[70vh] flex items-center">
                 <div class="container mx-auto px-6 text-center">
                     <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4">Your Trusted Partner for Living in Yucatán</h1>
                     <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8">From finding your dream home to navigating legalities, we provide the expert guidance you need for a seamless life in paradise.</p>
