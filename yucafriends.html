@@ -1,44 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YucaFriends - Your Trusted Partner in Yucatán</title>
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide-react@latest/dist/lucide-react.js"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YucaFriends - Your Trusted Partner in Yucatán</title>
 
-    <style>
-        /* Custom styles */
-        body {
-            font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
-        }
-        .hero-bg {
-            /* Using a real photo of a Yucatan home from Unsplash */
-            background-image: url('https://images.unsplash.com/photo-1599827553538-25f17893a7b7?ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80');
-            background-size: cover;
-            background-position: center;
-        }
-        .section-title {
-            font-size: 2.25rem; /* 36px */
-            font-weight: 700;
-            line-height: 2.5rem; /* 40px */
-        }
-        .section-subtitle {
-            font-size: 1.125rem; /* 18px */
-            color: #4a5568; /* gray-600 */
-        }
-    </style>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide-react@latest/dist/lucide-react.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
+    }
+    .hero-bg {
+      background-image: url('https://images.unsplash.com/photo-1601856993381-d4c6f87f217e?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+      background-size: cover;
+      background-position: center;
+    }
+    .parallax-bg {
+      background-image: url('https://images.unsplash.com/photo-1618338159331-ccf3924d6d37?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .section-title {
+      font-size: 2.25rem;
+      font-weight: 700;
+      line-height: 2.5rem;
+    }
+    .section-subtitle {
+      font-size: 1.125rem;
+      color: #4a5568;
+    }
+  </style>
+    
 </head>
 <body class="bg-gray-50 text-gray-800">
 
@@ -69,20 +75,26 @@
     </header>
 
     <!-- Main Content -->
-    <main>
+     <main>
 
-        <!-- Hero Section -->
-        <section id="home" class="hero-bg text-white">
-            <!-- Reduced overlay opacity to make image more visible -->
-            <div class="bg-black/40 min-h-[70vh] flex items-center">
-                <div class="container mx-auto px-6 text-center">
-                    <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4">Your Trusted Partner for Living in Yucatán</h1>
-                    <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8">From finding your dream home to navigating legalities, we provide the expert guidance you need for a seamless life in paradise.</p>
-                    <a href="#services" class="bg-teal-600 text-white px-8 py-4 rounded-lg shadow-lg hover:bg-teal-700 font-bold text-lg transition-all transform hover:scale-105">Explore Our Services</a>
-                </div>
-            </div>
-        </section>
+    <!-- Hero Section with new image -->
+    <section id="home" class="hero-bg text-white">
+      <div class="bg-black/50 min-h-[70vh] flex items-center">
+        <div class="container mx-auto px-6 text-center">
+          <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-4">Your Trusted Partner for Living in Yucatán</h1>
+          <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8">From finding your dream home to navigating legalities, we provide the expert guidance you need for a seamless life in paradise.</p>
+          <a href="#services" class="bg-teal-600 text-white px-8 py-4 rounded-lg shadow-lg hover:bg-teal-700 font-bold text-lg transition-all transform hover:scale-105">Explore Our Services</a>
+        </div>
+      </div>
+    </section>
 
+    <!-- Parallax Background Section -->
+    <section class="parallax-bg h-[50vh] flex items-center justify-center">
+      <div class="bg-black/30 w-full h-full flex items-center justify-center text-white text-center">
+        <h2 class="text-4xl md:text-5xl font-bold drop-shadow-lg">Experience Colonial Charm</h2>
+      </div>
+    </section>
+         
         <!-- About Us Section -->
         <section id="about" class="py-20 bg-white">
             <div class="container mx-auto px-6">
