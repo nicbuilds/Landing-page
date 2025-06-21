@@ -41,6 +41,16 @@
             background-position: center;
             background-attachment: fixed;
         }
+        
+        /* Media Query for Mobile Optimization */
+        @media (max-width: 768px) {
+            .hero-bg, .parallax-break-bg {
+                background-attachment: scroll; /* Disables parallax for performance/compatibility */
+            }
+            .hero-bg > div {
+                min-height: 60vh; /* Adjust hero height on mobile */
+            }
+        }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
