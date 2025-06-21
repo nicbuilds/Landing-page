@@ -21,11 +21,9 @@
             scroll-behavior: smooth;
         }
         .hero-bg {
-            /* Using a real photo of a Yucatan home from Unsplash */
             background-image: url('https://images.unsplash.com/photo-1618259387055-d3a6877234f1?q=80&w=1195&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
             background-size: cover;
             background-position: center;
-            /* Added this line to create the parallax effect */
             background-attachment: fixed; 
         }
         .section-title {
@@ -51,7 +49,6 @@
             overflow: hidden;
             line-height: 0;
             transform: rotate(180deg);
-            z-index: 1;
         }
         .custom-shape-divider-top svg {
             position: relative;
@@ -69,7 +66,6 @@
             width: 100%;
             overflow: hidden;
             line-height: 0;
-            z-index: 1;
         }
         .custom-shape-divider-bottom svg {
             position: relative;
@@ -186,15 +182,18 @@
             </div>
         </section>
 
-        <section id="testimonials" class="parallax-break-bg text-white relative">
-            <div class="custom-shape-divider-top">
-                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,23.5V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
-                </svg>
-            </div>
-            <div class="bg-black/40 relative z-10">
+        <section id="testimonials" class="relative parallax-break-bg text-white">
+            <div class="absolute inset-0 bg-black/50"></div>
+
+            <div class="relative">
+                <div class="custom-shape-divider-top">
+                    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,23.5V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+                    </svg>
+                </div>
+
                 <div class="container mx-auto px-6 py-20">
-                    <div class="text-center mb-12 pt-10">
+                    <div class="text-center pt-10 mb-12">
                         <h2 class="section-title text-white">What Our Clients Say</h2>
                         <p class="mt-4 max-w-2xl mx-auto text-gray-200">We're proud to have helped so many people start their new chapter in Yucatán.</p>
                     </div>
@@ -231,11 +230,12 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="custom-shape-divider-bottom">
-                <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,23.5V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
-                </svg>
+
+                <div class="custom-shape-divider-bottom">
+                    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,23.5V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+                    </svg>
+                </div>
             </div>
         </section>
 
