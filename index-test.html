@@ -201,20 +201,29 @@
 </head>
 <body class="bg-gray-50 text-gray-800">
 
-  <!-- Header -->
+<!-- Header -->
 <header class="bg-white text-[#0F172A] py-4 shadow-md sticky top-0 z-50">
   <div class="container mx-auto px-4">
-    
-<!-- Mobile Version - Centered Logo and Menu -->
-<div class="md:hidden flex flex-col items-center">
-  <div class="mb-3">
-    <a href="index.html">
-      <img src="IMG_5174.jpg" 
-           alt="Forward Consultants Network"
-           class="h-12 w-auto mx-auto">          
-    </a>
-  </div>
-  <nav class="flex flex-wrap justify-center gap-3" aria-label="Main navigation">
+    <!-- Mobile Version - Hamburger Menu -->
+    <div class="md:hidden flex justify-between items-center">
+      <div>
+        <a href="index.html">
+          <img src="IMG_5174.jpg" 
+               alt="Forward Consultants Network"
+               class="h-12 w-auto">          
+        </a>
+      </div>
+      
+      <!-- Hamburger Button -->
+      <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+  
+ <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 right-0 bg-white shadow-lg py-4 px-6 z-50">
+  <nav class="flex flex-col space-y-4" aria-label="Mobile navigation">
     <a href="#" class="hover:text-[#1B2B40] font-medium text-sm">Home</a>
     <a href="#services" class="hover:text-[#1B2B40] font-medium text-sm">Services</a>
     <a href="#industries" class="hover:text-[#1B2B40] font-medium text-sm">Industries</a>
