@@ -140,38 +140,79 @@
     .token-back {
       transform: rotateY(180deg);
     }
+
+      /* Mobile menu styles */
+    .mobile-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background-color: white;
+      padding: 1rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+    
+    .mobile-menu.active {
+      display: block;
+    }
+    
+    .mobile-menu a {
+      display: block;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid #f3f4f6;
+    }
+    
+    .mobile-menu a:last-child {
+      border-bottom: none;
+    }
   </style>
+
 </head>
 <body class="bg-gray-50 text-gray-800">
+
   <!-- Header -->
-  <header class="bg-white text-[#0F172A] py-4 shadow-md sticky top-0 z-50">
-    <div class="container mx-auto px-4">
-      <div class="flex justify-between items-center">
-        <div>
-          <a href="index.html">
-            <img src="IMG_5174.jpg" 
-                 alt="Forward Consultants Network"
-                 class="h-12 w-auto">          
-          </a>
-        </div>
-        <nav class="hidden md:flex items-center gap-6" aria-label="Main navigation">
-          <a href="index.html" class="hover:text-[#1B2B40] font-medium">Home</a>
-          <a href="#how-it-works" class="hover:text-[#1B2B40] font-medium">How It Works</a>
-          <a href="#benefits" class="hover:text-[#1B2B40] font-medium">Benefits</a>
-          <a href="#case-studies" class="hover:text-[#1B2B40] font-medium">Case Studies</a>
-          <a href="#contact" class="hover:text-[#1B2B40] font-medium">Contact</a>
-          <a href="index-es.html" class="hover:text-[#1B2B40] font-medium">
-            <span class="fi fi-mx" aria-label="Español"></span>
-          </a>
-        </nav>
-        <button class="md:hidden text-gray-600">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
+<header class="bg-white text-[#0F172A] py-4 shadow-md sticky top-0 z-50">
+  <div class="container mx-auto px-4">
+    <div class="flex justify-between items-center">
+      <div>
+        <a href="index.html">
+          <img src="IMG_5174.jpg" 
+               alt="Forward Consultants Network"
+               class="h-12 w-auto">          
+        </a>
       </div>
+      <nav class="hidden md:flex items-center gap-6" aria-label="Main navigation">
+        <a href="index.html" class="hover:text-[#1B2B40] font-medium">Home</a>
+        <a href="#how-it-works" class="hover:text-[#1B2B40] font-medium">How It Works</a>
+        <a href="#benefits" class="hover:text-[#1B2B40] font-medium">Benefits</a>
+        <a href="#case-studies" class="hover:text-[#1B2B40] font-medium">Case Studies</a>
+        <a href="#contact" class="hover:text-[#1B2B40] font-medium">Contact</a>
+        <a href="index-es.html" class="hover:text-[#1B2B40] font-medium">
+          <span class="fi fi-mx" aria-label="Español"></span>
+        </a>
+      </nav>
+      <button id="mobileMenuButton" class="md:hidden text-gray-600">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
     </div>
-  </header>
+    
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu">
+      <a href="index.html" class="hover:text-[#1B2B40] font-medium">Home</a>
+      <a href="#how-it-works" class="hover:text-[#1B2B40] font-medium">How It Works</a>
+      <a href="#benefits" class="hover:text-[#1B2B40] font-medium">Benefits</a>
+      <a href="#case-studies" class="hover:text-[#1B2B40] font-medium">Case Studies</a>
+      <a href="#contact" class="hover:text-[#1B2B40] font-medium">Contact</a>
+      <a href="index-es.html" class="hover:text-[#1B2B40] font-medium flex items-center gap-2">
+        <span>Español</span>
+        <span class="fi fi-mx" aria-label="Español"></span>
+      </a>
+    </div>
+  </div>
+</header>
 
   <!-- Hero Section -->
   <section class="carbon-gradient text-white py-16 md:py-24 relative overflow-hidden">
@@ -876,6 +917,21 @@
         chatBody.scrollTop = chatBody.scrollHeight;
       }
     });
+
+    // Mobile Menu Toggle
+const mobileMenuButton = document.getElementById('mobileMenuButton');
+const mobileMenu = document.getElementById('mobileMenu');
+
+mobileMenuButton.addEventListener('click', () => {
+  mobileMenu.classList.toggle('active');
+});
+
+// Close mobile menu when clicking on a link
+document.querySelectorAll('#mobileMenu a').forEach(link => {
+  link.addEventListener('click', () => {
+    mobileMenu.classList.remove('active');
+  });
+});
   </script>
 </body>
 </html>
