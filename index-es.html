@@ -205,35 +205,43 @@
   
 </head>
 <body class="bg-gray-50 text-gray-800">
-  <!-- Header -->
-  <header class="bg-white text-[#0F172A] py-4 shadow-md sticky top-0 z-50">
-    <div class="container mx-auto px-4">
 
-    <!-- Encabezado -->
+ <!-- Encabezado -->
 <header class="bg-white text-[#0F172A] py-4 shadow-md sticky top-0 z-50">
   <div class="container mx-auto px-4">
-    <!-- Versión móvil - Logo centrado y menú -->
-    <div class="md:hidden flex flex-col items-center">
-      <div class="mb-3">
+    <!-- Versión móvil - Menú hamburguesa -->
+    <div class="md:hidden flex justify-between items-center">
+      <div>
         <a href="index.html">
           <img src="IMG_5174.jpg" 
                alt="Forward Consultants Network"
-               class="h-12 w-auto mx-auto">          
+               class="h-12 w-auto">          
         </a>
       </div>
-      <nav class="flex flex-wrap justify-center gap-3" aria-label="Navegación principal">
+      
+      <!-- Botón Hamburguesa -->
+      <button id="mobile-menu-button" class="text-gray-700 focus:outline-none">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Menú móvil (Oculto por defecto) -->
+    <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 right-0 bg-white shadow-lg py-4 px-6 z-50">
+      <nav class="flex flex-col space-y-4" aria-label="Navegación móvil">
         <a href="#" class="hover:text-[#1B2B40] font-medium text-sm">Inicio</a>
         <a href="#services" class="hover:text-[#1B2B40] font-medium text-sm">Servicios</a>
         <a href="#industries" class="hover:text-[#1B2B40] font-medium text-sm">Industrias</a>
         <a href="cc-code.html" class="hover:text-[#1B2B40] font-medium text-sm">Créditos de Carbono</a>
         <a href="#contact" class="hover:text-[#1B2B40] font-medium text-sm">Contacto</a>
-        <a href="index.html" class="hover:text-[#1B2B40] font-medium text-sm">
-          <span class="fi fi-us" aria-label="English"></span>
+        <a href="index-es.html" class="hover:text-[#1B2B40] font-medium text-sm flex items-center">
+          <span class="fi fi-mx mr-2" aria-label="Español"></span> Español
         </a>
       </nav>
     </div>
 
-    <!-- Versión escritorio - Logo a la izquierda, menú a la derecha -->
+    <!-- Versión escritorio - Logo izquierda, Menú derecha -->
     <div class="hidden md:flex justify-between items-center">
       <div>
         <a href="index.html">
@@ -248,14 +256,55 @@
         <a href="#industries" class="hover:text-[#1B2B40] font-medium">Industrias</a>
         <a href="cc-code.html" class="hover:text-[#1B2B40] font-medium">Créditos de Carbono</a>
         <a href="#contact" class="hover:text-[#1B2B40] font-medium">Contacto</a>
-        <a href="index.html" class="hover:text-[#1B2B40] font-medium">
-          <span class="fi fi-us" aria-label="English"></span>
+        <a href="index-es.html" class="hover:text-[#1B2B40] font-medium">
+          <span class="fi fi-mx" aria-label="Español"></span>
         </a>
       </nav>
     </div>
   </div>
 </header>
 
+<script>
+  // Funcionalidad del menú móvil
+  document.addEventListener('DOMContentLoaded', function() {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    mobileMenuButton.addEventListener('click', function() {
+      mobileMenu.classList.toggle('hidden');
+      
+      // Cambiar ícono de hamburguesa a X cuando el menú está abierto
+      const isOpen = !mobileMenu.classList.contains('hidden');
+      if (isOpen) {
+        mobileMenuButton.innerHTML = `
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        `;
+      } else {
+        mobileMenuButton.innerHTML = `
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        `;
+      }
+    });
+    
+    // Cerrar menú al hacer clic en un enlace
+    const mobileLinks = mobileMenu.querySelectorAll('a');
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        mobileMenu.classList.add('hidden');
+        mobileMenuButton.innerHTML = `
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        `;
+      });
+    });
+  });
+</script>
+  
 <!-- Sección Hero original -->
 <section class="hero-gradient text-white py-16 md:py-24 relative overflow-hidden">
   <!-- Fondo aéreo marino oscurecido -->
